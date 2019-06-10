@@ -66,32 +66,26 @@ CREATE TABLE EXHIBICION(
 
 CREATE TABLE SALA(
 	c_sala INT PRIMARY KEY,
-	c_usuario INT,
+	c_usuarioCreacion INT,
+	c_usuarioModifioacion INT,
 	sala_numero INT,
 	sala_descripcion TEXT,
 	sala_activo BOOLEAN,
 	sala_capacidad INT,
+	sala_creacion DATE,
+	sala_ultimaModificacion DATE,
 );
 
 CREATE TABLE PELICULA(
 	c_pelicula INT PRIMARY KEY,
-	c_usuario INT,
+	c_usuarioCreacion INT,
+	c_usuarioModifioacion INT,
 	pelicula_nombre VARCHAR (100),
 	pelicula_descripcion TEXT,
 	pelicula_activo BOOLEAN,
 	pelicula_imagen TEXT,
-);
-
-CREATE TABLE MODIFICACION_SALA(
-	c_modificacionSala INT PRIMARY KEY,
-	c_usuario INT,
-	c_sala INT,
-);
-
-CREATE TABLE MODIFICACION_PELICULA(
-	c_modificacionPelicula INT PRIMARY KEY,
-	c_usuario INT,
-	c_pelicula INT,
+	pelicula_creacion DATE,
+	pelicula_ultimaModificacion DATE,
 );
 
 --FK's
@@ -111,17 +105,11 @@ ALTER TABLE	EXHIBICION
 ADD FOREIGN KEY (c_sala) REFERENCES SALA(c_sala);
 ALTER TABLE	EXHIBICION
 ADD FOREIGN KEY (c_pelicula) REFERENCES PELICULA(c_pelicula);
-ALTER TABLE	MODIFICACION_SALA
-ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
-ALTER TABLE	MODIFICACION_SALA
-ADD FOREIGN KEY (c_sala) REFERENCES SALA(c_sala);
-ALTER TABLE	MODIFICACION_PELICULA
-ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
-ALTER TABLE	MODIFICACION_PELICULA
-ADD FOREIGN KEY (c_pelicula) REFERENCES SALA(c_pelicula);
-ALTER TABLE	MODIFICACION
-ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
 ALTER TABLE	SALA
-ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
+ADD FOREIGN KEY (c_usuarioCreacion) REFERENCES USUARIO(c_usuario);
+ALTER TABLE	SALA
+ADD FOREIGN KEY (c_usuarioModificacion) REFERENCES USUARIO(c_usuario);
 ALTER TABLE	PELICULA
-ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
+ADD FOREIGN KEY (c_usuarioCreacion) REFERENCES USUARIO(c_usuario);
+ALTER TABLE	PELICULA
+ADD FOREIGN KEY (c_usuarioModificacion) REFERENCES USUARIO(c_usuario);
