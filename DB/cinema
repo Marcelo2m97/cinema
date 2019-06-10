@@ -1,0 +1,48 @@
+-- Database: cinema
+
+-- DROP DATABASE cinema;
+
+CREATE DATABASE cinema
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_El Salvador.1252'
+    LC_CTYPE = 'Spanish_El Salvador.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+	
+CREATE TABLE USUARIO(
+	c_usuario INT PRIMARY KEY,
+	u_username VARCHAR(50),
+	u_password VARCHAR(50),
+	u_active BOOLEAN,
+	u_session BOOLEAN,
+	u_balance MONEY
+);
+
+CREATE TABLE RESERVACION(
+	c_reserva INT PRIMARY KEY,
+	c_usuario INT,
+	c_exhibicion INT,
+);
+
+CREATE TABLE EXHIBICION(
+	c_exhibicion INT PRIMARY KEY,
+	c_sala INT,
+	c_pelicula INT,
+	e_horario VARCHAR(20),
+	e_formato VARCHAR(3),
+);
+
+CREATE TABLE SALA(
+	c_sala INT PRIMARY KEY,
+	s_numero INT,
+	s_capacidad INT,
+);
+
+CREATE TABLE PELICULA(
+	c_pelicula INT PRIMARY KEY,
+	p_nombre VARCHAR (100),
+	p_imagen TEXT,
+);
