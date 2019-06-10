@@ -14,45 +14,72 @@ CREATE DATABASE cinema
 --Creación de tablas	
 CREATE TABLE USUARIO(
 	c_usuario INT PRIMARY KEY,
+	c_pais INT,
+	c_estado INT,
+	c_ciudad INT,
+	c_rol INT,
+	u_nombres VARCHAR(100),
+	u_apellido VARCHAR(100),
+	u_fechaNacimiento DATE,
+	u_direccion TEXT,
 	u_username VARCHAR(50),
 	u_password VARCHAR(50),
-	u_rol
 	u_activo BOOLEAN,
 	u_sesion BOOLEAN,
-	u_saldo MONEY
+	u_saldo MONEY DEFAULT 20,
+);
+
+CREATE TABLE ROL(
+	c_rol INT PRIMARY KEY,
+	rol_nombre VARCHAR(100),
+);
+
+CREATE TABLE PAIS(
+	c_pais INT PRIMARY KEY,
+	pais_nombre VARCHAR(50),
+);
+
+CREATE TABLE ESTADO(
+	c_estado INT PRIMARY KEY,
+	estado_nombre VARCHAR(50),
+);
+
+CREATE TABLE CIUDAD(
+	c_ciudad INT PRIMARY KEY,
+	ciudad_nombre VARCHAR(50),
 );
 
 CREATE TABLE RESERVACION(
 	c_reserva INT PRIMARY KEY,
 	c_usuario INT,
 	c_exhibicion INT,
-	r_asiento VARCHAR(5),
+	reservacion_asiento VARCHAR(5),
 );
 
 CREATE TABLE EXHIBICION(
 	c_exhibicion INT PRIMARY KEY,
 	c_sala INT,
 	c_pelicula INT,
-	e_horario VARCHAR(20),
-	e_formato VARCHAR(3),
+	exhibicion_horario VARCHAR(20),
+	exhibicion_formato VARCHAR(3),
 );
 
 CREATE TABLE SALA(
 	c_sala INT PRIMARY KEY,
 	c_usuario INT,
-	s_numero INT,
-	s_descripcion TEXT,
-	s_activo BOOLEAN,
-	s_capacidad INT,
+	sala_numero INT,
+	sala_descripcion TEXT,
+	sala_activo BOOLEAN,
+	sala_capacidad INT,
 );
 
 CREATE TABLE PELICULA(
 	c_pelicula INT PRIMARY KEY,
 	c_usuario INT,
-	p_nombre VARCHAR (100),
-	p_descripcion TEXT,
-	p_activo BOOLEAN,
-	p_imagen TEXT,
+	pelicula_nombre VARCHAR (100),
+	pelicula_descripcion TEXT,
+	pelicula_activo BOOLEAN,
+	pelicula_imagen TEXT,
 );
 
 CREATE TABLE MODIFICACION_SALA(
@@ -68,6 +95,14 @@ CREATE TABLE MODIFICACION_PELICULA(
 );
 
 --FK's
+ALTER TABLE	USUARIO
+ADD FOREIGN KEY (c_pais) REFERENCES PAIS(c_pais);
+ALTER TABLE	USUARIO
+ADD FOREIGN KEY (c_estado) REFERENCES ESTADO(c_estado);
+ALTER TABLE	USUARIO
+ADD FOREIGN KEY (c_ciudad) REFERENCES CIUDAD(c_ciudad);
+ALTER TABLE	USUARIO
+ADD FOREIGN KEY (c_rol) REFERENCES ROL(c_rol);
 ALTER TABLE	RESERVACION
 ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
 ALTER TABLE	RESERVACION
