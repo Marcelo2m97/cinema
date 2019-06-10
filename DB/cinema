@@ -11,20 +11,22 @@ CREATE DATABASE cinema
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 	
-	
+--Creación de tablas	
 CREATE TABLE USUARIO(
 	c_usuario INT PRIMARY KEY,
 	u_username VARCHAR(50),
 	u_password VARCHAR(50),
-	u_active BOOLEAN,
-	u_session BOOLEAN,
-	u_balance MONEY
+	u_rol
+	u_activo BOOLEAN,
+	u_sesion BOOLEAN,
+	u_saldo MONEY
 );
 
 CREATE TABLE RESERVACION(
 	c_reserva INT PRIMARY KEY,
 	c_usuario INT,
 	c_exhibicion INT,
+	r_asiento VARCHAR(5),
 );
 
 CREATE TABLE EXHIBICION(
@@ -37,12 +39,54 @@ CREATE TABLE EXHIBICION(
 
 CREATE TABLE SALA(
 	c_sala INT PRIMARY KEY,
+	c_usuario INT,
 	s_numero INT,
+	s_descripcion TEXT,
+	s_activo BOOLEAN,
 	s_capacidad INT,
 );
 
 CREATE TABLE PELICULA(
 	c_pelicula INT PRIMARY KEY,
+	c_usuario INT,
 	p_nombre VARCHAR (100),
+	p_descripcion TEXT,
+	p_activo BOOLEAN,
 	p_imagen TEXT,
 );
+
+CREATE TABLE MODIFICACION_SALA(
+	c_modificacionSala INT PRIMARY KEY,
+	c_usuario INT,
+	c_sala INT,
+);
+
+CREATE TABLE MODIFICACION_PELICULA(
+	c_modificacionPelicula INT PRIMARY KEY,
+	c_usuario INT,
+	c_pelicula INT,
+);
+
+--FK's
+ALTER TABLE	RESERVACION
+ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
+ALTER TABLE	RESERVACION
+ADD FOREIGN KEY (c_exhibicio) REFERENCES EXHIBICION(c_exhibicion);
+ALTER TABLE	EXHIBICION
+ADD FOREIGN KEY (c_sala) REFERENCES SALA(c_sala);
+ALTER TABLE	EXHIBICION
+ADD FOREIGN KEY (c_pelicula) REFERENCES PELICULA(c_pelicula);
+ALTER TABLE	MODIFICACION_SALA
+ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
+ALTER TABLE	MODIFICACION_SALA
+ADD FOREIGN KEY (c_sala) REFERENCES SALA(c_sala);
+ALTER TABLE	MODIFICACION_PELICULA
+ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
+ALTER TABLE	MODIFICACION_PELICULA
+ADD FOREIGN KEY (c_pelicula) REFERENCES SALA(c_pelicula);
+ALTER TABLE	MODIFICACION
+ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
+ALTER TABLE	SALA
+ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
+ALTER TABLE	PELICULA
+ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
