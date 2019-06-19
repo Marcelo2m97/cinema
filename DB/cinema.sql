@@ -11,7 +11,6 @@ CREATE DATABASE cinema
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 	
---Creación de tablas	
 CREATE TABLE USUARIO(
 	c_usuario INT PRIMARY KEY,
 	c_pais INT,
@@ -26,34 +25,34 @@ CREATE TABLE USUARIO(
 	u_password VARCHAR(50),
 	u_activo BOOLEAN,
 	u_sesion BOOLEAN,
-	u_saldo MONEY DEFAULT 20,
+	u_saldo MONEY DEFAULT 20
 );
 
 CREATE TABLE ROL(
 	c_rol INT PRIMARY KEY,
-	rol_nombre VARCHAR(100),
+	rol_nombre VARCHAR(100)
 );
 
 CREATE TABLE PAIS(
 	c_pais INT PRIMARY KEY,
-	pais_nombre VARCHAR(50),
+	pais_nombre VARCHAR(50)
 );
 
 CREATE TABLE ESTADO(
 	c_estado INT PRIMARY KEY,
-	estado_nombre VARCHAR(50),
+	estado_nombre VARCHAR(50)
 );
 
 CREATE TABLE CIUDAD(
 	c_ciudad INT PRIMARY KEY,
-	ciudad_nombre VARCHAR(50),
+	ciudad_nombre VARCHAR(50)
 );
 
 CREATE TABLE RESERVACION(
 	c_reserva INT PRIMARY KEY,
 	c_usuario INT,
 	c_exhibicion INT,
-	reservacion_asiento VARCHAR(5),
+	reservacion_asiento VARCHAR(5)
 );
 
 CREATE TABLE EXHIBICION(
@@ -61,31 +60,31 @@ CREATE TABLE EXHIBICION(
 	c_sala INT,
 	c_pelicula INT,
 	exhibicion_horario VARCHAR(20),
-	exhibicion_formato VARCHAR(3),
+	exhibicion_formato VARCHAR(3)
 );
 
 CREATE TABLE SALA(
 	c_sala INT PRIMARY KEY,
 	c_usuarioCreacion INT,
-	c_usuarioModifioacion INT,
+	c_usuarioModificacion INT,
 	sala_numero INT,
 	sala_descripcion TEXT,
 	sala_activo BOOLEAN,
 	sala_capacidad INT,
 	sala_creacion DATE,
-	sala_ultimaModificacion DATE,
+	sala_ultimaModificacion DATE
 );
 
 CREATE TABLE PELICULA(
 	c_pelicula INT PRIMARY KEY,
 	c_usuarioCreacion INT,
-	c_usuarioModifioacion INT,
+	c_usuarioModificacion INT,
 	pelicula_nombre VARCHAR (100),
 	pelicula_descripcion TEXT,
 	pelicula_activo BOOLEAN,
 	pelicula_imagen TEXT,
 	pelicula_creacion DATE,
-	pelicula_ultimaModificacion DATE,
+	pelicula_ultimaModificacion DATE
 );
 
 --FK's
@@ -100,7 +99,7 @@ ADD FOREIGN KEY (c_rol) REFERENCES ROL(c_rol);
 ALTER TABLE	RESERVACION
 ADD FOREIGN KEY (c_usuario) REFERENCES USUARIO(c_usuario);
 ALTER TABLE	RESERVACION
-ADD FOREIGN KEY (c_exhibicio) REFERENCES EXHIBICION(c_exhibicion);
+ADD FOREIGN KEY (c_exhibicion) REFERENCES EXHIBICION(c_exhibicion);
 ALTER TABLE	EXHIBICION
 ADD FOREIGN KEY (c_sala) REFERENCES SALA(c_sala);
 ALTER TABLE	EXHIBICION
