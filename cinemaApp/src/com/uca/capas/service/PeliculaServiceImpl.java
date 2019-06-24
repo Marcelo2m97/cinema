@@ -35,8 +35,8 @@ public class PeliculaServiceImpl implements PeliculaService{
 	public void editPelicula(Pelicula p) {
 		Pelicula p2 = findOne(p.getId());
 		p.setFechaCreacion(p2.getFechaCreacion());
-		p.setActivo(p2.getActivo());
 		p.setUsuarioCreacion(p2.getUsuarioCreacion());
+		p.setActivo(p2.getActivo());
 		p.setFechaModificacion(Calendar.getInstance());
 		peliculaRepository.save(p);
 	}
