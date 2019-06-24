@@ -2,10 +2,13 @@ package com.uca.capas.domain;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +42,9 @@ public class Sala {
 	
 	@Column(name="c_usuariomodificacion")
 	private Integer usuarioModificacion;
+	
+	@OneToMany(mappedBy="sala", fetch=FetchType.LAZY)
+	private List<Exhibicion> exhibiciones;
 
 	public Integer getId() {
 		return id;
@@ -135,5 +141,13 @@ public class Sala {
 
 	public void setUsuarioModificacion(Integer usuarioModificacion) {
 		this.usuarioModificacion = usuarioModificacion;
+	}
+
+	public List<Exhibicion> getExhibiciones() {
+		return exhibiciones;
+	}
+
+	public void setExhibiciones(List<Exhibicion> exhibiciones) {
+		this.exhibiciones = exhibiciones;
 	}
 }
