@@ -1,5 +1,9 @@
 package com.uca.capas.service;
 
-public interface UsuarioService {
+import com.uca.capas.domain.Usuario;
+import javassist.tools.rmi.ObjectNotFoundException;
 
+public interface UsuarioService {
+    Usuario findByUsername(String username);
+    Usuario findById(Long id) throws ObjectNotFoundException;
 }
