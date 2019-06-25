@@ -18,26 +18,24 @@
 		<form:input type="text" name="descripcion" path="descripcion"/><br>
 		
 		<label>Imagen</label>
-		<form:input type="text" id="imageName" name="imagen" path="imagen"/><br>
+		<form:input type="hidden" id="imageName" name="imagen" path="imagen"/><br>
 		<img id="image" src="resources/${pelicula.imagen}" width="150px" height="225px"><br>
 		
 		<form:input type="hidden" name="id" path="id"/>
 		<input type="submit" value="Guardar">
 	</form:form>
 	
-	<h2>Upload image</h2>
+	<h2>Subir imagen</h2>
 	<form method="POST" onsubmit="return false;" enctype="multipart/form-data">
 		<label>File: </label>
-		<input type="file" id="file" multiple="multiple"><br> 
+		<input type="file" id="file"><br> 
 		<button onclick="uploadImage();">Upload</button>
 	</form>
 	
 	<script>
     uploadImage = function(){
     	var data = new FormData();
-    	jQuery.each(jQuery('#file')[0].files, function(i,file){
-    		data.append('file-'+i,file);
-    	});
+    	data.append('file',jQuery('#file')[0].files[0]);
         $.ajax({
             type : 'POST',
             url : 'uploadFile',
@@ -46,7 +44,7 @@
         	contentType: false,
         	processData: false,
             success : function(response) {
-                $('#imageName').val(response);
+            	$("#imageName").val(response);
                 $("#image").attr("src","resources/"+response);
             },
             error : function() {
