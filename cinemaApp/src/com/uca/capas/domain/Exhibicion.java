@@ -43,11 +43,13 @@ public class Exhibicion {
 	@Column(name="exhibicion_modificacion")
 	private Calendar fechaModificacion;
 	
-	@Column(name="c_usuariocreacion")
-	private Integer usuarioCreacion;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_usuariocreacion")
+	private Usuario usuarioCreacion;
 	
-	@Column(name="c_usuariomodificacion")
-	private Integer usuarioModificacion;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_usuariomodificacion")
+	private Usuario usuarioModificacion;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_sala")
@@ -114,19 +116,19 @@ public class Exhibicion {
 		this.fechaModificacion = fechaModificacion;
 	}
 
-	public Integer getUsuarioCreacion() {
+	public Usuario getUsuarioCreacion() {
 		return usuarioCreacion;
 	}
 
-	public void setUsuarioCreacion(Integer usuarioCreacion) {
+	public void setUsuarioCreacion(Usuario usuarioCreacion) {
 		this.usuarioCreacion = usuarioCreacion;
 	}
 
-	public Integer getUsuarioModificacion() {
+	public Usuario getUsuarioModificacion() {
 		return usuarioModificacion;
 	}
 
-	public void setUsuarioModificacion(Integer usuarioModificacion) {
+	public void setUsuarioModificacion(Usuario usuarioModificacion) {
 		this.usuarioModificacion = usuarioModificacion;
 	}
 
@@ -145,7 +147,7 @@ public class Exhibicion {
 	public void setPelicula(Pelicula pelicula) {
 		this.pelicula = pelicula;
 	}
-	
+
 	public String getActivoDelegate() {
 		return EntityUtils.activoToString(activo);
 	}

@@ -5,10 +5,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Reservaci&oacute;n</title>
 </head>
 <body>
 	<form>
+		<h1>${pelicula.nombre}</h1>
+		<p>${pelicula.descripcion}</p>
+		<img src="resources/${pelicula.imagen}" width="150px" height="225px">
+		
+		<h2>Exhibiciones</h2>
 		<c:forEach items="${exhibiciones}" var="exhibicion">
 			<input type="radio"><c:out value="${exhibicion.formato}-${exhibicion.horario}"/><br>
 		</c:forEach>

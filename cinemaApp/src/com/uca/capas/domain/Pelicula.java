@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -43,11 +45,13 @@ public class Pelicula {
 	@Column(name="pelicula_ultimamodificacion")
 	private Calendar fechaModificacion;
 	
-	@Column(name="c_usuariocreacion")
-	private Integer usuarioCreacion;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_usuariocreacion")
+	private Usuario usuarioCreacion;
 	
-	@Column(name="c_usuariomodificacion")
-	private Integer usuarioModificacion;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_usuariomodificacion")
+	private Usuario usuarioModificacion;
 	
 	@OneToMany(mappedBy="pelicula", fetch=FetchType.LAZY)
 	private List<Exhibicion> exhibiciones;
@@ -108,19 +112,19 @@ public class Pelicula {
 		this.fechaModificacion = fechaModificacion;
 	}
 
-	public Integer getUsuarioCreacion() {
+	public Usuario getUsuarioCreacion() {
 		return usuarioCreacion;
 	}
 
-	public void setUsuarioCreacion(Integer usuarioCreacion) {
+	public void setUsuarioCreacion(Usuario usuarioCreacion) {
 		this.usuarioCreacion = usuarioCreacion;
 	}
 
-	public Integer getUsuarioModificacion() {
+	public Usuario getUsuarioModificacion() {
 		return usuarioModificacion;
 	}
 
-	public void setUsuarioModificacion(Integer usuarioModificacion) {
+	public void setUsuarioModificacion(Usuario usuarioModificacion) {
 		this.usuarioModificacion = usuarioModificacion;
 	}
 
