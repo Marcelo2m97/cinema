@@ -10,7 +10,7 @@ CREATE DATABASE cinema
     LC_CTYPE = 'Spanish_El Salvador.1252'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
-	
+--Done	
 CREATE TABLE USUARIO(
 	c_usuario SERIAL PRIMARY KEY,
 	c_pais INT,
@@ -27,22 +27,22 @@ CREATE TABLE USUARIO(
 	u_sesion BOOLEAN,
 	u_saldo MONEY DEFAULT 20
 );
-
+--Done
 CREATE TABLE ROL(
 	c_rol SERIAL PRIMARY KEY,
 	rol_nombre VARCHAR(100)
 );
-
+--Done
 CREATE TABLE PAIS(
 	c_pais SERIAL PRIMARY KEY,
 	pais_nombre VARCHAR(50)
 );
-
+--Done
 CREATE TABLE ESTADO(
 	c_estado SERIAL PRIMARY KEY,
 	estado_nombre VARCHAR(50)
 );
-
+--Done
 CREATE TABLE CIUDAD(
 	c_ciudad SERIAL PRIMARY KEY,
 	ciudad_nombre VARCHAR(50)
@@ -122,6 +122,17 @@ INSERT INTO USUARIO VALUES (4,1,2,4,2, 'John', 'Steward', '5/12/1996', 'direccio
 INSERT INTO USUARIO VALUES (5,3,5,9,2, 'Rodrigo', 'Alvarenga', '23/4/1998', 'direccion5', 'tupic_toxic', '12345678', true,false,$1.00);
 INSERT INTO USUARIO VALUES (5,3,6,12,2, 'Marcelo', 'Martinez', '26/10/1997', 'direccion6', 'marcelo2m97', '12345678', true,false,$20.00);
 INSERT INTO USUARIO VALUES (5,3,6,12,2, 'Edward', 'Martinez', '5/9/1997', 'direccion7', 'emartinezs', '12345678', false,false,$2000.00);
+
+INSERT INTO PELICULA VALUES (1,1,3,'Harry Potter','Lorem ipsum dolor sit amet, consectetur adipiscing elit.',false,'harrypotter.jpg','26/8/1998','10/1/2007');
+INSERT INTO PELICULA VALUES (2,3,3,'Toy Story','Lorem ipsum dolor sit amet, consectetur adipiscing elit.',true,'toystory.jpg','21/6/2019','21/6/2019');
+INSERT INTO PELICULA VALUES (3,3,1,'El Rey Leon','Lorem ipsum dolor sit amet, consectetur adipiscing elit.',false,'elreyleon.jpg','22/4/2007','10/12/2009');
+INSERT INTO PELICULA VALUES (4,1,1,'Avengers Endgame','Lorem ipsum dolor sit amet, consectetur adipiscing elit.',true,'avengersendgame.jpg','26/4/2019','29/8/2019');
+
+INSERT INTO SALA VALUES (1,1,3,1,'Lorem ipsum dolor sit amet',true,70,'15/6/2018','15/6/2018');
+INSERT INTO SALA VALUES (2,1,3,2,'Lorem ipsum dolor sit amet',true,70,'15/6/2018','15/6/2018');
+INSERT INTO SALA VALUES (3,1,3,3,'Lorem ipsum dolor sit amet',true,70,'15/6/2018','15/6/2018');
+INSERT INTO SALA VALUES (4,1,3,4,'Lorem ipsum dolor sit amet',true,70,'15/6/2018','15/6/2018');
+INSERT INTO SALA VALUES (5,1,3,5,'Lorem ipsum dolor sit amet',true,70,'15/6/2018','15/6/2018');
 
 --FK's
 ALTER TABLE	USUARIO
