@@ -16,6 +16,14 @@ public class PeliculaController {
 	@Autowired
 	private PeliculaService peliculaService;
 	
+	@RequestMapping("/peliculas")
+	public ModelAndView verPeliculas() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("peliculas", peliculaService.findActive());
+		mav.setViewName("peliculas");
+		return mav;
+	}
+	
 	@RequestMapping("/tablaPelicula")
 	public ModelAndView tablaPelicula() {
 		ModelAndView mav = new ModelAndView();
@@ -62,8 +70,7 @@ public class PeliculaController {
 	@RequestMapping("/activarPelicula")
 	public ModelAndView activarPelicula(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		Pelicula p = peliculaService.findOne(id);
-		peliculaService.activarPelicula(p);
+		peliculaService.activarPelicula(id);
 		mav.setViewName("redirect:/tablaPelicula");
 		return mav;
 	}

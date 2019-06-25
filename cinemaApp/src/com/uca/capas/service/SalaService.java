@@ -10,9 +10,11 @@ public interface SalaService {
 	
 	public Sala findOne(int id);
 	
+	public List<Sala> findActive();
+	
 	public void addSala(Sala sala);
 	
 	public void editSala(Sala sala);
 	
-	public void activarSala(Sala sala);
+	public void activarSala(int id);
 }

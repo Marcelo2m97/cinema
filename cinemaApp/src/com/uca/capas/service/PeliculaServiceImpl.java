@@ -24,6 +24,11 @@ public class PeliculaServiceImpl implements PeliculaService{
 	public Pelicula findOne(int id) {
 		return peliculaRepository.findOne(id);
 	}
+	
+	@Override
+	public List<Pelicula> findActive() {
+		return peliculaRepository.findByActivoOrderByIdAsc(true);
+	}
 
 	@Override
 	public void addPelicula(Pelicula p) {
@@ -42,9 +47,9 @@ public class PeliculaServiceImpl implements PeliculaService{
 	}
 
 	@Override
-	public void activarPelicula(Pelicula p) {
+	public void activarPelicula(int id) {
+		Pelicula p = peliculaRepository.findOne(id);
 		p.setActivo(!p.getActivo());
 		peliculaRepository.save(p);
 	}
-
 }

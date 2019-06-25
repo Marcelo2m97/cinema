@@ -1,38 +1,39 @@
 package com.uca.capas.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "ciudad", schema = "public")
+@Table(schema="public", name="ciudad")
 public class Ciudad {
-    @Id
-    @GeneratedValue(generator = "ciudad_c_ciudad_seq", strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "ciudad_c_ciudad_seq",sequenceName = "ciudad_c_ciudad_seq")
-    @Column(name = "c_ciudad")
-    private Long idCiudad;
 
-    @Column(name = "ciudad_nombre")
-    private String nombreCiudad;
+	@Id
+	@GeneratedValue(generator="ciudad_c_ciudad_seq", strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="ciudad_c_ciudad_seq", sequenceName="public.ciudad_c_ciudad_seq", allocationSize=1)
+	@Column(name="c_ciudad")
+	private Integer id;
 
-    public Ciudad(String nombreCiudad) {
-        this.nombreCiudad = nombreCiudad;
-    }
+	@Column(name="ciudad_nombre")
+	private String nombre;
 
-    public Ciudad(){}
+	public Integer getId() {
+		return id;
+	}
 
-    public Long getIdCiudad() {
-        return idCiudad;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setIdCiudad(Long idCiudad) {
-        this.idCiudad = idCiudad;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getNombreCiudad() {
-        return nombreCiudad;
-    }
-
-    public void setNombreCiudad(String nombreCiudad) {
-        this.nombreCiudad = nombreCiudad;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }

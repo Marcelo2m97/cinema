@@ -24,6 +24,11 @@ public class SalaServiceImpl implements SalaService{
 	public Sala findOne(int id) {
 		return salaRepository.findOne(id);
 	}
+	
+	@Override
+	public List<Sala> findActive() {
+		return salaRepository.findByActivoOrderByIdAsc(true);
+	}
 
 	@Override
 	public void addSala(Sala s) {
@@ -42,9 +47,9 @@ public class SalaServiceImpl implements SalaService{
 	}
 
 	@Override
-	public void activarSala(Sala s) {
+	public void activarSala(int id) {
+		Sala s = salaRepository.findOne(id);
 		s.setActivo(!s.getActivo());
 		salaRepository.save(s);
 	}
-
 }

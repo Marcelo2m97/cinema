@@ -1,38 +1,39 @@
 package com.uca.capas.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "rol", schema = "public")
+@Table(schema="public", name="rol")
 public class Rol {
-    @Id
-    @GeneratedValue(generator = "rol_c_rol_seq", strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "rol_c_rol_seq", sequenceName = "rol_c_rol_seq")
-    @Column(name = "c_rol")
-    private Long idRol;
 
-    @Column(name = "rol_nombre")
-    private String nombreRol;
+	@Id
+	@GeneratedValue(generator="rol_c_rol_seq", strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="rol_c_rol_seq", sequenceName="public.rol_c_rol_seq", allocationSize=1)
+	@Column(name="c_rol")
+	private Integer id;
+	
+	@Column(name="rol_nombre")
+	private String nombre;
 
-    public Rol(String nombreRol) {
-        this.nombreRol = nombreRol;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Rol(){}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Long getIdRol() {
-        return idRol;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setIdRol(Long idRol) {
-        this.idRol = idRol;
-    }
-
-    public String getNombreRol() {
-        return nombreRol;
-    }
-
-    public void setNombreRol(String nombreRol) {
-        this.nombreRol = nombreRol;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }

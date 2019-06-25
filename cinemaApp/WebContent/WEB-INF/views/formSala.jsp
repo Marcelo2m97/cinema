@@ -9,10 +9,7 @@
 </head>
 <body>
 	<h1>Sala</h1>
-	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="sala">
-		<label>ID</label>
-		<form:input type="text" name="id" path="id"/><br>
-		
+	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="sala">		
 		<label>Numero</label>
 		<form:input type="number" name="numero" path="numero"/><br>
 		
@@ -22,6 +19,7 @@
 		<label>Capacidad</label>
 		<form:input type="number" name="capacidad" path="capacidad"/><br>
 		
+		<form:input type="hidden" name="id" path="id"/>
 		<input type="submit" value="Guardar">
 	</form:form>
 </body>

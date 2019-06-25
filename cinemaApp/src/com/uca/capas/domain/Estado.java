@@ -1,38 +1,39 @@
 package com.uca.capas.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "estado", schema = "public")
+@Table(schema="public", name="estado")
 public class Estado {
-    @Id
-    @GeneratedValue(generator = "estado_c_estado_seq", strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "estado_c_estado_seq",sequenceName = "estado_c_estado_seq")
-    @Column(name = "c_estado")
-    private Long idEstado;
 
-    @Column(name = "estado_nombre")
-    private String nombreEstado;
+	@Id
+	@GeneratedValue(generator="estado_c_estado_seq", strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="estado_c_estado_seq", sequenceName="public.estado_c_estado_seq", allocationSize=1)
+	@Column(name="c_estado")
+	private Integer id;
+	
+	@Column(name="estado_nombre")
+	private String nombre;
 
-    public Estado(String nombreEstado) {
-        this.nombreEstado = nombreEstado;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Estado(){}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Long getIdEstado() {
-        return idEstado;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setIdEstado(Long idEstado) {
-        this.idEstado = idEstado;
-    }
-
-    public String getNombreEstado() {
-        return nombreEstado;
-    }
-
-    public void setNombreEstado(String nombreEstado) {
-        this.nombreEstado = nombreEstado;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }
