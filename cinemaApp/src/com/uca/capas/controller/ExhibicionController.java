@@ -46,7 +46,7 @@ public class ExhibicionController {
 	@RequestMapping("/formEditExhibicion")
 	public ModelAndView formExhibicion(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		ExhibicionDTO e = exhibicionService.findOne(id);
+		ExhibicionDTO e = exhibicionService.findOneDTO(id);
 		mav.addObject("exhibicion", e);
 		mav.addObject("salas", salaService.findAll());
 		mav.addObject("peliculas", peliculaService.findAll());
@@ -74,8 +74,7 @@ public class ExhibicionController {
 	@RequestMapping("/activarExhibicion")
 	public ModelAndView activarExhibicion(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		ExhibicionDTO e = exhibicionService.findOne(id);
-		exhibicionService.activarExhibicion(e);
+		exhibicionService.activarExhibicion(id);
 		mav.setViewName("redirect:/tablaExhibicion");
 		return mav;
 	}

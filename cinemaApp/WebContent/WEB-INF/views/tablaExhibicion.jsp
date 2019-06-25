@@ -31,14 +31,25 @@
 						<input type="hidden" name="id" value="${exhibicion.id}">
 						<input type="submit" value="Editar">
 					</form:form>
+					<form:form action="${pageContext.request.contextPath}/activarExhibicion" onsubmit="return confirm('Confirmar');">
+						<input type="hidden" name="id" value="${exhibicion.id}">
+						<c:choose>
+							<c:when test="${exhibicion.activo == true}">
+								<input type="submit" value="Inactivar">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Activar">
+							</c:otherwise>
+						</c:choose>
+					</form:form>
 				</td>
 				<td>${exhibicion.id}</td>
-				<td>${exhibicion.horario}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>${exhibicion.pelicula.nombre} - ${exhibicion.formato} - ${exhibicion.horario}</td>
+				<td>${exhibicion.activoDelegate}</td>
+				<td>${exhibicion.fechaCreacionDelegate}</td>
+				<td>${exhibicion.usuarioCreacion}</td>
+				<td>${exhibicion.fechaModificacionDelegate}</td>
+				<td>${exhibicion.usuarioModificacion}</td>
 			</tr>
 		</c:forEach>
 	</table>

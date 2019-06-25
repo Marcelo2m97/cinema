@@ -1,21 +1,27 @@
 package com.uca.capas.domain;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.uca.capas.utils.EntityUtils;
 
 @Entity
 @Table(schema="public", name="sala")
 public class Sala {
 
 	@Id
+	@GeneratedValue(generator="sala_c_sala_seq", strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="sala_c_sala_seq", sequenceName="public.sala_c_sala_seq", allocationSize=1)
 	@Column(name="c_sala")
 	private Integer id;
 	
@@ -25,11 +31,11 @@ public class Sala {
 	@Column(name="sala_descripcion")
 	private String descripcion;
 	
-	@Column(name="sala_activo")
-	private boolean activo;
-	
 	@Column(name="sala_capacidad")
 	private Integer capacidad;
+	
+	@Column(name="sala_activo")
+	private boolean activo;
 	
 	@Column(name="sala_creacion")
 	private Calendar fechaCreacion;
@@ -70,21 +76,6 @@ public class Sala {
 		this.descripcion = descripcion;
 	}
 
-	public boolean getActivo() {
-		return activo;
-	}
-	
-	public String getActivoDelegate() {
-		if (activo) {
-			return "Activo";
-		}
-		return "Inactivo";
-	}
-
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
-
 	public Integer getCapacidad() {
 		return capacidad;
 	}
@@ -93,17 +84,16 @@ public class Sala {
 		this.capacidad = capacidad;
 	}
 
+	public boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	public Calendar getFechaCreacion() {
 		return fechaCreacion;
-	}
-	
-	public String getFechaCreacionDelegate() {
-		if (fechaCreacion == null) {
-			return "";
-		}
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		String date = sdf.format(fechaCreacion.getTime());
-		return date;
 	}
 
 	public void setFechaCreacion(Calendar fechaCreacion) {
@@ -112,15 +102,6 @@ public class Sala {
 
 	public Calendar getFechaModificacion() {
 		return fechaModificacion;
-	}
-	
-	public String getFechaModificacionDelegate() {
-		if (fechaModificacion == null) {
-			return "";
-		}
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		String date = sdf.format(fechaModificacion.getTime());
-		return date;
 	}
 
 	public void setFechaModificacion(Calendar fechaModificacion) {
@@ -149,5 +130,17 @@ public class Sala {
 
 	public void setExhibiciones(List<Exhibicion> exhibiciones) {
 		this.exhibiciones = exhibiciones;
+	}
+	
+	public String getActivoDelegate() {
+		return EntityUtils.activoToString(activo);
+	}
+	
+	public String getFechaCreacionDelegate() {
+		return EntityUtils.dateToString(fechaCreacion);
+	}
+	
+	public String getFechaModificacionDelegate() {
+		return EntityUtils.dateToString(fechaModificacion);
 	}
 }

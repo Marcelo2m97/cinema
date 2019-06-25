@@ -62,8 +62,7 @@ public class SalaController {
 	@RequestMapping("/activarSala")
 	public ModelAndView activarSala(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		Sala s = salaService.findOne(id);
-		salaService.activarSala(s);
+		salaService.activarSala(id);
 		mav.setViewName("redirect:/tablaSala");
 		return mav;
 	}

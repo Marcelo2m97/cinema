@@ -10,18 +10,15 @@
 <body>
 	<h1>Exhibici&oacute;n</h1>
 	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="exhibicion">
-		<label>ID</label>
-		<form:input type="text" name="id" path="id"/><br>
-		
 		<label>Horario</label>
 		<form:input type="time" name="horario" path="horario"/><br>
 		
 		<label>Formato</label>
 		<form:select path="formato"> 
-			<form:option value="2DSUB"/>
-			<form:option value="2DDOB"/>
-			<form:option value="3DSUB"/>
-			<form:option value="3DDOB"/>
+			<form:option value="2D-SUB"/>
+			<form:option value="2D-DOB"/>
+			<form:option value="3D-SUB"/>
+			<form:option value="3D-DOB"/>
 		</form:select><br>
 		
 		<label>Sala</label>
@@ -34,6 +31,7 @@
 			<form:options items="${peliculas}" itemValue="id" itemLabel="nombre"  />
 		</form:select><br>
 		
+		<form:input type="hidden" name="id" path="id"/>
 		<input type="submit" value="Guardar">
 	</form:form>
 </body>

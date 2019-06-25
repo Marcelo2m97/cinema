@@ -13,10 +13,6 @@
 		<input type="submit" value="Nueva Pel&iacute;cula">
 	</form:form>
 	
-	<form:form action="${pageContext.request.contextPath}/formUpload">
-		<input type="submit" value="Subir imagen">
-	</form:form>
-	
 	<table>
 		<tr>
 			<th>Acci&oacute;n</th>

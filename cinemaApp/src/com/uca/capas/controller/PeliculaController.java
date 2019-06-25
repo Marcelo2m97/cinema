@@ -70,8 +70,7 @@ public class PeliculaController {
 	@RequestMapping("/activarPelicula")
 	public ModelAndView activarPelicula(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		Pelicula p = peliculaService.findOne(id);
-		peliculaService.activarPelicula(p);
+		peliculaService.activarPelicula(id);
 		mav.setViewName("redirect:/tablaPelicula");
 		return mav;
 	}

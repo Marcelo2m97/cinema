@@ -9,4 +9,6 @@ import com.uca.capas.domain.Sala;
 public interface SalaRepository extends JpaRepository<Sala, Integer>{
 
 	public List<Sala> findByOrderByIdAsc();
+	
+	public List<Sala> findByActivoOrderByIdAsc(boolean activo);
 }
