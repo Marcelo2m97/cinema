@@ -15,4 +15,6 @@ public interface PeliculaService {
 	public void editPelicula(Pelicula pelicula);
 	
 	public void activarPelicula(Pelicula pelicula);
+	
+	public List<Pelicula> findActive();
 }

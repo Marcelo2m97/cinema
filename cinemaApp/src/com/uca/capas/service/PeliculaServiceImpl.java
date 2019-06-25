@@ -47,4 +47,9 @@ public class PeliculaServiceImpl implements PeliculaService{
 		peliculaRepository.save(p);
 	}
 
+	@Override
+	public List<Pelicula> findActive() {
+		return peliculaRepository.findByActivoOrderByIdAsc(true);
+	}
+
 }

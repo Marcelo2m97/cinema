@@ -16,6 +16,14 @@ public class PeliculaController {
 	@Autowired
 	private PeliculaService peliculaService;
 	
+	@RequestMapping("/peliculas")
+	public ModelAndView verPeliculas() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("peliculas", peliculaService.findActive());
+		mav.setViewName("peliculas");
+		return mav;
+	}
+	
 	@RequestMapping("/tablaPelicula")
 	public ModelAndView tablaPelicula() {
 		ModelAndView mav = new ModelAndView();

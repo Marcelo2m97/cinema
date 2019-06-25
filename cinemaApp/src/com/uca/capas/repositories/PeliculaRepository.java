@@ -9,4 +9,6 @@ import com.uca.capas.domain.Pelicula;
 public interface PeliculaRepository extends JpaRepository<Pelicula, Integer>{
 	
 	public List<Pelicula> findByOrderByIdAsc();
+	
+	public List<Pelicula> findByActivoOrderByIdAsc(boolean activo);
 }
