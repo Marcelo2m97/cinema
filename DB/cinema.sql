@@ -12,7 +12,7 @@ CREATE DATABASE cinema
     CONNECTION LIMIT = -1;
 	
 CREATE TABLE USUARIO(
-	c_usuario INT PRIMARY KEY,
+	c_usuario SERIAL PRIMARY KEY,
 	c_pais INT,
 	c_estado INT,
 	c_ciudad INT,
@@ -29,42 +29,47 @@ CREATE TABLE USUARIO(
 );
 
 CREATE TABLE ROL(
-	c_rol INT PRIMARY KEY,
+	c_rol SERIAL PRIMARY KEY,
 	rol_nombre VARCHAR(100)
 );
 
 CREATE TABLE PAIS(
-	c_pais INT PRIMARY KEY,
+	c_pais SERIAL PRIMARY KEY,
 	pais_nombre VARCHAR(50)
 );
 
 CREATE TABLE ESTADO(
-	c_estado INT PRIMARY KEY,
+	c_estado SERIAL PRIMARY KEY,
 	estado_nombre VARCHAR(50)
 );
 
 CREATE TABLE CIUDAD(
-	c_ciudad INT PRIMARY KEY,
+	c_ciudad SERIAL PRIMARY KEY,
 	ciudad_nombre VARCHAR(50)
 );
 
 CREATE TABLE RESERVACION(
-	c_reserva INT PRIMARY KEY,
+	c_reserva SERIAL PRIMARY KEY,
 	c_usuario INT,
 	c_exhibicion INT,
 	reservacion_asiento VARCHAR(5)
 );
 
 CREATE TABLE EXHIBICION(
-	c_exhibicion INT PRIMARY KEY,
+	c_exhibicion SERIAL PRIMARY KEY,
+	c_usuarioCreacion INT,
+	c_usuarioModificacion INT,
 	c_sala INT,
 	c_pelicula INT,
 	exhibicion_horario VARCHAR(20),
-	exhibicion_formato VARCHAR(3)
+	exhibicion_formato VARCHAR(6),
+	exhibicion_asientosDisponibles INT,
+	exhibicion_creacion DATE,
+	exhibicion_modificacion DATE
 );
 
 CREATE TABLE SALA(
-	c_sala INT PRIMARY KEY,
+	c_sala SERIAL PRIMARY KEY,
 	c_usuarioCreacion INT,
 	c_usuarioModificacion INT,
 	sala_numero INT,
@@ -76,7 +81,7 @@ CREATE TABLE SALA(
 );
 
 CREATE TABLE PELICULA(
-	c_pelicula INT PRIMARY KEY,
+	c_pelicula SERIAL PRIMARY KEY,
 	c_usuarioCreacion INT,
 	c_usuarioModificacion INT,
 	pelicula_nombre VARCHAR (100),
