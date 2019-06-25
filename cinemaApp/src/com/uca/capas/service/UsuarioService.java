@@ -6,4 +6,5 @@ import javassist.tools.rmi.ObjectNotFoundException;
 public interface UsuarioService {
     Usuario findByUsername(String username);
     Usuario findById(Long id) throws ObjectNotFoundException;
+    Usuario saveUsuario(Usuario usuario);
 }

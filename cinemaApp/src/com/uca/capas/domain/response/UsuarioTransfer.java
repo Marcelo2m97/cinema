@@ -9,20 +9,23 @@ public class UsuarioTransfer {
     private String username;
     private List<String> roles;
     private String token;
-    private HttpStatus status;
+    private Integer status;
+    private String message;
 
-    public UsuarioTransfer(String username, List<String> roles, String token, HttpStatus status) {
+    public UsuarioTransfer(String username, List<String> roles, String token, Integer status, String message) {
         this.roles = roles;
         this.token = token;
         this.username = username;
         this.status = status;
+        this.message = message;
     }
 
-    public UsuarioTransfer() {
+    public UsuarioTransfer(String message, Integer status) {
         this.token = "";
         this.username = "";
         this.roles = Collections.emptyList();
-        this.status = HttpStatus.NOT_FOUND;
+        this.status = status;
+        this.message = message;
     }
 
     public List<String> getRoles() {
@@ -37,7 +40,17 @@ public class UsuarioTransfer {
         return this.username;
     }
 
-    public HttpStatus getStatus() {
+    public Integer getStatus() {
         return this.status;
+    }
+
+    public void setStatus(Integer status) { this.status = status; }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

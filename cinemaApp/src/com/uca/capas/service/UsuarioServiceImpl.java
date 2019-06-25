@@ -34,4 +34,14 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
         return usuario;
     }
+
+    @Override
+    public Usuario saveUsuario(Usuario usuario) {
+        try {
+            Usuario usuario1 = usuarioRepository.saveAndFlush(usuario);
+            return usuario1;
+        }catch (Exception e){
+            throw e;
+        }
+    }
 }

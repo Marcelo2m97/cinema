@@ -1,5 +1,22 @@
 package com.uca.capas.service;
 
-public class CiudadServiceImpl {
+import com.uca.capas.domain.Ciudad;
+import com.uca.capas.repositories.CiudadRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
+@Service("ciudadService")
+@Transactional
+public class CiudadServiceImpl implements CiudadService{
+
+    @Autowired
+    private CiudadRepository ciudadRepository;
+
+    @Override
+    public List<Ciudad> findAll() {
+        return ciudadRepository.findAll();
+    }
 }

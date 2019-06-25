@@ -1,5 +1,9 @@
 package com.uca.capas.service;
 
-public interface EstadoService {
+import com.uca.capas.domain.Estado;
 
+import java.util.List;
+
+public interface EstadoService {
+    List<Estado> findAll();
 }

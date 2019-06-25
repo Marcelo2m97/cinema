@@ -1,5 +1,9 @@
 package com.uca.capas.service;
 
-public interface CiudadService {
+import com.uca.capas.domain.Ciudad;
 
+import java.util.List;
+
+public interface CiudadService {
+    List<Ciudad> findAll();
 }
