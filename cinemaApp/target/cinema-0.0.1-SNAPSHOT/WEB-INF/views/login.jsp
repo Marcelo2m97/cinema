@@ -11,9 +11,36 @@
 
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/resources/css/mdb.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src="resources/js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="resources/css/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="resources/js/jquery-3.3.0.js"></script>
+    <script type="application/javascript">
+        function login(){
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            $.ajax({
+                url: "${pageContext.request.contextPath}/login/authenticate",
+                type: "POST",
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function (data){
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+    </script>
 </head>
 
 <body>
@@ -24,10 +51,6 @@
         <h3 class="form-signin-heading">LOGIN PAGE</h3>
 
         <br/>
-        <div align="center" th:if="${param.error}">
-            <p style="font-size: 20px; color: #FF1C19;">Username or password is invalid</p>
-        </div>
-
         <input type="text" id="username" name="username"
                class="form-control" /> <br/>
         <input type="password"

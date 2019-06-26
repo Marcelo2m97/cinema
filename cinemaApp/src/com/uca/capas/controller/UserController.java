@@ -11,11 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
 @RequestMapping("/users")
 public class UserController {
 
@@ -39,7 +38,6 @@ public class UserController {
             CustomError error = new CustomError("An error has occured");
             return new ResponseEntity<CustomError>(error, HttpStatus.EXPECTATION_FAILED);
         }
-
     }
 
 }
