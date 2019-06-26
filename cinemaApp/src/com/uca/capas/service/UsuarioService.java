@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+/*<<<<<<< HEAD
 import java.util.List;
 
 import com.uca.capas.domain.Usuario;
@@ -18,4 +19,12 @@ public interface UsuarioService {
 	public void editUsuario(UsuarioDTO dto);
 	
 	public void activarUsuario(int id);
+=======*/
+import com.uca.capas.domain.Usuario;
+import javassist.tools.rmi.ObjectNotFoundException;
+
+public interface UsuarioService {
+    Usuario findByUsername(String username);
+    Usuario findById(Long id) throws ObjectNotFoundException;
+    Usuario saveUsuario(Usuario usuario);
 }

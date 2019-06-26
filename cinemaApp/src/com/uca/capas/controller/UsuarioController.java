@@ -32,7 +32,7 @@ public class UsuarioController {
 	@Autowired
 	private RolService rolService;
 	
-	@RequestMapping("/tablaUsuario")
+	/*@RequestMapping("/tablaUsuario")
 	public ModelAndView tablaUsuario() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("usuarios", usuarioService.findAll());
@@ -89,5 +89,5 @@ public class UsuarioController {
 		usuarioService.activarUsuario(id);
 		mav.setViewName("redirect:/tablaUsuario");
 		return mav;
-	}
+	}*/
 }

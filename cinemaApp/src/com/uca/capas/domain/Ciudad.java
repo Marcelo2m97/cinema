@@ -17,7 +17,7 @@ public class Ciudad {
 	@SequenceGenerator(name="ciudad_c_ciudad_seq", sequenceName="public.ciudad_c_ciudad_seq", allocationSize=1)
 	@Column(name="c_ciudad")
 	private Integer id;
-	
+
 	@Column(name="ciudad_nombre")
 	private String nombre;
 

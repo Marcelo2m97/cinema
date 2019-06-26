@@ -1,12 +1,11 @@
 package com.uca.capas.service;
 
+import com.uca.capas.domain.Rol;
+import javassist.tools.rmi.ObjectNotFoundException;
+
 import java.util.List;
 
-import com.uca.capas.domain.Rol;
-
 public interface RolService {
-
-	public List<Rol> findAll();
 	
-	public Rol findOne(int id);
+    public List<Rol> findAll() throws ObjectNotFoundException;
 }
