@@ -138,7 +138,7 @@ public class Usuario {
 		this.saldo = saldo;
 	}
 
-	public boolean isActivo() {
+	public boolean getActivo() {
 		return activo;
 	}
 
