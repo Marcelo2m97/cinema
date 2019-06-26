@@ -14,11 +14,8 @@
 		<form:input type="time" name="horario" path="horario"/><br>
 		
 		<label>Formato</label>
-		<form:select path="formato"> 
-			<form:option value="2D-SUB"/>
-			<form:option value="2D-DOB"/>
-			<form:option value="3D-SUB"/>
-			<form:option value="3D-DOB"/>
+		<form:select path="idFormato"> 
+			<form:options items="${formatos}" itemValue="id" itemLabel="nombre"  />
 		</form:select><br>
 		
 		<label>Sala</label>

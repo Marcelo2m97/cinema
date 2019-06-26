@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.dto.ExhibicionDTO;
 import com.uca.capas.service.ExhibicionService;
+import com.uca.capas.service.FormatoService;
 import com.uca.capas.service.PeliculaService;
 import com.uca.capas.service.SalaService;
 
@@ -24,6 +25,9 @@ public class ExhibicionController {
 	@Autowired
 	private PeliculaService peliculaService;
 	
+	@Autowired
+	private FormatoService formatoService;
+	
 	@RequestMapping("/tablaExhibicion")
 	public ModelAndView tablaExhibicion() {
 		ModelAndView mav = new ModelAndView();
@@ -38,6 +42,7 @@ public class ExhibicionController {
 		mav.addObject("exhibicion", new ExhibicionDTO());
 		mav.addObject("salas", salaService.findAll());
 		mav.addObject("peliculas", peliculaService.findAll());
+		mav.addObject("formatos", formatoService.findAll());
 		mav.addObject("formAction", "addExhibicion");
 		mav.setViewName("formExhibicion");
 		return mav;
@@ -46,27 +51,28 @@ public class ExhibicionController {
 	@RequestMapping("/formEditExhibicion")
 	public ModelAndView formExhibicion(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		ExhibicionDTO e = exhibicionService.findOneDTO(id);
-		mav.addObject("exhibicion", e);
+		ExhibicionDTO dto = exhibicionService.findOneDTO(id);
+		mav.addObject("exhibicion", dto);
 		mav.addObject("salas", salaService.findAll());
 		mav.addObject("peliculas", peliculaService.findAll());
+		mav.addObject("formatos", formatoService.findAll());
 		mav.addObject("formAction", "editExhibicion");
 		mav.setViewName("formExhibicion");
 		return mav;
 	}
 	
 	@RequestMapping("/addExhibicion")
-	public ModelAndView addExhibicion(@ModelAttribute ExhibicionDTO e){
+	public ModelAndView addExhibicion(@ModelAttribute ExhibicionDTO dto){
 		ModelAndView mav = new ModelAndView();
-		exhibicionService.addExhibicion(e);
+		exhibicionService.addExhibicion(dto);
 		mav.setViewName("redirect:/tablaExhibicion");
 		return mav;
 	}
 	
 	@RequestMapping("/editExhibicion")
-	public ModelAndView editExhibicion(@ModelAttribute ExhibicionDTO e){
+	public ModelAndView editExhibicion(@ModelAttribute ExhibicionDTO dto){
 		ModelAndView mav = new ModelAndView();
-		exhibicionService.editExhibicion(e);
+		exhibicionService.editExhibicion(dto);
 		mav.setViewName("redirect:/tablaExhibicion");
 		return mav;
 	}

@@ -1,5 +1,8 @@
 package com.uca.capas.domain;
 
+import java.math.BigDecimal;
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,8 +24,17 @@ public class Reservacion {
 	@Column(name="c_reservacion")
 	private Integer id;
 	
-	@Column(name="exhibicion_asiento")
+	@Column(name="reservacion_asientos")
 	private Integer asientos;
+	
+	@Column(name="reservacion_saldo")
+	private BigDecimal saldo;
+	
+	@Column(name="reservacion_fecha")
+	private Calendar fecha;
+	
+	@Column(name="reservacion_grantotal")
+	private BigDecimal total;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_usuario")
@@ -46,6 +58,30 @@ public class Reservacion {
 
 	public void setAsientos(Integer asientos) {
 		this.asientos = asientos;
+	}
+
+	public BigDecimal getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(BigDecimal saldo) {
+		this.saldo = saldo;
+	}
+
+	public Calendar getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Calendar fecha) {
+		this.fecha = fecha;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
 	}
 
 	public Usuario getUsuario() {

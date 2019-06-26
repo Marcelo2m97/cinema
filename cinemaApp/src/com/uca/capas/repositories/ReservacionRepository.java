@@ -1,5 +1,9 @@
 package com.uca.capas.repositories;
 
-public class ReservacionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.uca.capas.domain.Reservacion;
+
+public interface ReservacionRepository extends JpaRepository<Reservacion, Integer>{
 
 }

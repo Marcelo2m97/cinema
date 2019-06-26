@@ -44,7 +44,7 @@
 					</form:form>
 				</td>
 				<td>${exhibicion.id}</td>
-				<td>${exhibicion.pelicula.nombre} - ${exhibicion.formato} - ${exhibicion.horario}</td>
+				<td>${exhibicion.pelicula.nombre} - ${exhibicion.formato.nombre} - ${exhibicion.horario}</td>
 				<td>${exhibicion.activoDelegate}</td>
 				<td>${exhibicion.fechaCreacionDelegate}</td>
 				<td>${exhibicion.usuarioCreacion}</td>

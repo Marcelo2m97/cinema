@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.uca.capas.domain.Exhibicion;
 import com.uca.capas.dto.ExhibicionDTO;
 import com.uca.capas.repositories.ExhibicionRepository;
+import com.uca.capas.repositories.FormatoRepository;
 import com.uca.capas.repositories.PeliculaRepository;
 import com.uca.capas.repositories.SalaRepository;
 
@@ -23,6 +24,9 @@ public class ExhibicionServiceImpl implements ExhibicionService{
 	
 	@Autowired
 	private PeliculaRepository peliculaRepository;
+	
+	@Autowired
+	private FormatoRepository formatoRepository;
 
 	@Override
 	public List<Exhibicion> findAll() {
@@ -46,7 +50,7 @@ public class ExhibicionServiceImpl implements ExhibicionService{
 		ExhibicionDTO dto = new ExhibicionDTO();
 		dto.setId(e.getId());
 		dto.setHorario(e.getHorario());
-		dto.setFormato(e.getFormato());
+		dto.setIdFormato(e.getFormato().getId());
 		dto.setIdSala(e.getPelicula().getId());
 		dto.setIdPelicula(e.getPelicula().getId());
 		return dto;
@@ -56,8 +60,8 @@ public class ExhibicionServiceImpl implements ExhibicionService{
 	public void addExhibicion(ExhibicionDTO dto) {
 		Exhibicion e = new Exhibicion();
 		e.setId(dto.getId());
-		e.setFormato(dto.getFormato());
 		e.setHorario(dto.getHorario());
+		e.setFormato(formatoRepository.findOne(dto.getIdFormato()));
 		e.setPelicula(peliculaRepository.findOne(dto.getIdPelicula()));
 		e.setSala(salaRepository.findOne(dto.getIdSala()));
 		
@@ -70,8 +74,8 @@ public class ExhibicionServiceImpl implements ExhibicionService{
 	public void editExhibicion(ExhibicionDTO dto) {
 		Exhibicion e = exhibicionRepository.findOne(dto.getId());
 		e.setId(dto.getId());
-		e.setFormato(dto.getFormato());
-		e.setHorario(dto.getHorario());;
+		e.setHorario(dto.getHorario());
+		e.setFormato(formatoRepository.findOne(dto.getIdFormato()));
 		e.setPelicula(peliculaRepository.findOne(dto.getIdPelicula()));
 		e.setSala(salaRepository.findOne(dto.getIdSala()));
 		

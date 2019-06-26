@@ -28,9 +28,6 @@ public class Exhibicion {
 	@Column(name="exhibicion_horario")
 	private String horario;
 	
-	@Column(name="exhibicion_formato")
-	private String formato;
-	
 	@Column(name="exhibicion_asientosdisponibles")
 	private Integer asientos;
 	
@@ -58,6 +55,10 @@ public class Exhibicion {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_pelicula")
 	private Pelicula pelicula;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_formato")
+	private Formato formato;
 
 	public Integer getId() {
 		return id;
@@ -73,14 +74,6 @@ public class Exhibicion {
 
 	public void setHorario(String horario) {
 		this.horario = horario;
-	}
-
-	public String getFormato() {
-		return formato;
-	}
-
-	public void setFormato(String formato) {
-		this.formato = formato;
 	}
 
 	public Integer getAsientos() {
@@ -146,6 +139,14 @@ public class Exhibicion {
 
 	public void setPelicula(Pelicula pelicula) {
 		this.pelicula = pelicula;
+	}
+
+	public Formato getFormato() {
+		return formato;
+	}
+
+	public void setFormato(Formato formato) {
+		this.formato = formato;
 	}
 
 	public String getActivoDelegate() {

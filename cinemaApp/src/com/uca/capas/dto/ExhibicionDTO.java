@@ -6,7 +6,7 @@ public class ExhibicionDTO {
 	
 	private String horario;
 	
-	private String formato;
+	private Integer idFormato;
 	
 	private Integer idSala;
 	
@@ -28,12 +28,12 @@ public class ExhibicionDTO {
 		this.horario = horario;
 	}
 
-	public String getFormato() {
-		return formato;
+	public Integer getIdFormato() {
+		return idFormato;
 	}
 
-	public void setFormato(String formato) {
-		this.formato = formato;
+	public void setIdFormato(Integer idFormato) {
+		this.idFormato = idFormato;
 	}
 
 	public Integer getIdSala() {
