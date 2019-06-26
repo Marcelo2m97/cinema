@@ -20,13 +20,13 @@ public class LogoutController {
     public ResponseEntity<?> logout (@PathVariable("username") String username){
         try {
             Usuario usuario = usuarioService.findByUsername(username);
-            if(usuario.getSesionUsuario()){
-                usuario.setSesionUsuario(false);
+            if(usuario.getSesion()){
+                usuario.setSesion(false);
                 usuarioService.saveUsuario(usuario);
                 CustomMessage message = new CustomMessage("Se ha cerrado sesión correctamente");
                 return new ResponseEntity<CustomMessage>(message, HttpStatus.OK);
             }
-            if(!usuario.getSesionUsuario()){
+            if(!usuario.getSesion()){
                 CustomMessage message = new CustomMessage("El usuario no tiene sesiones activas");
                 return new ResponseEntity<CustomMessage>(message, HttpStatus.NOT_FOUND);
             }
