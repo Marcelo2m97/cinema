@@ -13,9 +13,9 @@
 		<c:forEach items="${peliculas}" var="pelicula">
 			<tr>
 				<td><img src="resources/${pelicula.imagen}" width="150px" height="225px"></td>
-				<td>${pelicula.nombre}</td>
-				<td>
-					<form action="${pageContext.request.contextPath}/reservacion">
+				<td>				<td>${pelicula.nombre}</td>
+
+				<form action="${pageContext.request.contextPath}/reservacion">
 						<input type="hidden" name="id" value="${pelicula.id}">
 						<input type="submit" value="Ver">
 					</form>

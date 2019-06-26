@@ -7,70 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e399a02-8560-423b-b32f-db5c86e973b1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/security/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/security/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/configuration/SpringConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/configuration/SpringConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/controller/PeliculaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/controller/PeliculaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/controller/SalaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/controller/SalaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Ciudad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Ciudad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Estado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Estado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Exhibicion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Exhibicion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Pais.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Pais.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Pelicula.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Pelicula.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Reservacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Reservacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Rol.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Rol.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Sala.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/domain/Sala.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/repositories/PeliculaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/repositories/PeliculaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/repositories/SalaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/repositories/SalaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/security/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/security/CustomUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/ExhibicionSerivceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/ExhibicionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/ExhibicionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/PeliculaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/PeliculaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/PeliculaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/PeliculaServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/ReservacionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/ReservacionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/ReservacionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/ReservacionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/SalaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/SalaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/SalaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/classes/com/uca/capas/service/SalaServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/formPelicula.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/formPelicula.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/formSala.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/formSala.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/SpringConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/SpringConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/ExhibicionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/ExhibicionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/PeliculaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/PeliculaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/ReservacionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/ReservacionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/SalaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/SalaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/UploadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Ciudad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Ciudad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Estado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Estado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Exhibicion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Exhibicion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Formato.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Formato.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Pais.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Pais.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Pelicula.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Pelicula.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Reservacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Reservacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Rol.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Rol.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Sala.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Sala.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dto/ExhibicionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/dto/ExhibicionDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dto/ReservacionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/dto/ReservacionDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/ExhibicionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/ExhibicionRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/FormatoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/FormatoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/PeliculaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/PeliculaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/ReservacionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/ReservacionRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/SalaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/SalaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/security/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/security/CustomUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ExhibicionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ExhibicionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ExhibicionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ExhibicionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/FormatoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/FormatoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/FormatoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/FormatoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PeliculaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PeliculaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PeliculaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PeliculaServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ReservacionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ReservacionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ReservacionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/ReservacionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/SalaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/SalaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/SalaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/SalaServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/EntityUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/EntityUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/login.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -120,8 +63,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="101">
-                  <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+                <state relative-caret-position="207">
+                  <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -169,8 +112,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="231">
-                  <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+                <state relative-caret-position="1718">
+                  <caret line="117" column="10" selection-start-line="117" selection-start-column="10" selection-end-line="117" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -178,8 +121,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="235">
-                  <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+                <state relative-caret-position="399">
+                  <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
                 </state>
               </provider>
             </entry>
@@ -215,8 +158,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="122">
-                  <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+                <state relative-caret-position="697">
+                  <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -317,8 +260,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/uca/capas/utils/TokenUtil.java" />
-        <option value="$PROJECT_DIR$/src/com/uca/capas/utils/AuthTokenFilter.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/utils/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/service/UserServiceImpl.java" />
@@ -358,7 +299,6 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/domain/Ciudad.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/domain/Pais.java" />
-        <option value="$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/security/CustomUserDetailsService.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/domain/request/LogoutRequest.java" />
@@ -366,8 +306,11 @@
         <option value="$PROJECT_DIR$/src/com/uca/capas/controller/LogoutController.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/domain/request/UserRequest.java" />
-        <option value="$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp" />
+        <option value="$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java" />
+        <option value="$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp" />
       </list>
     </option>
   </component>
@@ -415,76 +358,6 @@
             <path>
               <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="capas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="capas" type="462c0819:PsiDirectoryNode" />
-              <item name="configuration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="capas" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="capas" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="capas" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="request" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="capas" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinemaApp" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -605,17 +478,18 @@
       <updated>1561330847187</updated>
       <workItem from="1561330856126" duration="4105000" />
       <workItem from="1561377795350" duration="19138000" />
-      <workItem from="1561489425895" duration="17456000" />
+      <workItem from="1561489425895" duration="24100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40699000" />
+    <option name="totallyTimeSpent" value="47343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1604" height="874" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.18661518" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.18661518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -625,7 +499,7 @@
       <window_info id="Web" order="7" sideWeight="0.5020325" side_tool="true" weight="0.24967825" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41144413" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41144413" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -691,16 +565,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/uca/capas/controller/RolController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/uca/capas/SimpleCORSFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
@@ -950,13 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/uca/capas/controller/UploadController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1127,20 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/uca/capas/domain/request/UserRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1148,10 +991,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1718">
+          <caret line="117" column="10" selection-start-line="117" selection-start-column="10" selection-end-line="117" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+        <state relative-caret-position="207">
+          <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -12,9 +12,10 @@
 <head>
     <title>Login</title>
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/bootstrap.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="/resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <script src="resources/js/sweetalert2.min.js"></script>
@@ -25,18 +26,74 @@
         function login(){
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
+            var user = {
+                username: username,
+                password: password
+            };
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+            });
+
             $.ajax({
                 url: "${pageContext.request.contextPath}/login/authenticate",
                 type: "POST",
-                data: {
-                    username: username,
-                    password: password
-                },
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(user),
                 success: function (data){
-                    console.log(data);
+                    localStorage.setItem('jwt', data.token);
+                    localStorage.setItem('rol ' + data.username, data.roles[0]);
+                    localStorage.setItem('User', data.username);
+                    Toast.fire({
+                        type: 'success',
+                        title: 'Inicio de sesión correcto'
+                    }).then(function() {
+                        if (data.roles[0] === 'Administrador') {
+                            window.location.href = '${pageContext.request.contextPath}/admin';
+                        }
+                        window.location.href = '${pageContext.request.contextPath}/user';
+                    });
                 },
                 error: function (error) {
-                    console.log(error);
+                    if (error.responseJSON.status === 404) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Credenciales incorrectas',
+                            text: error.responseJSON.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+                    }
+                    if (error.responseJSON.status === 422) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops!',
+                            text: error.responseJSON.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+                    }
+                    if (error.responseJSON.status === 499) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Cuenta inactiva',
+                            text: error.responseJSON.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+                    }
+                    if (error.responseJSON.status === 498) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Ya existe una sesión activa',
+                            text: error.responseJSON.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+                    }
                 }
             })
         }
@@ -57,7 +114,7 @@
                id="password" name="password" class="form-control" /> <br />
 
 
-        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"></button>
+        <button class="btn btn-primary " name="Submit" value="Login" onclick="login()" type="button"> Log in </button>
     </form>
 </div>
 </body>
