@@ -14,6 +14,8 @@ import com.uca.capas.service.PaisService;
 import com.uca.capas.service.RolService;
 import com.uca.capas.service.UsuarioService;
 
+import javassist.tools.rmi.ObjectNotFoundException;
+
 @Controller
 public class UsuarioController {
 
@@ -32,7 +34,7 @@ public class UsuarioController {
 	@Autowired
 	private RolService rolService;
 	
-	/*@RequestMapping("/tablaUsuario")
+	@RequestMapping("/tablaUsuario")
 	public ModelAndView tablaUsuario() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("usuarios", usuarioService.findAll());
@@ -47,7 +49,11 @@ public class UsuarioController {
 		mav.addObject("paises", paisService.findAll());
 		mav.addObject("estados", estadoService.findAll());
 		mav.addObject("ciudades", ciudadService.findAll());
-		mav.addObject("roles", rolService.findAll());
+		try {
+			mav.addObject("roles", rolService.findAll());
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
 		mav.addObject("formAction", "addUsuario");
 		mav.setViewName("formUsuario");
 		return mav;
@@ -61,7 +67,11 @@ public class UsuarioController {
 		mav.addObject("paises", paisService.findAll());
 		mav.addObject("estados", estadoService.findAll());
 		mav.addObject("ciudades", ciudadService.findAll());
-		mav.addObject("roles", rolService.findAll());
+		try {
+			mav.addObject("roles", rolService.findAll());
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
 		mav.addObject("formAction", "editUsuario");
 		mav.setViewName("formUsuario");
 		return mav;
@@ -89,5 +99,5 @@ public class UsuarioController {
 		usuarioService.activarUsuario(id);
 		mav.setViewName("redirect:/tablaUsuario");
 		return mav;
-	}*/
+	}
 }

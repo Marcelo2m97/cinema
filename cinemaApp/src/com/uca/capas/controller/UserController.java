@@ -23,7 +23,7 @@ public class UserController {
     private UsuarioService usuarioService;
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getUserById(@PathVariable("userId") Long userId) {
+    public ResponseEntity<?> getUserById(@PathVariable("userId") int userId) {
 
         try {
             Usuario user = usuarioService.findById(userId);

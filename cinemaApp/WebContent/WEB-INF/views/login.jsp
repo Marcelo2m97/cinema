@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
 <div class="container">
     <br/><br/>
     <form action="${pageContext.request.contextPath}/login/authenticate" method="POST" class="form-signin" style="width:30%;margin:auto">
@@ -21,11 +20,8 @@
             <p style="font-size: 20px; color: #FF1C19;">Username or password is invalid</p>
         </div>
 
-        <input type="text" id="username" name="username"
-               class="form-control" /> <br/>
-        <input type="password"
-               id="password" name="password" class="form-control" /> <br />
-
+        <input type="text" id="username" name="username" class="form-control" /> <br/>
+        <input type="password" id="password" name="password" class="form-control" /> <br />
 
         <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"></button>
     </form>

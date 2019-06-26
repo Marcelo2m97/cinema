@@ -1,11 +1,5 @@
 package com.uca.capas.service;
 
-/*<<<<<<< HEAD
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.uca.capas.domain.Usuario;
 import com.uca.capas.dto.UsuarioDTO;
 import com.uca.capas.repositories.CiudadRepository;
@@ -13,13 +7,21 @@ import com.uca.capas.repositories.EstadoRepository;
 import com.uca.capas.repositories.PaisRepository;
 import com.uca.capas.repositories.RolRepository;
 import com.uca.capas.repositories.UsuarioRepository;
+import javassist.tools.rmi.ObjectNotFoundException;
 
-@Service
-public class UsuarioServiceImpl implements UsuarioService{
+import java.util.List;
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
-	
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service("usuarioService")
+@Transactional
+public class UsuarioServiceImpl implements UsuarioService {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    
 	@Autowired
 	private PaisRepository paisRepository;
 	
@@ -101,20 +103,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 		u.setActivo(!u.getActivo());
 		usuarioRepository.save(u);
 	}
-=======*/
-import com.uca.capas.domain.Usuario;
-import com.uca.capas.repositories.UsuarioRepository;
-import javassist.tools.rmi.ObjectNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-@Service("usuarioService")
-@Transactional
-public class UsuarioServiceImpl implements UsuarioService {
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -129,7 +117,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     @Transactional(readOnly = true)
-    public Usuario findById(Long id) throws ObjectNotFoundException {
+    public Usuario findById(int id) throws ObjectNotFoundException {
         Usuario usuario = usuarioRepository.findOne(id);
         if(usuario == null){
             throw new ObjectNotFoundException("Usuario no encontrado");
