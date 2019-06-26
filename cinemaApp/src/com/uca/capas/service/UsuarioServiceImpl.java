@@ -108,7 +108,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional(readOnly = true)
     public Usuario findByUsername(String username) {
         try {
-            Usuario usuario = usuarioRepository.findByUsernameUsuario(username);
+            Usuario usuario = usuarioRepository.findByUsername(username);
             return usuario;
         }catch (Exception e){
             throw e;
