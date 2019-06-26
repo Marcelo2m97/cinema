@@ -1,189 +1,211 @@
 package com.uca.capas.domain;
 
 import javax.persistence.*;
+
+import com.uca.capas.utils.EntityUtils;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario", schema = "public")
 public class Usuario {
     @Id
-    @GeneratedValue(generator = "usuario_c_usuario_seq", strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "usuario_c_usuario_seq", sequenceName = "usuario_c_usuario_seq")
+    @GeneratedValue(generator="usuario_c_usuario_seq", strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="usuario_c_usuario_seq", sequenceName="public.usuario_c_usuario_seq", allocationSize=1)
     @Column(name = "c_usuario")
-    private Long idUsuario;
+    private Integer id;
 
     @Column(name = "u_nombre")
-    private String nombreUsuario;
+    private String nombre;
 
     @Column(name = "u_apellido")
-    private String apellidoUsuario;
+    private String apellido;
 
     @Column(name = "u_fechaNacimiento")
-    private Date birthDateUsuario;
+    private Calendar fechaNacimiento;
 
-    @Column(name = "u_direccion")
-    private String direccionUsuario;
-
-    @Column(name = "u_username")
-    private String usernameUsuario;
-
-    @Column(name = "u_password")
-    private String passwordUsuario;
-
-    @Column(name = "u_activo")
-    private Boolean activoUsuario;
-
-    @Column(name = "u_sesion")
-    private Boolean sesionUsuario;
-
-    @Column(name = "u_saldo")
-    private BigDecimal saldoUsuario;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_pais")
-    private Pais paisUsuario;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_estado")
-    private Estado estadoUsuario;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_ciudad")
-    private Ciudad ciudadUsuario;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_rol")
-    private Rol rolUsuario;
-
-    public Usuario(String nombreUsuario, String apellidoUsuario, Date birthDateUsuario, String direccionUsuario, String usernameUsuario, String passwordUsuario, Boolean activoUsuario, Boolean sesionUsuario, BigDecimal saldoUsuario, Pais paisUsuario, Estado estadoUsuario, Ciudad ciudadUsuario, Rol rolUsuario) {
-        this.nombreUsuario = nombreUsuario;
-        this.apellidoUsuario = apellidoUsuario;
-        this.birthDateUsuario = birthDateUsuario;
-        this.direccionUsuario = direccionUsuario;
-        this.usernameUsuario = usernameUsuario;
-        this.passwordUsuario = passwordUsuario;
-        this.activoUsuario = activoUsuario;
-        this.sesionUsuario = sesionUsuario;
-        this.saldoUsuario = saldoUsuario;
-        this.paisUsuario = paisUsuario;
-        this.estadoUsuario = estadoUsuario;
-        this.ciudadUsuario = ciudadUsuario;
-        this.rolUsuario = rolUsuario;
+	@Column(name="u_direccion")
+	private String direccion;
+	
+	@Column(name="u_username")
+	private String username;
+	
+	@Column(name="u_password")
+	private String password;
+	
+	@Column(name="u_saldo")
+	private BigDecimal saldo;
+	
+	@Column(name="u_activo")
+	private boolean activo;
+	
+	@Column(name="u_sesion")
+	private boolean sesion;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_pais")
+	private Pais pais;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_estado")
+	private Estado estado;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_ciudad")
+	private Ciudad ciudad;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_rol")
+	private Rol rol;
+	
+	@OneToMany(mappedBy="usuario", fetch=FetchType.LAZY)
+	private List<Reservacion> reservaciones;
+	
+	public Usuario(){
+    	
+    }
+	
+    public Usuario(String nombreUsuario, String apellidoUsuario, Calendar birthDateUsuario, String direccionUsuario, String usernameUsuario, String passwordUsuario, Boolean activoUsuario, Boolean sesionUsuario, BigDecimal saldoUsuario, Pais paisUsuario, Estado estadoUsuario, Ciudad ciudadUsuario, Rol rolUsuario) {
+        this.nombre = nombreUsuario;
+        this.apellido = apellidoUsuario;
+        this.fechaNacimiento = birthDateUsuario;
+        this.direccion = direccionUsuario;
+        this.username = usernameUsuario;
+        this.password = passwordUsuario;
+        this.activo = activoUsuario;
+        this.sesion = sesionUsuario;
+        this.saldo = saldoUsuario;
+        this.pais = paisUsuario;
+        this.estado = estadoUsuario;
+        this.ciudad = ciudadUsuario;
+        this.rol = rolUsuario;
     }
 
-    public Usuario(){}
+	public Integer getId() {
+		return id;
+	}
 
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
+	public String getApellido() {
+		return apellido;
+	}
 
-    public String getApellidoUsuario() {
-        return apellidoUsuario;
-    }
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    public void setApellidoUsuario(String apellidoUsuario) {
-        this.apellidoUsuario = apellidoUsuario;
-    }
+	public Calendar getFechaNacimiento() {
+		return fechaNacimiento;
+	}
 
-    public Date getBirthDateUsuario() {
-        return birthDateUsuario;
-    }
+	public void setFechaNacimiento(Calendar fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 
-    public void setBirthDateUsuario(Date birthDateUsuario) {
-        this.birthDateUsuario = birthDateUsuario;
-    }
+	public String getDireccion() {
+		return direccion;
+	}
 
-    public String getDireccionUsuario() {
-        return direccionUsuario;
-    }
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
-    public void setDireccionUsuario(String direccionUsuario) {
-        this.direccionUsuario = direccionUsuario;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public String getUsernameUsuario() {
-        return usernameUsuario;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setUsernameUsuario(String usernameUsuario) {
-        this.usernameUsuario = usernameUsuario;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getPasswordUsuario() {
-        return passwordUsuario;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setPasswordUsuario(String passwordUsuario) {
-        this.passwordUsuario = passwordUsuario;
-    }
+	public BigDecimal getSaldo() {
+		return saldo;
+	}
 
-    public Boolean getActivoUsuario() {
-        return activoUsuario;
-    }
+	public void setSaldo(BigDecimal saldo) {
+		this.saldo = saldo;
+	}
 
-    public void setActivoUsuario(Boolean activoUsuario) {
-        this.activoUsuario = activoUsuario;
-    }
+	public boolean getActivo() {
+		return activo;
+	}
 
-    public Boolean getSesionUsuario() {
-        return sesionUsuario;
-    }
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
 
-    public void setSesionUsuario(Boolean sesionUsuario) {
-        this.sesionUsuario = sesionUsuario;
-    }
+	public boolean getSesion() {
+		return sesion;
+	}
 
-    public BigDecimal getSaldoUsuario() {
-        return saldoUsuario;
-    }
+	public void setSesion(boolean sesion) {
+		this.sesion = sesion;
+	}
 
-    public void setSaldoUsuario(BigDecimal saldoUsuario) {
-        this.saldoUsuario = saldoUsuario;
-    }
+	public Pais getPais() {
+		return pais;
+	}
 
-    public Pais getPaisUsuario() {
-        return paisUsuario;
-    }
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
 
-    public void setPaisUsuario(Pais paisUsuario) {
-        this.paisUsuario = paisUsuario;
-    }
+	public Estado getEstado() {
+		return estado;
+	}
 
-    public Estado getEstadoUsuario() {
-        return estadoUsuario;
-    }
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 
-    public void setEstadoUsuario(Estado estadoUsuario) {
-        this.estadoUsuario = estadoUsuario;
-    }
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
 
-    public Ciudad getCiudadUsuario() {
-        return ciudadUsuario;
-    }
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
+	}
 
-    public void setCiudadUsuario(Ciudad ciudadUsuario) {
-        this.ciudadUsuario = ciudadUsuario;
-    }
+	public Rol getRol() {
+		return rol;
+	}
 
-    public Rol getRolUsuario() {
-        return rolUsuario;
-    }
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 
-    public void setRolUsuario(Rol rolUsuario) {
-        this.rolUsuario = rolUsuario;
-    }
+	public List<Reservacion> getReservaciones() {
+		return reservaciones;
+	}
+
+	public void setReservaciones(List<Reservacion> reservaciones) {
+		this.reservaciones = reservaciones;
+	}
+	
+	public String getActivoDelegate() {
+		return EntityUtils.activoToString(activo);
+	}
 }

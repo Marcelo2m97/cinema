@@ -51,10 +51,10 @@ public class LoginController {
             UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);
             try {
                 Usuario usuario = usuarioService.findByUsername(userDetails.getUsername());
-                if (usuario.getSesionUsuario()) {
+                if (usuario.getSesion()) {
                     return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. El usuario ya cuenta con una sesión activa", 498), HttpStatus.UNAUTHORIZED);
                 }
-                if (!usuario.getActivoUsuario()) {
+                if (!usuario.getSesion()) {
                     return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. La cuenta del usuario no se encuentra activa", 499), HttpStatus.NOT_ACCEPTABLE);
                 }
             } catch (Exception exi){
@@ -69,7 +69,7 @@ public class LoginController {
             }
             try {
                 Usuario usuario = usuarioService.findByUsername(userDetails.getUsername());
-                usuario.setSesionUsuario(true);
+                usuario.setSesion(true);
                 usuarioService.saveUsuario(usuario);
                 return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer(userDetails.getUsername(), roles,
                     TokenUtil.createToken(userDetails), 200, "Usuario loggeado correctamente"), HttpStatus.OK);

@@ -6,5 +6,6 @@ import javassist.tools.rmi.ObjectNotFoundException;
 import java.util.List;
 
 public interface RolService {
-    List<Rol> findAll() throws ObjectNotFoundException;
+	
+    public List<Rol> findAll() throws ObjectNotFoundException;
 }

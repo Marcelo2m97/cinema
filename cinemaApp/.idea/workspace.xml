@@ -7,13 +7,104 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e399a02-8560-423b-b32f-db5c86e973b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/cinema-0.0.1-SNAPSHOT/WEB-INF/views/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/formUsuario.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/tablaUsuario.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/uca/capas/controller/UsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/uca/capas/dto/UsuarioDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/UsuarioController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/dto/UsuarioDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/CiudadDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/CiudadDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/EstadoDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/EstadoDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/ExhibicionDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/ExhibicionDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/PaisDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/PaisDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/PeliculaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/PeliculaDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/ReservacionDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/ReservacionDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/RolDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/RolDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/SalaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/SalaDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/UsuarioDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/dao/UsuarioDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/domain/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/repositories/CiudadRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/repositories/CiudadRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/repositories/EstadoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/repositories/EstadoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/repositories/PaisRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/repositories/PaisRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/repositories/RolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/repositories/RolRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/repositories/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/security/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/security/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/CiudadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/CiudadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/CiudadServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/CiudadServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/EstadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/EstadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/EstadoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/EstadoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/PaisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/PaisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/PaisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/PaisServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/RolService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/RolService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/uca/capas/service/UsuarioServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/uca/capas/service/UsuarioServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/cinema.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/AuthTokenConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/AuthTokenConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/SimpleCORSFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/SimpleCORSFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/JpaConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/JpaConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/SpringConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/SpringConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/SpringInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/configuration/SpringInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/CiudadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/CiudadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/EstadoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/EstadoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/PaisController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/PaisController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/RolController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/RolController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/CiudadDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/CiudadDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/EstadoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/EstadoDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/ExhibicionDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/ExhibicionDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/PaisDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/PaisDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/PeliculaDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/PeliculaDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/ReservacionDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/ReservacionDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/RolDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/RolDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/SalaDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/SalaDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/UsuarioDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/dao/UsuarioDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/request/AuthenticationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/request/AuthenticationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/response/PaisTransfer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/response/PaisTransfer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/response/UsuarioTransfer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/domain/response/UsuarioTransfer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/CiudadRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/CiudadRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/EstadoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/EstadoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/PaisRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/PaisRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/RolRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/RolRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/repositories/UsuarioRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/security/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/security/CustomUserDetailsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/CiudadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/CiudadService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/CiudadServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/CiudadServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/EstadoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/EstadoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/EstadoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/EstadoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PaisService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PaisService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PaisServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/PaisServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/RolService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/RolService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/RolServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/RolServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/UsuarioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/service/UsuarioServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/service/UsuarioServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/AuthTokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/AuthTokenFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/CustomError.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/CustomError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/TokenUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uca/capas/utils/TokenUtil.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,7 +155,7 @@
             <entry file="file://$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="207">
-                  <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+                  <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -112,7 +203,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1718">
+                <state relative-caret-position="777">
                   <caret line="117" column="10" selection-start-line="117" selection-start-column="10" selection-end-line="117" selection-end-column="10" />
                 </state>
               </provider>
@@ -122,7 +213,7 @@
             <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="399">
-                  <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+                  <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
                 </state>
               </provider>
             </entry>
@@ -204,12 +295,10 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/uca/capas/domain/Usuario.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+                <state relative-caret-position="525">
+                  <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#3220#3221#0" expanded="true" />
-                    <element signature="e#3259#3260#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -300,7 +389,6 @@
         <option value="$PROJECT_DIR$/src/com/uca/capas/domain/Ciudad.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/domain/Pais.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/com/uca/capas/security/CustomUserDetailsService.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/domain/request/LogoutRequest.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/utils/CustomMessage.java" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/controller/LogoutController.java" />
@@ -311,6 +399,7 @@
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp" />
         <option value="$PROJECT_DIR$/src/com/uca/capas/configuration/SpringConfiguration.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp" />
+        <option value="$PROJECT_DIR$/src/com/uca/capas/security/CustomUserDetailsService.java" />
       </list>
     </option>
   </component>
@@ -478,16 +567,15 @@
       <updated>1561330847187</updated>
       <workItem from="1561330856126" duration="4105000" />
       <workItem from="1561377795350" duration="19138000" />
-      <workItem from="1561489425895" duration="24100000" />
+      <workItem from="1561489425895" duration="24932000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47343000" />
+    <option name="totallyTimeSpent" value="48175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1604" height="874" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.18661518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -964,12 +1052,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/uca/capas/domain/Usuario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+        <state relative-caret-position="525">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3220#3221#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -993,7 +1079,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1718">
+        <state relative-caret-position="777">
           <caret line="117" column="10" selection-start-line="117" selection-start-column="10" selection-end-line="117" selection-end-column="10" />
         </state>
       </provider>
@@ -1008,7 +1094,7 @@
     <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/views/peliculas.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1022,7 +1108,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/uca/capas/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
-          <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
