@@ -15,9 +15,6 @@
 	<form:form action="${pageContext.request.contextPath}/tablaSala">
 		<input type="submit" value="Salas">
 	</form:form>
-	<form:form action="${pageContext.request.contextPath}/tablaExhibicion">
-		<input type="submit" value="Exhibiciones">
-	</form:form>
 	<form:form action="${pageContext.request.contextPath}/tablaUsuario">
 		<input type="submit" value="Usuarios">
 	</form:form>

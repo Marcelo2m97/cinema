@@ -2,6 +2,8 @@ package com.uca.capas.service;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -45,6 +47,8 @@ public class ReservacionServiceImpl implements ReservacionService{
 			saldoSobrante = r.getSaldo().subtract(r.getSubtotal());
 		}
 		BigDecimal saldoUsado = r.getSaldo().subtract(saldoSobrante);
+		r.setSaldoUsado(r.getSaldo());
+		r.setSaldo(saldoUsado);
 		r.setSaldoRestante(u.getSaldo().subtract(saldoUsado));
 		r.setTotal(r.getSubtotal().subtract(saldoUsado));
 		return r;
@@ -69,5 +73,10 @@ public class ReservacionServiceImpl implements ReservacionService{
 		r.setUsuario(u);
 		r.setFecha(Calendar.getInstance());
 		reservacionRepository.save(r);
+	}
+
+	@Override
+	public List<Reservacion> findByUserAndDate(int userId, Date startDate, Date endDate) {
+		return reservacionRepository.findBetweenDates(userId, startDate, endDate);
 	}
 }

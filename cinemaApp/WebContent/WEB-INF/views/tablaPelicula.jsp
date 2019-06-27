@@ -6,6 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pel&iacute;culas</title>
+<script src="resources/js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="resources/css/sweetalert2.min.css">
+<script src="resources/js/jquery-3.3.0.js"></script>
 </head>
 <body>
 	<h1>Pel&iacute;culas</h1>
@@ -27,11 +30,15 @@
 		<c:forEach items="${peliculas}" var="pelicula">
 			<tr>
 				<td>
+					<form:form action="${pageContext.request.contextPath}/perfilPelicula">
+						<input type="hidden" name="id" value="${pelicula.id}">
+						<input type="submit" value="Ver">
+					</form:form>
 					<form:form action="${pageContext.request.contextPath}/formEditPelicula">
 						<input type="hidden" name="id" value="${pelicula.id}">
 						<input type="submit" value="Editar">
 					</form:form>
-					<form:form action="${pageContext.request.contextPath}/activarPelicula" onsubmit="return confirm('Confirmar');">
+					<form:form id="form" action="${pageContext.request.contextPath}/activarPelicula">
 						<input type="hidden" name="id" value="${pelicula.id}">
 						<c:choose>
 							<c:when test="${pelicula.activo == true}">
@@ -53,5 +60,24 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<script>
+	$('#form').on('submit', function(e) {
+	    var form = this;
+	    e.preventDefault();
+
+	    Swal.fire({
+	        title: "Confirmar",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonText: 'Continuar',
+	        cancelButtonText: "Cancelar",
+	    }).then(function(result) {
+	    	if (result.value){
+	    		form.submit();
+	    	}
+	    }); 
+	});
+	</script>
 </body>
 </html>

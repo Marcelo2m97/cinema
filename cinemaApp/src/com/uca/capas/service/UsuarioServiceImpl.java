@@ -10,6 +10,7 @@ import com.uca.capas.utils.Constants;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -124,6 +125,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+	@Transactional
     public Usuario saveUsuario(Usuario usuario) {
         try {
             Usuario usuario1 = usuarioRepository.saveAndFlush(usuario);
@@ -132,4 +134,19 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw e;
         }
     }
+
+	@Override
+	@Transactional
+	public void registerUsuario(Usuario u) {
+		u.setPassword(passwordEncoder.encode(u.getPassword()));
+		u.setCiudad(ciudadRepository.findOne(u.getIdCiudad()));
+		u.setEstado(estadoRepository.findOne(u.getIdEstado()));
+		u.setPais(paisRepository.findOne(u.getIdPais()));
+		u.setRol(rolRepository.findByNombre("Cliente"));
+		u.setSaldo(BigDecimal.valueOf(20));
+		u.setActivo(true);
+		
+		u.setFechaCreacion(Calendar.getInstance());
+		usuarioRepository.save(u);		
+	}
 }

@@ -1,6 +1,11 @@
 package com.uca.capas.controller;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uca.capas.domain.Exhibicion;
 import com.uca.capas.domain.Pelicula;
 import com.uca.capas.domain.Reservacion;
+import com.uca.capas.domain.Usuario;
 import com.uca.capas.service.ExhibicionService;
 import com.uca.capas.service.PeliculaService;
 import com.uca.capas.service.ReservacionService;
+import com.uca.capas.utils.Constants;
 
 @Controller
 public class ReservacionController {
@@ -25,6 +32,9 @@ public class ReservacionController {
 	
 	@Autowired
 	private ReservacionService reservacionService;
+	
+	@Autowired
+	private HttpSession session;
 
 	@RequestMapping("/reservacion")
 	public ModelAndView reservacion(@RequestParam int id) {
@@ -57,6 +67,22 @@ public class ReservacionController {
 			e.printStackTrace();
 		}
 		mav.setViewName("redirect:/peliculas");
+		return mav;
+	}
+	
+	@RequestMapping("/transacciones")
+	public ModelAndView transacciones() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("tablaTransacciones");
+		return mav;
+	}
+	
+	@RequestMapping("/buscarTransacciones")
+	public ModelAndView buscarTransacciones(@DateTimeFormat(pattern="yyyy-MM-dd")Date startDate, @DateTimeFormat(pattern="yyyy-MM-dd")Date endDate) {
+		ModelAndView mav = new ModelAndView();
+		Usuario u = (Usuario)session.getAttribute(Constants.USER_SESSION);
+		mav.addObject("reservaciones", reservacionService.findByUserAndDate(u.getId(), startDate, endDate));
+		mav.setViewName("tablaTransacciones");
 		return mav;
 	}
 }

@@ -14,6 +14,8 @@ public interface UsuarioService {
 		
 	public void addUsuario(Usuario u);
 	
+	public void registerUsuario(Usuario u);
+	
 	public void editUsuario(Usuario u);
 	
 	public void activarUsuario(int id);

@@ -32,6 +32,16 @@ public class PeliculaController {
 		return mav;
 	}
 	
+	@RequestMapping("/perfilPelicula")
+	public ModelAndView perfilPelicula(int id) {
+		ModelAndView mav = new ModelAndView();
+		Pelicula p = peliculaService.findOne(id);
+		mav.addObject("pelicula", p);
+		mav.addObject("exhibiciones",p.getExhibiciones());
+		mav.setViewName("perfilPelicula");
+		return mav;
+	}
+	
 	@RequestMapping("/formAddPelicula")
 	public ModelAndView formPelicula(){
 		ModelAndView mav = new ModelAndView();

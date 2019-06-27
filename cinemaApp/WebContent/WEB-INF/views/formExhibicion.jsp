@@ -10,6 +10,9 @@
 <body>
 	<h1>Exhibici&oacute;n</h1>
 	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="exhibicion">
+		<label>Fecha</label>
+		<form:input type="date" name="fecha" path="fecha"/><br>
+		
 		<label>Horario</label>
 		<form:input type="time" name="horario" path="horario"/><br>
 		
@@ -23,11 +26,7 @@
 			<form:options items="${salas}" itemValue="id" itemLabel="numero"  />
 		</form:select><br>
 		
-		<label>Pelicula</label>
-		<form:select path="idPelicula"> 
-			<form:options items="${peliculas}" itemValue="id" itemLabel="nombre"  />
-		</form:select><br>
-		
+		<form:input type="hidden" name="idPelicula" path="idPelicula" value="${pelicula}"/>
 		<form:input type="hidden" name="id" path="id"/>
 		<input type="submit" value="Guardar">
 	</form:form>

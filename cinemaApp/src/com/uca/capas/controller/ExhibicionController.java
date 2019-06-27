@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Exhibicion;
+import com.uca.capas.domain.Pelicula;
 import com.uca.capas.service.ExhibicionService;
 import com.uca.capas.service.FormatoService;
 import com.uca.capas.service.PeliculaService;
@@ -37,11 +38,11 @@ public class ExhibicionController {
 	}
 	
 	@RequestMapping("/formAddExhibicion")
-	public ModelAndView formExhibicion(){
+	public ModelAndView formExhibicion(int idPelicula){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exhibicion", new Exhibicion());
-		mav.addObject("salas", salaService.findAll());
-		mav.addObject("peliculas", peliculaService.findAll());
+		mav.addObject("salas", salaService.findActive());
+		mav.addObject("pelicula", idPelicula);
 		mav.addObject("formatos", formatoService.findAll());
 		mav.addObject("formAction", "addExhibicion");
 		mav.setViewName("formExhibicion");
@@ -49,12 +50,12 @@ public class ExhibicionController {
 	}
 	
 	@RequestMapping("/formEditExhibicion")
-	public ModelAndView formExhibicion(@RequestParam int id){
+	public ModelAndView formExhibicion(int idPelicula, int id){
 		ModelAndView mav = new ModelAndView();
 		Exhibicion e = exhibicionService.findOne(id);
 		mav.addObject("exhibicion", e);
-		mav.addObject("salas", salaService.findAll());
-		mav.addObject("peliculas", peliculaService.findAll());
+		mav.addObject("salas", salaService.findActive());
+		mav.addObject("pelicula", idPelicula);
 		mav.addObject("formatos", formatoService.findAll());
 		mav.addObject("formAction", "editExhibicion");
 		mav.setViewName("formExhibicion");
@@ -65,7 +66,10 @@ public class ExhibicionController {
 	public ModelAndView addExhibicion(@ModelAttribute Exhibicion e){
 		ModelAndView mav = new ModelAndView();
 		exhibicionService.addExhibicion(e);
-		mav.setViewName("redirect:/tablaExhibicion");
+		Pelicula p = peliculaService.findOne(e.getIdPelicula());
+		mav.addObject("pelicula", p);
+		mav.addObject("exhibiciones",p.getExhibiciones());
+		mav.setViewName("perfilPelicula");
 		return mav;
 	}
 	
@@ -73,7 +77,10 @@ public class ExhibicionController {
 	public ModelAndView editExhibicion(@ModelAttribute Exhibicion e){
 		ModelAndView mav = new ModelAndView();
 		exhibicionService.editExhibicion(e);
-		mav.setViewName("redirect:/tablaExhibicion");
+		Pelicula p = peliculaService.findOne(e.getIdPelicula());
+		mav.addObject("pelicula", p);
+		mav.addObject("exhibiciones",p.getExhibiciones());
+		mav.setViewName("perfilPelicula");
 		return mav;
 	}
 	
@@ -81,7 +88,11 @@ public class ExhibicionController {
 	public ModelAndView activarExhibicion(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
 		exhibicionService.activarExhibicion(id);
-		mav.setViewName("redirect:/tablaExhibicion");
+		Exhibicion e = exhibicionService.findOne(id);
+		Pelicula p = peliculaService.findOne(e.getIdPelicula());
+		mav.addObject("pelicula", p);
+		mav.addObject("exhibiciones",p.getExhibiciones());
+		mav.setViewName("perfilPelicula");
 		return mav;
 	}
 }

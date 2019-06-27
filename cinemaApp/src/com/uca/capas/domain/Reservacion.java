@@ -15,6 +15,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.uca.capas.utils.EntityUtils;
+
 @Entity
 @Table(schema="public", name="reservacion")
 public class Reservacion {
@@ -34,8 +36,11 @@ public class Reservacion {
 	@Column(name="reservacion_fecha")
 	private Calendar fecha;
 	
-	@Transient
+	@Column(name="reservacion_subtotal")
 	private BigDecimal subtotal;
+	
+	@Transient
+	private BigDecimal saldoUsado;
 	
 	@Transient
 	private BigDecimal saldoRestante;
@@ -132,5 +137,22 @@ public class Reservacion {
 
 	public void setSaldoRestante(BigDecimal saldoRestante) {
 		this.saldoRestante = saldoRestante;
+	}
+
+	public BigDecimal getSaldoUsado() {
+		return saldoUsado;
+	}
+
+	public void setSaldoUsado(BigDecimal saldoUsado) {
+		this.saldoUsado = saldoUsado;
+	}
+	
+	public String getFechaDelegate() {
+		return EntityUtils.dateToString(fecha);
+	}
+	
+	public String getIdDelegate() {
+		String formatted = String.format("%08d", id);
+		return formatted;
 	}
 }

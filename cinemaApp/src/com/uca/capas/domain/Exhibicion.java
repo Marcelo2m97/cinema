@@ -14,6 +14,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.uca.capas.utils.EntityUtils;
 
 @Entity
@@ -25,6 +27,10 @@ public class Exhibicion {
 	@SequenceGenerator(name="exhibicion_c_exhibicion_seq", sequenceName="public.exhibicion_c_exhibicion_seq", allocationSize=1)
 	@Column(name="c_exhibicion")
 	private Integer id;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name="exhibicion_fecha")
+	private Calendar fecha;
 	
 	@Column(name="exhibicion_horario")
 	private String horario;
@@ -193,5 +199,17 @@ public class Exhibicion {
 
 	public void setIdFormato(Integer idFormato) {
 		this.idFormato = idFormato;
+	}
+
+	public Calendar getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Calendar fecha) {
+		this.fecha = fecha;
+	}
+	
+	public String getFechaDelegate() {
+		return EntityUtils.dateToString2(fecha);
 	}
 }

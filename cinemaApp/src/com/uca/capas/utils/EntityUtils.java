@@ -20,4 +20,13 @@ public class EntityUtils {
 		String dateString = sdf.format(date.getTime());
 		return dateString;
 	}
+	
+	public static String dateToString2(Calendar date) {
+		if (date == null) {
+			return "";
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String dateString = sdf.format(date.getTime());
+		return dateString;
+	}
 }

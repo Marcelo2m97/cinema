@@ -10,10 +10,12 @@
 <body>
 	<h1>Confirmar Reservaci&oacute;n</h1>
 	<p>Pel&iacute;cula: ${exhibicion.pelicula.nombre}</p>
+	<p>Fecha: ${exhibicion.fechaDelegate}</p>
 	<p>Horario: ${exhibicion.horario}</p>
 	<p>Formato: ${exhibicion.formato.nombre}</p>
 	<p>Asientos: ${reservacion.asientos}</p>
 	<p>Subtotal: $${reservacion.subtotal}</p>
+	<p>Saldo ingresado: $${reservacion.saldoUsado}</p>
 	<p>Saldo usado: $${reservacion.saldo}</p>
 	<p>Saldo restante: $${reservacion.saldoRestante}</p>
 	<p>Total: $${reservacion.total}</p>

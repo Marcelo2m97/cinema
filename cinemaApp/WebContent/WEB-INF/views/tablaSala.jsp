@@ -6,6 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Salas</title>
+<script src="resources/js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="resources/css/sweetalert2.min.css">
+<script src="resources/js/jquery-3.3.0.js"></script>
 </head>
 <body>
 	<h1>Salas</h1>
@@ -31,7 +34,7 @@
 						<input type="hidden" name="id" value="${sala.id}">
 						<input type="submit" value="Editar">
 					</form:form>
-					<form:form action="${pageContext.request.contextPath}/activarSala" onsubmit="return confirm('Confirmar');">
+					<form:form id="form" action="${pageContext.request.contextPath}/activarSala">
 						<input type="hidden" name="id" value="${sala.id}">
 						<c:choose>
 							<c:when test="${sala.activo == true}">
@@ -53,5 +56,24 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<script>
+	$('#form').on('submit', function(e) {
+	    var form = this;
+	    e.preventDefault();
+
+	    Swal.fire({
+	        title: "Confirmar",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonText: 'Continuar',
+	        cancelButtonText: "Cancelar",
+	    }).then(function(result) {
+	    	if (result.value){
+	    		form.submit();
+	    	}
+	    }); 
+	});
+	</script>
 </body>
 </html>

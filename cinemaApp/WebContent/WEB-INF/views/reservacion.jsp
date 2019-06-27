@@ -15,7 +15,7 @@
 	<h3>Reservaci&oacute;n</h3>
 	<form:form action="${pageContext.request.contextPath}/confirmarReservacion" method="POST" modelAttribute="reservacion">
 		<c:forEach items="${exhibiciones}" var="exhibicion">
-			<form:radiobutton name="exhibicion" path="idExhibicion" value="${exhibicion.id}" onclick="setExhibicion('${exhibicion.asientos}','${exhibicion.formato.precio}');"/><c:out value="${exhibicion.formato.nombre}-${exhibicion.horario}"/><br>
+			<form:radiobutton name="exhibicion" path="idExhibicion" value="${exhibicion.id}" onclick="setExhibicion('${exhibicion.asientos}','${exhibicion.formato.precio}');"/><c:out value="${exhibicion.formato.nombre}-${exhibicion.fechaDelegate}-${exhibicion.horario}"/><br>
 		</c:forEach>
 
 		<label>Asientos</label>

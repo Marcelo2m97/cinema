@@ -42,6 +42,17 @@ public class UsuarioController {
 		return mav;
 	}
 	
+	@RequestMapping("/register")
+	public ModelAndView register() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("usuario", new Usuario());
+		mav.addObject("paises", paisService.findAll());
+		mav.addObject("estados", estadoService.findAll());
+		mav.addObject("ciudades", ciudadService.findAll());
+		mav.setViewName("register");
+		return mav;
+	}
+	
 	@RequestMapping("/formAddUsuario")
 	public ModelAndView formUsuario(){
 		ModelAndView mav = new ModelAndView();
@@ -82,6 +93,14 @@ public class UsuarioController {
 		ModelAndView mav = new ModelAndView();
 		usuarioService.addUsuario(u);
 		mav.setViewName("redirect:/tablaUsuario");
+		return mav;
+	}
+	
+	@RequestMapping("/addUsuarioRegister")
+	public ModelAndView addUsuarioRegister(@ModelAttribute Usuario u){
+		ModelAndView mav = new ModelAndView();
+		usuarioService.registerUsuario(u);
+		mav.setViewName("redirect:/login");
 		return mav;
 	}
 	

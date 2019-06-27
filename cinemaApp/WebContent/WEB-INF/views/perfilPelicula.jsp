@@ -5,12 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Exhibici&oacute;n</title>
+<title>Pel&iacute;cula</title>
 </head>
 <body>
-	<h1>Exhibici&oacute;n</h1>
+	<h1>${pelicula.nombre}</h1>
+	<p>${pelicula.descripcion}</p>
+	<img src="resources/${pelicula.imagen}" width="150px" height="225px">
+	
+	<h1>Funciones</h1>
 	<form:form action="${pageContext.request.contextPath}/formAddExhibicion">
-		<input type="submit" value="Nueva Exhibici&oacute;n">
+		<input type="hidden" name="idPelicula" value="${pelicula.id}">
+		<input type="submit" value="Nueva Funci&oacute;n">
 	</form:form>
 	
 	<table>
@@ -18,7 +23,6 @@
 			<th>Acci&oacute;n</th>
 			<th>C&oacute;digo</th>
 			<th>Descripci&oacute;n</th>
-			<th>Estado</th>
 			<th>Fecha Creaci&oacute;n</th>
 			<th>Usuario Creaci&oacute;n</th>
 			<th>Fecha Modificaci&oacute;n</th>
@@ -28,24 +32,13 @@
 			<tr>
 				<td>
 					<form:form action="${pageContext.request.contextPath}/formEditExhibicion">
+						<input type="hidden" name="idPelicula" value="${pelicula.id}">
 						<input type="hidden" name="id" value="${exhibicion.id}">
 						<input type="submit" value="Editar">
 					</form:form>
-					<form:form action="${pageContext.request.contextPath}/activarExhibicion" onsubmit="return confirm('Confirmar');">
-						<input type="hidden" name="id" value="${exhibicion.id}">
-						<c:choose>
-							<c:when test="${exhibicion.activo == true}">
-								<input type="submit" value="Inactivar">
-							</c:when>
-							<c:otherwise>
-								<input type="submit" value="Activar">
-							</c:otherwise>
-						</c:choose>
-					</form:form>
 				</td>
 				<td>${exhibicion.id}</td>
-				<td>${exhibicion.pelicula.nombre} - ${exhibicion.formato.nombre} - ${exhibicion.fecha} - ${exhibicion.horario}</td>
-				<td>${exhibicion.activoDelegate}</td>
+				<td>${exhibicion.pelicula.nombre} - ${exhibicion.formato.nombre} - ${exhibicion.fechaDelegate} - ${exhibicion.horario}</td>
 				<td>${exhibicion.fechaCreacionDelegate}</td>
 				<td>${exhibicion.usuarioCreacion.username}</td>
 				<td>${exhibicion.fechaModificacionDelegate}</td>

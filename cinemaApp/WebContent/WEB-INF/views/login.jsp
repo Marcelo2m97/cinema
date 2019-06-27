@@ -107,5 +107,10 @@
         <button class="btn btn-primary " name="Submit" value="Login" onclick="login()" type="button"> Log in </button>
     </form>
 </div>
+<div class="container">
+    <form action="${pageContext.request.contextPath}/register">
+		<input type="submit" value="Crear cuenta">
+	</form>
+</div>
 </body>
 </html>
