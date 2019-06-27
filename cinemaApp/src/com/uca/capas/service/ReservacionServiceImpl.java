@@ -79,4 +79,9 @@ public class ReservacionServiceImpl implements ReservacionService{
 	public List<Reservacion> findByUserAndDate(int userId, Date startDate, Date endDate) {
 		return reservacionRepository.findBetweenDates(userId, startDate, endDate);
 	}
+
+	@Override
+	public Reservacion findOne(int id) {
+		return reservacionRepository.findOne(id);
+	}
 }

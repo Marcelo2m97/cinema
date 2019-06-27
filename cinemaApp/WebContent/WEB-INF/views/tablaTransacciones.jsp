@@ -6,6 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Transacciones</title>
+<script src="resources/js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="resources/css/sweetalert2.min.css">
+<script src="resources/js/jquery-3.3.0.js"></script>
 </head>
 <body>
 	<h1>Transaccciones</h1>
@@ -23,15 +26,43 @@
 		<c:forEach items="${reservaciones}" var="reservacion">
 			<tr>
 				<td>
-					<form:form action="${pageContext.request.contextPath}/verReservacion">
-						<input type="hidden" name="id" value="${reservacion.id}">
-						<input type="submit" value="Ver">
-					</form:form>
+					<button onclick="verReservacion(${reservacion.id});">Ver</button>
 				</td>
 				<td>${reservacion.idDelegate}</td>
 				<td>${reservacion.fechaDelegate}</td>
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<script>
+		verReservacion = function(id){
+			var span = document.createElement("span");
+			span.innerHTML='abc<br>efg'
+			$.ajax({
+	            type : 'POST',
+	            url : '${pageContext.request.contextPath}/verReservacion',
+	            data: {id:id},
+	            dataType: 'json',
+	            success : function(response) {
+	            	console.log(response);
+	            	
+	            	Swal.fire({
+           				type: 'info',
+	            		title: 'Transacci&oacute;n',
+	            		html:
+	            		    'Pelicula: ' + response.pelicula + "<br>" +
+	            		    'Fecha: ' + response.fecha + "<br>" +
+	            		    'Horario: ' + response.horario + "<br>" +
+	            		    'Asientos: ' + response.asientos + "<br>" +
+	            		    'Saldo usado: $' + response.saldo + "<br>" +
+	            		    'Total: $' + response.total + "<br>",
+	            	});
+	            },
+	            error : function() {
+	                alert("Error");
+	            }
+	        });
+		}
+	</script>
 </body>
 </html>

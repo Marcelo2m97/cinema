@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -50,4 +51,9 @@ public class SpringConfiguration implements WebMvcConfigurer {
         registry.addViewController("/user").setViewName("redirect:/peliculas");
         registry.addViewController("/admin").setViewName("administracion");
     }
+    
+	@Bean
+	public MappingJackson2HttpMessageConverter jsonConverter() {
+		return new MappingJackson2HttpMessageConverter();
+	}
 }

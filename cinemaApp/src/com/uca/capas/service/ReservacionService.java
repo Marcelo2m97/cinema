@@ -9,6 +9,8 @@ public interface ReservacionService {
 
 	public Reservacion procesarReservacion(Reservacion r);
 	
+	public Reservacion findOne(int id);
+	
 	public void addReservacion(Reservacion r) throws Exception;
 	
 	public List<Reservacion> findByUserAndDate(int userId, Date startDate, Date endDate);

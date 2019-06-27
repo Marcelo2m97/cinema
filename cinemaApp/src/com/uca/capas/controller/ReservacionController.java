@@ -6,16 +6,20 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Exhibicion;
 import com.uca.capas.domain.Pelicula;
 import com.uca.capas.domain.Reservacion;
 import com.uca.capas.domain.Usuario;
+import com.uca.capas.domain.response.TransaccionResponse;
 import com.uca.capas.service.ExhibicionService;
 import com.uca.capas.service.PeliculaService;
 import com.uca.capas.service.ReservacionService;
@@ -73,6 +77,8 @@ public class ReservacionController {
 	@RequestMapping("/transacciones")
 	public ModelAndView transacciones() {
 		ModelAndView mav = new ModelAndView();
+		Usuario u = (Usuario)session.getAttribute(Constants.USER_SESSION);
+		mav.addObject("reservaciones", u.getReservaciones());
 		mav.setViewName("tablaTransacciones");
 		return mav;
 	}
@@ -84,5 +90,18 @@ public class ReservacionController {
 		mav.addObject("reservaciones", reservacionService.findByUserAndDate(u.getId(), startDate, endDate));
 		mav.setViewName("tablaTransacciones");
 		return mav;
+	}
+	
+	@RequestMapping(value = "/verReservacion", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody TransaccionResponse verReservacion(@RequestParam int id) {
+		Reservacion r = reservacionService.findOne(id);
+		TransaccionResponse tr = new TransaccionResponse();
+		tr.setPelicula(r.getExhibicion().getPelicula().getNombre());
+		tr.setFecha(r.getExhibicion().getFechaDelegate());
+		tr.setHorario(r.getExhibicion().getHorario());
+		tr.setAsientos(r.getAsientos()+"");
+		tr.setSaldo(r.getSaldo().toString());
+		tr.setTotal(r.getTotal().toString());
+		return tr;
 	}
 }

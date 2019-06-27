@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pel&iacute;cula</title>
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="resources/js/jquery-3.3.0.js"></script>
 </head>
 <body>
 	<h1>Pel&iacute;cula</h1>
@@ -38,7 +38,7 @@
     	data.append('file',jQuery('#file')[0].files[0]);
         $.ajax({
             type : 'POST',
-            url : 'uploadFile',
+            url : '${pageContext.request.contextPath}/uploadFile',
             data: data,
         	cache: false,
         	contentType: false,

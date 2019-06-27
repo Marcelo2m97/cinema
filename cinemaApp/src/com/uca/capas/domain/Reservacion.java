@@ -15,6 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uca.capas.utils.EntityUtils;
 
 @Entity
@@ -48,10 +49,12 @@ public class Reservacion {
 	@Column(name="reservacion_grantotal")
 	private BigDecimal total;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_usuario")
 	private Usuario usuario;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_exhibicion")
 	private Exhibicion exhibicion;
