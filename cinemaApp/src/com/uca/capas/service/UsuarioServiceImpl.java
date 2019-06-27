@@ -1,17 +1,22 @@
 package com.uca.capas.service;
 
 import com.uca.capas.domain.Usuario;
-import com.uca.capas.dto.UsuarioDTO;
 import com.uca.capas.repositories.CiudadRepository;
 import com.uca.capas.repositories.EstadoRepository;
 import com.uca.capas.repositories.PaisRepository;
 import com.uca.capas.repositories.RolRepository;
 import com.uca.capas.repositories.UsuarioRepository;
+import com.uca.capas.utils.Constants;
+
 import javassist.tools.rmi.ObjectNotFoundException;
 
+import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +39,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	private RolRepository rolRepository;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired 
+	private HttpSession session;
+	
 	@Override
 	public List<Usuario> findAll() {
 		return usuarioRepository.findByOrderByIdAsc();
@@ -41,66 +52,53 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Usuario findOne(int id) {
-		return usuarioRepository.findOne(id);
-	}
-	
-	@Override
-	public UsuarioDTO findOneDTO(int id) {
 		Usuario u = usuarioRepository.findOne(id);
-		UsuarioDTO dto = new UsuarioDTO();
-		dto.setId(u.getId());
-		dto.setNombre(u.getNombre());
-		dto.setApellido(u.getApellido());
-		dto.setUsername(u.getUsername());
-		dto.setPassword(u.getPassword());
-		dto.setDireccion(u.getDireccion());
-		dto.setFechaNacimiento(u.getFechaNacimiento());
-		dto.setSaldo(u.getSaldo());
-		dto.setIdCiudad(u.getCiudad().getId());
-		dto.setIdEstado(u.getEstado().getId());
-		dto.setIdPais(u.getPais().getId());
-		dto.setIdRol(u.getRol().getId());
-		return dto;
+		u.setIdCiudad(u.getCiudad().getId());
+		u.setIdEstado(u.getEstado().getId());
+		u.setIdPais(u.getPais().getId());
+		u.setIdRol(u.getRol().getId());
+		return u;
 	}
 
 	@Override
-	public void addUsuario(UsuarioDTO dto) {
-		Usuario u = new Usuario();
-		u.setNombre(dto.getNombre());
-		u.setApellido(dto.getApellido());
-		u.setUsername(dto.getUsername());
-		u.setPassword(dto.getPassword());
-		u.setDireccion(dto.getDireccion());
-		u.setFechaNacimiento(dto.getFechaNacimiento());
-		u.setSaldo(dto.getSaldo());
-		u.setCiudad(ciudadRepository.findOne(dto.getIdCiudad()));
-		u.setEstado(estadoRepository.findOne(dto.getIdEstado()));
-		u.setPais(paisRepository.findOne(dto.getIdPais()));
-		u.setRol(rolRepository.findOne(dto.getIdRol()));
+	@Transactional
+	public void addUsuario(Usuario u) {
+		u.setPassword(passwordEncoder.encode(u.getPassword()));
+		u.setCiudad(ciudadRepository.findOne(u.getIdCiudad()));
+		u.setEstado(estadoRepository.findOne(u.getIdEstado()));
+		u.setPais(paisRepository.findOne(u.getIdPais()));
+		u.setRol(rolRepository.findOne(u.getIdRol()));
+		
+		u.setFechaCreacion(Calendar.getInstance());
+		u.setUsuarioCreacion((Usuario)session.getAttribute(Constants.USER_SESSION));
 		usuarioRepository.save(u);
 	}
 
 	@Override
-	public void editUsuario(UsuarioDTO dto) {
-		Usuario u = usuarioRepository.findOne(dto.getId());
-		u.setNombre(dto.getNombre());
-		u.setApellido(dto.getApellido());
-		u.setUsername(dto.getUsername());
-		u.setPassword(dto.getPassword());
-		u.setDireccion(dto.getDireccion());
-		u.setFechaNacimiento(dto.getFechaNacimiento());
-		u.setSaldo(dto.getSaldo());
-		u.setCiudad(ciudadRepository.findOne(dto.getIdCiudad()));
-		u.setEstado(estadoRepository.findOne(dto.getIdEstado()));
-		u.setPais(paisRepository.findOne(dto.getIdPais()));
-		u.setRol(rolRepository.findOne(dto.getIdRol()));
+	@Transactional
+	public void editUsuario(Usuario u) {
+		Usuario u2 = usuarioRepository.findOne(u.getId());
+		u.setUsername(u2.getUsername());
+		u.setPassword(u2.getPassword());
+		u.setActivo(u2.getActivo());
+		
+		u.setCiudad(ciudadRepository.findOne(u.getIdCiudad()));
+		u.setEstado(estadoRepository.findOne(u.getIdEstado()));
+		u.setPais(paisRepository.findOne(u.getIdPais()));
+		u.setRol(rolRepository.findOne(u.getIdRol()));
+		
+		u.setFechaModificacion(Calendar.getInstance());
+		u.setUsuarioModificacion((Usuario)session.getAttribute(Constants.USER_SESSION));
 		usuarioRepository.save(u);
 	}
 
 	@Override
+	@Transactional
 	public void activarUsuario(int id) {
-		Usuario u = new Usuario();
+		Usuario u = usuarioRepository.findOne(id);
 		u.setActivo(!u.getActivo());
+		u.setFechaModificacion(Calendar.getInstance());
+		u.setUsuarioModificacion((Usuario)session.getAttribute(Constants.USER_SESSION));
 		usuarioRepository.save(u);
 	}
 

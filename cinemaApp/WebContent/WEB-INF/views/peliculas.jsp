@@ -5,16 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Pel&iacute;culas</title>
+<title>CHEPITOS CINEMA</title>
 </head>
 <body>
-	<h1>Pel&iacute;culas</h1>
+	<h1>CHEPITOS CINEMA</h1>
+	<h2>Pel&iacute;culas</h2>
 	<table>
 		<c:forEach items="${peliculas}" var="pelicula">
 			<tr>
 				<td><img src="resources/${pelicula.imagen}" width="150px" height="225px"></td>
-				<td>				<td>${pelicula.nombre}</td>
-
+				<td>${pelicula.nombre}</td>
+				<td>
 				<form action="${pageContext.request.contextPath}/reservacion">
 						<input type="hidden" name="id" value="${pelicula.id}">
 						<input type="submit" value="Ver">
@@ -23,5 +24,11 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<form:form action="${pageContext.request.contextPath}/transacciones">
+		<input type="submit" value="Ver Transacciones">
+	</form:form>
+	<form:form action="${pageContext.request.contextPath}/logout/logout">
+		<input type="submit" value="Logout">
+	</form:form>
 </body>
 </html>

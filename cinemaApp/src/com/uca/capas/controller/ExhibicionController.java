@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uca.capas.dto.ExhibicionDTO;
+import com.uca.capas.domain.Exhibicion;
 import com.uca.capas.service.ExhibicionService;
 import com.uca.capas.service.FormatoService;
 import com.uca.capas.service.PeliculaService;
@@ -39,7 +39,7 @@ public class ExhibicionController {
 	@RequestMapping("/formAddExhibicion")
 	public ModelAndView formExhibicion(){
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("exhibicion", new ExhibicionDTO());
+		mav.addObject("exhibicion", new Exhibicion());
 		mav.addObject("salas", salaService.findAll());
 		mav.addObject("peliculas", peliculaService.findAll());
 		mav.addObject("formatos", formatoService.findAll());
@@ -51,8 +51,8 @@ public class ExhibicionController {
 	@RequestMapping("/formEditExhibicion")
 	public ModelAndView formExhibicion(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		ExhibicionDTO dto = exhibicionService.findOneDTO(id);
-		mav.addObject("exhibicion", dto);
+		Exhibicion e = exhibicionService.findOne(id);
+		mav.addObject("exhibicion", e);
 		mav.addObject("salas", salaService.findAll());
 		mav.addObject("peliculas", peliculaService.findAll());
 		mav.addObject("formatos", formatoService.findAll());
@@ -62,17 +62,17 @@ public class ExhibicionController {
 	}
 	
 	@RequestMapping("/addExhibicion")
-	public ModelAndView addExhibicion(@ModelAttribute ExhibicionDTO dto){
+	public ModelAndView addExhibicion(@ModelAttribute Exhibicion e){
 		ModelAndView mav = new ModelAndView();
-		exhibicionService.addExhibicion(dto);
+		exhibicionService.addExhibicion(e);
 		mav.setViewName("redirect:/tablaExhibicion");
 		return mav;
 	}
 	
 	@RequestMapping("/editExhibicion")
-	public ModelAndView editExhibicion(@ModelAttribute ExhibicionDTO dto){
+	public ModelAndView editExhibicion(@ModelAttribute Exhibicion e){
 		ModelAndView mav = new ModelAndView();
-		exhibicionService.editExhibicion(dto);
+		exhibicionService.editExhibicion(e);
 		mav.setViewName("redirect:/tablaExhibicion");
 		return mav;
 	}

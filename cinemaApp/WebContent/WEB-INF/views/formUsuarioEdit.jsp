@@ -10,12 +10,6 @@
 <body>
 	<h1>Usuario</h1>
 	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="usuario">
-		<label>Username</label>
-		<form:input type="text" name="username" path="username"/><br>
-		
-		<label>Password</label>
-		<form:input type="password" name="password" path="password"/><br>
-		
 		<label>Nombre</label>
 		<form:input type="text" name="nombre" path="nombre"/><br>
 		

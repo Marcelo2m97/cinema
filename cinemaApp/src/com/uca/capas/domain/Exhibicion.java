@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.uca.capas.utils.EntityUtils;
 
@@ -59,6 +60,15 @@ public class Exhibicion {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_formato")
 	private Formato formato;
+	
+	@Transient
+	private Integer idSala;
+	
+	@Transient
+	private Integer idPelicula;
+	
+	@Transient
+	private Integer idFormato;
 
 	public Integer getId() {
 		return id;
@@ -159,5 +169,29 @@ public class Exhibicion {
 	
 	public String getFechaModificacionDelegate() {
 		return EntityUtils.dateToString(fechaModificacion);
+	}
+
+	public Integer getIdSala() {
+		return idSala;
+	}
+
+	public void setIdSala(Integer idSala) {
+		this.idSala = idSala;
+	}
+
+	public Integer getIdPelicula() {
+		return idPelicula;
+	}
+
+	public void setIdPelicula(Integer idPelicula) {
+		this.idPelicula = idPelicula;
+	}
+
+	public Integer getIdFormato() {
+		return idFormato;
+	}
+
+	public void setIdFormato(Integer idFormato) {
+		this.idFormato = idFormato;
 	}
 }

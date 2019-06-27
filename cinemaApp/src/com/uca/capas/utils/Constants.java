@@ -10,4 +10,5 @@ public class Constants {
     public final static String NOT_FOUND = "Not Found";
     public final static String FORBIDDEN = "Forbidden";
     public final static String USER_PROFILE_NOT_UPDATED = "User profile not updated";
+    public final static String USER_SESSION = "USUARIO";
 }

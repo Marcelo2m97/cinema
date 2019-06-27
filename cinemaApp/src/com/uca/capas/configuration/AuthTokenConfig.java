@@ -1,4 +1,4 @@
-package com.uca.capas;
+package com.uca.capas.configuration;
 import com.uca.capas.utils.AuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

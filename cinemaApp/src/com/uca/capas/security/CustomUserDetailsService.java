@@ -26,15 +26,12 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if(username.trim().isEmpty()){
-            throw new UsernameNotFoundException("Username está vacío");
+            throw new UsernameNotFoundException("Username esta vacio");
         }
-
         Usuario usuario = usuarioService.findByUsername(username);
-
         if(usuario == null){
             throw new UsernameNotFoundException("Usuario " + username + "no encontrado");
         }
-
         return new User(usuario.getUsername(), usuario.getPassword(), getGrantedAuthorities(usuario));
     }
 

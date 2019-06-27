@@ -3,15 +3,19 @@ package com.uca.capas.service;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.capas.domain.Exhibicion;
-import com.uca.capas.dto.ExhibicionDTO;
+import com.uca.capas.domain.Usuario;
 import com.uca.capas.repositories.ExhibicionRepository;
 import com.uca.capas.repositories.FormatoRepository;
 import com.uca.capas.repositories.PeliculaRepository;
 import com.uca.capas.repositories.SalaRepository;
+import com.uca.capas.utils.Constants;
 
 @Service
 public class ExhibicionServiceImpl implements ExhibicionService{
@@ -27,6 +31,9 @@ public class ExhibicionServiceImpl implements ExhibicionService{
 	
 	@Autowired
 	private FormatoRepository formatoRepository;
+	
+	@Autowired 
+	private HttpSession session;
 
 	@Override
 	public List<Exhibicion> findAll() {
@@ -45,48 +52,37 @@ public class ExhibicionServiceImpl implements ExhibicionService{
 	}
 
 	@Override
-	public ExhibicionDTO findOneDTO(int id) {
-		Exhibicion e = exhibicionRepository.findOne(id);
-		ExhibicionDTO dto = new ExhibicionDTO();
-		dto.setId(e.getId());
-		dto.setHorario(e.getHorario());
-		dto.setIdFormato(e.getFormato().getId());
-		dto.setIdSala(e.getPelicula().getId());
-		dto.setIdPelicula(e.getPelicula().getId());
-		return dto;
-	}
-
-	@Override
-	public void addExhibicion(ExhibicionDTO dto) {
-		Exhibicion e = new Exhibicion();
-		e.setId(dto.getId());
-		e.setHorario(dto.getHorario());
-		e.setFormato(formatoRepository.findOne(dto.getIdFormato()));
-		e.setPelicula(peliculaRepository.findOne(dto.getIdPelicula()));
-		e.setSala(salaRepository.findOne(dto.getIdSala()));
+	@Transactional
+	public void addExhibicion(Exhibicion e) {
+		e.setFormato(formatoRepository.findOne(e.getIdFormato()));
+		e.setPelicula(peliculaRepository.findOne(e.getIdPelicula()));
+		e.setSala(salaRepository.findOne(e.getIdSala()));
+		e.setAsientos(salaRepository.findOne(e.getIdSala()).getCapacidad());
 		
-		e.setAsientos(salaRepository.findOne(dto.getIdSala()).getCapacidad());
 		e.setFechaCreacion(Calendar.getInstance());
+		e.setUsuarioCreacion((Usuario)session.getAttribute(Constants.USER_SESSION));
 		exhibicionRepository.save(e);
 	}
 
 	@Override
-	public void editExhibicion(ExhibicionDTO dto) {
-		Exhibicion e = exhibicionRepository.findOne(dto.getId());
-		e.setId(dto.getId());
-		e.setHorario(dto.getHorario());
-		e.setFormato(formatoRepository.findOne(dto.getIdFormato()));
-		e.setPelicula(peliculaRepository.findOne(dto.getIdPelicula()));
-		e.setSala(salaRepository.findOne(dto.getIdSala()));
+	@Transactional
+	public void editExhibicion(Exhibicion e) {
+		e.setFormato(formatoRepository.findOne(e.getIdFormato()));
+		e.setPelicula(peliculaRepository.findOne(e.getIdPelicula()));
+		e.setSala(salaRepository.findOne(e.getIdSala()));
 		
 		e.setFechaModificacion(Calendar.getInstance());
+		e.setUsuarioModificacion((Usuario)session.getAttribute(Constants.USER_SESSION));
 		exhibicionRepository.save(e);
 	}
 
 	@Override
+	@Transactional
 	public void activarExhibicion(int id) {
 		Exhibicion e = exhibicionRepository.findOne(id);
 		e.setActivo(!e.getActivo());
+		e.setFechaModificacion(Calendar.getInstance());
+		e.setUsuarioModificacion((Usuario)session.getAttribute(Constants.USER_SESSION));
 		exhibicionRepository.save(e);
 	}
 }

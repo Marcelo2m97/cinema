@@ -3,7 +3,6 @@ package com.uca.capas.service;
 import java.util.List;
 
 import com.uca.capas.domain.Usuario;
-import com.uca.capas.dto.UsuarioDTO;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -12,16 +11,16 @@ public interface UsuarioService {
 	public List<Usuario> findAll();
 	
 	public Usuario findOne(int id);
+		
+	public void addUsuario(Usuario u);
 	
-	public UsuarioDTO findOneDTO(int id);
-	
-	public void addUsuario(UsuarioDTO dto);
-	
-	public void editUsuario(UsuarioDTO dto);
+	public void editUsuario(Usuario u);
 	
 	public void activarUsuario(int id);
 	
-    Usuario findByUsername(String username);
-    Usuario findById(int id) throws ObjectNotFoundException;
-    Usuario saveUsuario(Usuario usuario);
+    public Usuario findByUsername(String username);
+    
+    public Usuario findById(int id) throws ObjectNotFoundException;
+    
+    public Usuario saveUsuario(Usuario usuario);
 }

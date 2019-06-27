@@ -2,11 +2,11 @@ package com.uca.capas.domain;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.uca.capas.utils.EntityUtils;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
@@ -16,16 +16,17 @@ public class Usuario {
     @Id
     @GeneratedValue(generator="usuario_c_usuario_seq", strategy=GenerationType.AUTO)
 	@SequenceGenerator(name="usuario_c_usuario_seq", sequenceName="public.usuario_c_usuario_seq", allocationSize=1)
-    @Column(name = "c_usuario")
+    @Column(name="c_usuario")
     private Integer id;
 
-    @Column(name = "u_nombre")
+    @Column(name="u_nombre")
     private String nombre;
 
-    @Column(name = "u_apellido")
+    @Column(name="u_apellido")
     private String apellido;
 
-    @Column(name = "u_fechaNacimiento")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(name="u_fechaNacimiento")
     private Calendar fechaNacimiento;
 
 	@Column(name="u_direccion")
@@ -65,25 +66,34 @@ public class Usuario {
 	@OneToMany(mappedBy="usuario", fetch=FetchType.LAZY)
 	private List<Reservacion> reservaciones;
 	
-	public Usuario(){
-    	
-    }
+	@Column(name="u_fechacreacion")
+	private Calendar fechaCreacion;
 	
-    public Usuario(String nombreUsuario, String apellidoUsuario, Calendar birthDateUsuario, String direccionUsuario, String usernameUsuario, String passwordUsuario, Boolean activoUsuario, Boolean sesionUsuario, BigDecimal saldoUsuario, Pais paisUsuario, Estado estadoUsuario, Ciudad ciudadUsuario, Rol rolUsuario) {
-        this.nombre = nombreUsuario;
-        this.apellido = apellidoUsuario;
-        this.fechaNacimiento = birthDateUsuario;
-        this.direccion = direccionUsuario;
-        this.username = usernameUsuario;
-        this.password = passwordUsuario;
-        this.activo = activoUsuario;
-        this.sesion = sesionUsuario;
-        this.saldo = saldoUsuario;
-        this.pais = paisUsuario;
-        this.estado = estadoUsuario;
-        this.ciudad = ciudadUsuario;
-        this.rol = rolUsuario;
-    }
+	@Column(name="u_fechamodificacion")
+	private Calendar fechaModificacion;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_usuariocreacion")
+	private Usuario usuarioCreacion;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="c_usuariomodificacion")
+	private Usuario usuarioModificacion;
+	
+	@Column(name="u_mensaje")
+	private String mensaje;
+	
+	@Transient
+	private Integer idPais;
+	
+	@Transient
+	private Integer idEstado;
+	
+	@Transient
+	private Integer idCiudad;
+	
+	@Transient
+	private Integer idRol;
 
 	public Integer getId() {
 		return id;
@@ -207,5 +217,85 @@ public class Usuario {
 	
 	public String getActivoDelegate() {
 		return EntityUtils.activoToString(activo);
+	}
+
+	public Integer getIdPais() {
+		return idPais;
+	}
+
+	public void setIdPais(Integer idPais) {
+		this.idPais = idPais;
+	}
+
+	public Integer getIdEstado() {
+		return idEstado;
+	}
+
+	public void setIdEstado(Integer idEstado) {
+		this.idEstado = idEstado;
+	}
+
+	public Integer getIdCiudad() {
+		return idCiudad;
+	}
+
+	public void setIdCiudad(Integer idCiudad) {
+		this.idCiudad = idCiudad;
+	}
+
+	public Integer getIdRol() {
+		return idRol;
+	}
+
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
+	}
+
+	public Calendar getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Calendar fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Calendar getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(Calendar fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+
+	public Usuario getUsuarioCreacion() {
+		return usuarioCreacion;
+	}
+
+	public void setUsuarioCreacion(Usuario usuarioCreacion) {
+		this.usuarioCreacion = usuarioCreacion;
+	}
+
+	public Usuario getUsuarioModificacion() {
+		return usuarioModificacion;
+	}
+
+	public void setUsuarioModificacion(Usuario usuarioModificacion) {
+		this.usuarioModificacion = usuarioModificacion;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+	
+	public String getFechaCreacionDelegate() {
+		return EntityUtils.dateToString(fechaCreacion);
+	}
+	
+	public String getFechaModificacionDelegate() {
+		return EntityUtils.dateToString(fechaModificacion);
 	}
 }

@@ -46,9 +46,10 @@
 				<td>${usuario.id}</td>
 				<td>${usuario.username}</td>
 				<td>${usuario.activoDelegate}</td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>${usuario.fechaCreacionDelegate}</td>
+				<td>${usuario.usuarioCreacion.username}</td>
+				<td>${usuario.fechaModificacionDelegate}</td>
+				<td>${usuario.usuarioModificacion.username}</td>
 				<td></td>
 			</tr>
 		</c:forEach>

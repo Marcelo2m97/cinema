@@ -1,10 +1,10 @@
 package com.uca.capas.service;
 
-import com.uca.capas.dto.ReservacionDTO;
+import com.uca.capas.domain.Reservacion;
 
 public interface ReservacionService {
 
-	public ReservacionDTO procesarDTO(ReservacionDTO dto);
+	public Reservacion procesarReservacion(Reservacion r);
 	
-	public void procesarReservacion(ReservacionDTO dto);
+	public void addReservacion(Reservacion r) throws Exception;
 }

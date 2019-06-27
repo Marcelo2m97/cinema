@@ -47,9 +47,9 @@
 				<td>${pelicula.nombre}</td>
 				<td>${pelicula.activoDelegate}</td>
 				<td>${pelicula.fechaCreacionDelegate}</td>
-				<td>${pelicula.usuarioCreacion}</td>
+				<td>${pelicula.usuarioCreacion.username}</td>
 				<td>${pelicula.fechaModificacionDelegate}</td>
-				<td>${pelicula.usuarioModificacion}</td>
+				<td>${pelicula.usuarioModificacion.username}</td>
 			</tr>
 		</c:forEach>
 	</table>

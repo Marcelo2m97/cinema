@@ -47,9 +47,9 @@
 				<td>${sala.numero}</td>
 				<td>${sala.activoDelegate}</td>
 				<td>${sala.fechaCreacionDelegate}</td>
-				<td>${sala.usuarioCreacion}</td>
+				<td>${sala.usuarioCreacion.username}</td>
 				<td>${sala.fechaModificacionDelegate}</td>
-				<td>${sala.usuarioModificacion}</td>
+				<td>${sala.usuarioModificacion.username}</td>
 			</tr>
 		</c:forEach>
 	</table>

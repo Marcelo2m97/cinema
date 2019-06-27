@@ -1,4 +1,4 @@
-package com.uca.capas;
+package com.uca.capas.configuration;
 
 import java.io.IOException;
 
@@ -26,8 +26,7 @@ public class SimpleCORSFilter implements Filter {
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers",
-                "x-auth-token, Content-Type, Accept, X-Requested-With, remember-me, User-agent, Cache-Control, Postman-Token, Host, Cookie, accept-encoding, content-length, Connection");
+        response.setHeader("Access-Control-Allow-Headers","x-auth-token, Content-Type, Accept, X-Requested-With, remember-me, User-agent, Cache-Control, Postman-Token, Host, Cookie, accept-encoding, content-length, Connection");
         chain.doFilter(req, res);
     }
 

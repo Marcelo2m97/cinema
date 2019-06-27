@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(schema="public", name="reservacion")
@@ -33,6 +34,12 @@ public class Reservacion {
 	@Column(name="reservacion_fecha")
 	private Calendar fecha;
 	
+	@Transient
+	private BigDecimal subtotal;
+	
+	@Transient
+	private BigDecimal saldoRestante;
+	
 	@Column(name="reservacion_grantotal")
 	private BigDecimal total;
 	
@@ -43,6 +50,9 @@ public class Reservacion {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_exhibicion")
 	private Exhibicion exhibicion;
+	
+	@Transient
+	private Integer idExhibicion;
 
 	public Integer getId() {
 		return id;
@@ -98,5 +108,29 @@ public class Reservacion {
 
 	public void setExhibicion(Exhibicion exhibicion) {
 		this.exhibicion = exhibicion;
+	}
+
+	public BigDecimal getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(BigDecimal subtotal) {
+		this.subtotal = subtotal;
+	}
+
+	public Integer getIdExhibicion() {
+		return idExhibicion;
+	}
+
+	public void setIdExhibicion(Integer idExhibicion) {
+		this.idExhibicion = idExhibicion;
+	}
+
+	public BigDecimal getSaldoRestante() {
+		return saldoRestante;
+	}
+
+	public void setSaldoRestante(BigDecimal saldoRestante) {
+		this.saldoRestante = saldoRestante;
 	}
 }

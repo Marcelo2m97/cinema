@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Exhibicion;
 import com.uca.capas.domain.Pelicula;
-import com.uca.capas.dto.ReservacionDTO;
+import com.uca.capas.domain.Reservacion;
 import com.uca.capas.service.ExhibicionService;
 import com.uca.capas.service.PeliculaService;
 import com.uca.capas.service.ReservacionService;
@@ -32,27 +32,30 @@ public class ReservacionController {
 		Pelicula p = peliculaService.findOne(id);
 		mav.addObject("pelicula", p);
 		mav.addObject("exhibiciones", p.getExhibiciones());
-		mav.addObject("reservacion", new ReservacionDTO());
+		mav.addObject("reservacion", new Reservacion());
 		mav.setViewName("reservacion");
 		return mav;
 	}
 	
 	@RequestMapping("/confirmarReservacion")
-	public ModelAndView confirmarReservacion(@ModelAttribute ReservacionDTO dto) {
+	public ModelAndView confirmarReservacion(@ModelAttribute Reservacion r) {
 		ModelAndView mav = new ModelAndView();
-		Exhibicion e = exhibicionService.findOne(dto.getIdExhibicion());
-		dto = reservacionService.procesarDTO(dto);
+		Exhibicion e = exhibicionService.findOne(r.getIdExhibicion());
+		r = reservacionService.procesarReservacion(r);
 		mav.addObject("exhibicion",e);
-		mav.addObject("reservacion", dto);
+		mav.addObject("reservacion", r);
 		mav.setViewName("confirmarReservacion");
 		return mav;
 	}
 	
 	@RequestMapping("/procesarReservacion")
-	public ModelAndView procesarReservacion(@ModelAttribute ReservacionDTO dto) {
+	public ModelAndView procesarReservacion(@ModelAttribute Reservacion r) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("DTO "+dto.getGranTotal());
-		reservacionService.procesarReservacion(dto);
+		try {
+			reservacionService.addReservacion(r);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		mav.setViewName("redirect:/peliculas");
 		return mav;
 	}

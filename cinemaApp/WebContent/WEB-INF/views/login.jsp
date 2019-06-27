@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ralvarenga
-  Date: 06-24-19
-  Time: 03:53 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,8 +9,7 @@
     <!-- Material Design Bootstrap -->
     <link href="resources/css/mdb.css" rel="stylesheet">
     <link href="resources/js/mdb.js" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="resources/js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="resources/css/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
@@ -53,8 +45,9 @@
                     }).then(function() {
                         if (data.roles[0] === 'Administrador') {
                             window.location.href = '${pageContext.request.contextPath}/admin';
+                        }else{
+                        	window.location.href = '${pageContext.request.contextPath}/user';
                         }
-                        window.location.href = '${pageContext.request.contextPath}/user';
                     });
                 },
                 error: function (error) {
@@ -108,11 +101,8 @@
         <h3 class="form-signin-heading">LOGIN PAGE</h3>
 
         <br/>
-        <input type="text" id="username" name="username"
-               class="form-control" /> <br/>
-        <input type="password"
-               id="password" name="password" class="form-control" /> <br />
-
+        <input type="text" id="username" name="username" class="form-control" /> <br/>
+        <input type="password" id="password" name="password" class="form-control" /> <br />
 
         <button class="btn btn-primary " name="Submit" value="Login" onclick="login()" type="button"> Log in </button>
     </form>

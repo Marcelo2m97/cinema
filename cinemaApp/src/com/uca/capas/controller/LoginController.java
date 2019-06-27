@@ -3,13 +3,12 @@ package com.uca.capas.controller;
 import com.uca.capas.domain.Usuario;
 import com.uca.capas.domain.request.AuthenticationRequest;
 import com.uca.capas.domain.response.UsuarioTransfer;
-import com.uca.capas.repositories.UsuarioRepository;
 import com.uca.capas.service.UsuarioService;
+import com.uca.capas.utils.Constants;
 import com.uca.capas.utils.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -23,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -40,8 +41,8 @@ public class LoginController {
     private UsuarioService usuarioService;
 
     @PostMapping(value = "/authenticate")
-    public ResponseEntity<UsuarioTransfer> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
-        try {
+    public ResponseEntity<UsuarioTransfer> authenticate(@RequestBody AuthenticationRequest authenticationRequest, HttpSession session) {
+    	try {
             String username = authenticationRequest.getUsername();
             String password = authenticationRequest.getPassword();
 
@@ -52,9 +53,9 @@ public class LoginController {
             try {
                 Usuario usuario = usuarioService.findByUsername(userDetails.getUsername());
                 if (usuario.getSesion()) {
-                    return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. El usuario ya cuenta con una sesión activa", 498), HttpStatus.UNAUTHORIZED);
+                    return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. El usuario ya cuenta con una sesion activa", 498), HttpStatus.UNAUTHORIZED);
                 }
-                if (!usuario.getSesion()) {
+                if (!usuario.getActivo()) {
                     return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. La cuenta del usuario no se encuentra activa", 499), HttpStatus.NOT_ACCEPTABLE);
                 }
             } catch (Exception exi){
@@ -71,15 +72,15 @@ public class LoginController {
                 Usuario usuario = usuarioService.findByUsername(userDetails.getUsername());
                 usuario.setSesion(true);
                 usuarioService.saveUsuario(usuario);
-                return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer(userDetails.getUsername(), roles,
-                    TokenUtil.createToken(userDetails), 200, "Usuario loggeado correctamente"), HttpStatus.OK);
+                session.setAttribute(Constants.USER_SESSION, usuario);
+                return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer(userDetails.getUsername(), roles, TokenUtil.createToken(userDetails), 200, "Usuario loggeado correctamente"), HttpStatus.OK);
             }catch (Exception e){
                 e.printStackTrace();
                 return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Hubo un error a la hora de setear la sesion del usuario", 422), HttpStatus.UNPROCESSABLE_ENTITY);
             }
         } catch (BadCredentialsException bce) {
             bce.printStackTrace();
-            return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("No se encontró el usuario", 404), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("No se encontro el usuario", 404), HttpStatus.NOT_FOUND);
 
         } catch (Exception e) {
             e.printStackTrace();

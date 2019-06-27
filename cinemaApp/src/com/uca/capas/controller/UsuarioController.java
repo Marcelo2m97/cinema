@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uca.capas.dto.UsuarioDTO;
+import com.uca.capas.domain.Usuario;
 import com.uca.capas.service.CiudadService;
 import com.uca.capas.service.EstadoService;
 import com.uca.capas.service.PaisService;
@@ -45,7 +45,7 @@ public class UsuarioController {
 	@RequestMapping("/formAddUsuario")
 	public ModelAndView formUsuario(){
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("usuario", new UsuarioDTO());
+		mav.addObject("usuario", new Usuario());
 		mav.addObject("paises", paisService.findAll());
 		mav.addObject("estados", estadoService.findAll());
 		mav.addObject("ciudades", ciudadService.findAll());
@@ -62,8 +62,8 @@ public class UsuarioController {
 	@RequestMapping("/formEditUsuario")
 	public ModelAndView formUsuario(@RequestParam int id){
 		ModelAndView mav = new ModelAndView();
-		UsuarioDTO dto = usuarioService.findOneDTO(id);
-		mav.addObject("usuario", dto);
+		Usuario u = usuarioService.findOne(id);
+		mav.addObject("usuario", u);
 		mav.addObject("paises", paisService.findAll());
 		mav.addObject("estados", estadoService.findAll());
 		mav.addObject("ciudades", ciudadService.findAll());
@@ -73,22 +73,22 @@ public class UsuarioController {
 			e.printStackTrace();
 		}
 		mav.addObject("formAction", "editUsuario");
-		mav.setViewName("formUsuario");
+		mav.setViewName("formUsuarioEdit");
 		return mav;
 	}
 	
 	@RequestMapping("/addUsuario")
-	public ModelAndView addUsuario(@ModelAttribute UsuarioDTO dto){
+	public ModelAndView addUsuario(@ModelAttribute Usuario u){
 		ModelAndView mav = new ModelAndView();
-		usuarioService.addUsuario(dto);
+		usuarioService.addUsuario(u);
 		mav.setViewName("redirect:/tablaUsuario");
 		return mav;
 	}
 	
 	@RequestMapping("/editUsuario")
-	public ModelAndView editUsuario(@ModelAttribute UsuarioDTO dto){
+	public ModelAndView editUsuario(@ModelAttribute Usuario u){
 		ModelAndView mav = new ModelAndView();
-		usuarioService.editUsuario(dto);
+		usuarioService.editUsuario(u);
 		mav.setViewName("redirect:/tablaUsuario");
 		return mav;
 	}

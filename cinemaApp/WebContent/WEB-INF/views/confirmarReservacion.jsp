@@ -16,7 +16,7 @@
 	<p>Subtotal: $${reservacion.subtotal}</p>
 	<p>Saldo usado: $${reservacion.saldo}</p>
 	<p>Saldo restante: $${reservacion.saldoRestante}</p>
-	<p>Total: $${reservacion.granTotal}</p>
+	<p>Total: $${reservacion.total}</p>
 	
 	<form:form action="${pageContext.request.contextPath}/procesarReservacion" method="POST" modelAttribute="reservacion">
 		<form:input type="hidden" path="id"/>
@@ -24,7 +24,7 @@
 		<form:input type="hidden" path="saldo"/>
 		<form:input type="hidden" path="subtotal"/>
 		<form:input type="hidden" path="saldoRestante"/>
-		<form:input type="hidden" path="granTotal"/>
+		<form:input type="hidden" path="total"/>
 		<form:input type="hidden" path="idExhibicion"/>
 		<input type="submit" value="Finalizar transacci&oacute;n">
 	</form:form>

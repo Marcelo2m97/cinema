@@ -47,9 +47,9 @@
 				<td>${exhibicion.pelicula.nombre} - ${exhibicion.formato.nombre} - ${exhibicion.horario}</td>
 				<td>${exhibicion.activoDelegate}</td>
 				<td>${exhibicion.fechaCreacionDelegate}</td>
-				<td>${exhibicion.usuarioCreacion}</td>
+				<td>${exhibicion.usuarioCreacion.username}</td>
 				<td>${exhibicion.fechaModificacionDelegate}</td>
-				<td>${exhibicion.usuarioModificacion}</td>
+				<td>${exhibicion.usuarioModificacion.username}</td>
 			</tr>
 		</c:forEach>
 	</table>
