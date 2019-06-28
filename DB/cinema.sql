@@ -5,7 +5,7 @@
 -- Dumped from database version 10.8
 -- Dumped by pg_dump version 10.8
 
--- Started on 2019-06-25 22:00:54
+-- Started on 2019-06-27 18:57:03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -27,7 +27,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2921 (class 0 OID 0)
+-- TOC entry 2923 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -69,7 +69,7 @@ CREATE SEQUENCE public.ciudad_c_ciudad_seq
 ALTER TABLE public.ciudad_c_ciudad_seq OWNER TO postgres;
 
 --
--- TOC entry 2922 (class 0 OID 0)
+-- TOC entry 2924 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: ciudad_c_ciudad_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -107,7 +107,7 @@ CREATE SEQUENCE public.estado_c_estado_seq
 ALTER TABLE public.estado_c_estado_seq OWNER TO postgres;
 
 --
--- TOC entry 2923 (class 0 OID 0)
+-- TOC entry 2925 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: estado_c_estado_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -131,7 +131,8 @@ CREATE TABLE public.exhibicion (
     exhibicion_creacion timestamp(4) without time zone,
     exhibicion_modificacion timestamp(4) without time zone,
     exhibicion_activo boolean,
-    c_formato integer
+    c_formato integer,
+    exhibicion_fecha date
 );
 
 
@@ -154,7 +155,7 @@ CREATE SEQUENCE public.exhibicion_c_exhibicion_seq
 ALTER TABLE public.exhibicion_c_exhibicion_seq OWNER TO postgres;
 
 --
--- TOC entry 2924 (class 0 OID 0)
+-- TOC entry 2926 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: exhibicion_c_exhibicion_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -193,7 +194,7 @@ CREATE SEQUENCE public.formato_c_formato_seq
 ALTER TABLE public.formato_c_formato_seq OWNER TO postgres;
 
 --
--- TOC entry 2925 (class 0 OID 0)
+-- TOC entry 2927 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: formato_c_formato_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -231,7 +232,7 @@ CREATE SEQUENCE public.pais_c_pais_seq
 ALTER TABLE public.pais_c_pais_seq OWNER TO postgres;
 
 --
--- TOC entry 2926 (class 0 OID 0)
+-- TOC entry 2928 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: pais_c_pais_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -276,7 +277,7 @@ CREATE SEQUENCE public.pelicula_c_pelicula_seq
 ALTER TABLE public.pelicula_c_pelicula_seq OWNER TO postgres;
 
 --
--- TOC entry 2927 (class 0 OID 0)
+-- TOC entry 2929 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: pelicula_c_pelicula_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -294,9 +295,10 @@ CREATE TABLE public.reservacion (
     c_exhibicion integer,
     reservacion_asientos character varying(5),
     reservacion_saldo money,
-    reservacion_fecha timestamp without time zone,
     reservacion_grantotal money,
-    c_reservacion integer NOT NULL
+    c_reservacion integer NOT NULL,
+    reservacion_subtotal money,
+    reservacion_fecha timestamp without time zone
 );
 
 
@@ -319,7 +321,7 @@ CREATE SEQUENCE public.reservacion_c_reservacion_seq
 ALTER TABLE public.reservacion_c_reservacion_seq OWNER TO postgres;
 
 --
--- TOC entry 2928 (class 0 OID 0)
+-- TOC entry 2930 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: reservacion_c_reservacion_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -357,7 +359,7 @@ CREATE SEQUENCE public.rol_c_rol_seq
 ALTER TABLE public.rol_c_rol_seq OWNER TO postgres;
 
 --
--- TOC entry 2929 (class 0 OID 0)
+-- TOC entry 2931 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: rol_c_rol_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -402,7 +404,7 @@ CREATE SEQUENCE public.sala_c_sala_seq
 ALTER TABLE public.sala_c_sala_seq OWNER TO postgres;
 
 --
--- TOC entry 2930 (class 0 OID 0)
+-- TOC entry 2932 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: sala_c_sala_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -426,10 +428,15 @@ CREATE TABLE public.usuario (
     u_fechanacimiento date,
     u_direccion text,
     u_username character varying(50),
-    u_password character varying(50),
+    u_password character varying(100),
     u_activo boolean,
     u_sesion boolean,
-    u_saldo money DEFAULT 20
+    u_saldo money DEFAULT 20,
+    u_fechacreacion time without time zone,
+    u_fechamodificacion time without time zone,
+    c_usuariocreacion integer,
+    c_usuariomodificacion integer,
+    u_mensaje character varying(50)
 );
 
 
@@ -452,7 +459,7 @@ CREATE SEQUENCE public.usuario_c_usuario_seq
 ALTER TABLE public.usuario_c_usuario_seq OWNER TO postgres;
 
 --
--- TOC entry 2931 (class 0 OID 0)
+-- TOC entry 2933 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: usuario_c_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -541,7 +548,7 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN c_usuario SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 2903 (class 0 OID 16789)
+-- TOC entry 2905 (class 0 OID 16789)
 -- Dependencies: 205
 -- Data for Name: ciudad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -563,7 +570,7 @@ COPY public.ciudad (c_ciudad, ciudad_nombre) FROM stdin;
 
 
 --
--- TOC entry 2901 (class 0 OID 16781)
+-- TOC entry 2903 (class 0 OID 16781)
 -- Dependencies: 203
 -- Data for Name: estado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -579,17 +586,20 @@ COPY public.estado (c_estado, estado_nombre) FROM stdin;
 
 
 --
--- TOC entry 2906 (class 0 OID 16805)
+-- TOC entry 2908 (class 0 OID 16805)
 -- Dependencies: 208
 -- Data for Name: exhibicion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.exhibicion (c_exhibicion, c_usuariocreacion, c_usuariomodificacion, c_sala, c_pelicula, exhibicion_horario, exhibicion_asientosdisponibles, exhibicion_creacion, exhibicion_modificacion, exhibicion_activo, c_formato) FROM stdin;
+COPY public.exhibicion (c_exhibicion, c_usuariocreacion, c_usuariomodificacion, c_sala, c_pelicula, exhibicion_horario, exhibicion_asientosdisponibles, exhibicion_creacion, exhibicion_modificacion, exhibicion_activo, c_formato, exhibicion_fecha) FROM stdin;
+10	18	\N	5	10	03:04	45	2019-06-27 15:57:39.068	\N	f	2	0004-06-05
+9	\N	\N	5	9	15:09	31	2019-06-27 15:55:19.595	\N	f	3	0001-04-06
+8	\N	18	5	9	08:08	\N	\N	2019-06-27 17:59:28.291	f	1	0009-06-08
 \.
 
 
 --
--- TOC entry 2912 (class 0 OID 16945)
+-- TOC entry 2914 (class 0 OID 16945)
 -- Dependencies: 214
 -- Data for Name: formato; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -603,7 +613,7 @@ COPY public.formato (c_formato, formato_nombre, formato_precio) FROM stdin;
 
 
 --
--- TOC entry 2899 (class 0 OID 16773)
+-- TOC entry 2901 (class 0 OID 16773)
 -- Dependencies: 201
 -- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -616,27 +626,36 @@ COPY public.pais (c_pais, pais_nombre) FROM stdin;
 
 
 --
--- TOC entry 2910 (class 0 OID 16824)
+-- TOC entry 2912 (class 0 OID 16824)
 -- Dependencies: 212
 -- Data for Name: pelicula; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.pelicula (c_pelicula, c_usuariocreacion, c_usuariomodificacion, pelicula_nombre, pelicula_descripcion, pelicula_activo, pelicula_imagen, pelicula_creacion, pelicula_ultimamodificacion) FROM stdin;
+13	18	18	Pelicula2		t		2019-06-27 18:16:18.678	2019-06-27 18:16:40.846
+15	18	\N	Pelicula2		f		2019-06-27 18:17:00.116	\N
+16	18	\N	Pelicula4		f		2019-06-27 18:17:02.607	\N
+11	18	18	Pelicula3	Descripcion3	t	blackpanther.jpg	2019-06-27 18:13:28.088	2019-06-27 18:30:46.113
+14	18	18	Pelicula4		f		2019-06-27 18:16:20.066	2019-06-27 18:30:48.8
+10	18	18	Otra pelicula	Descripcion2	f	lordoftherings.jpg	2019-06-27 15:57:24.249	2019-06-27 18:31:08.685
+9	\N	18	Star Wars	Descripcion1	t	starwars.jpg	2019-06-27 12:30:54.223	2019-06-27 18:32:08.714
+12	18	18	Pelicula1		t		2019-06-27 18:16:17.109	2019-06-27 18:32:11.159
 \.
 
 
 --
--- TOC entry 2904 (class 0 OID 16797)
+-- TOC entry 2906 (class 0 OID 16797)
 -- Dependencies: 206
 -- Data for Name: reservacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.reservacion (c_usuario, c_exhibicion, reservacion_asientos, reservacion_saldo, reservacion_fecha, reservacion_grantotal, c_reservacion) FROM stdin;
+COPY public.reservacion (c_usuario, c_exhibicion, reservacion_asientos, reservacion_saldo, reservacion_grantotal, c_reservacion, reservacion_subtotal, reservacion_fecha) FROM stdin;
+18	9	5	$3.00	$17.00	11	$20.00	2019-06-27 16:33:41.724
 \.
 
 
 --
--- TOC entry 2897 (class 0 OID 16765)
+-- TOC entry 2899 (class 0 OID 16765)
 -- Dependencies: 199
 -- Data for Name: rol; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -648,27 +667,32 @@ COPY public.rol (c_rol, rol_nombre) FROM stdin;
 
 
 --
--- TOC entry 2908 (class 0 OID 16813)
+-- TOC entry 2910 (class 0 OID 16813)
 -- Dependencies: 210
 -- Data for Name: sala; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.sala (c_sala, c_usuariocreacion, c_usuariomodificacion, sala_numero, sala_descripcion, sala_activo, sala_capacidad, sala_creacion, sala_ultimamodificacion) FROM stdin;
+5	17	18	1	Descripcion1	f	50	2019-06-27 15:46:51.626	2019-06-27 18:32:15.935
+6	17	18	2	Descripcion2	t	60	2019-06-27 15:46:57.526	2019-06-27 18:32:17.562
 \.
 
 
 --
--- TOC entry 2895 (class 0 OID 16753)
+-- TOC entry 2897 (class 0 OID 16753)
 -- Dependencies: 197
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuario (c_usuario, c_pais, c_estado, c_ciudad, c_rol, u_nombre, u_apellido, u_fechanacimiento, u_direccion, u_username, u_password, u_activo, u_sesion, u_saldo) FROM stdin;
+COPY public.usuario (c_usuario, c_pais, c_estado, c_ciudad, c_rol, u_nombre, u_apellido, u_fechanacimiento, u_direccion, u_username, u_password, u_activo, u_sesion, u_saldo, u_fechacreacion, u_fechamodificacion, c_usuariocreacion, c_usuariomodificacion, u_mensaje) FROM stdin;
+19	2	2	2	2	Nombree	Apellidoo	0005-06-02	Dir	hola	$2a$10$bg3EVL1rgkA4JZwZ7rERIeBfuJja3Vi/4YjCgNInOk54AZ2vygsVC	t	f	$40.00	14:29:26.873	18:36:05.297	\N	18	\N
+17	1	1	1	1	1	1	\N	1	admin	$2a$10$FD975AFsy0Nbo2Gf6C3PLei/AFl0dkwvzdKzjWbD6py.poc6mnUM2	t	f	$1.00	\N	18:40:08.976	\N	\N	
+18	2	3	4	2	1	1	0003-03-01	1	cliente	$2a$10$A9.4TBXin4eSsm/SmhG7huALkPyW0UBr4ginGWKkR9YNjhGFgh7ma	f	f	$1.00	\N	18:45:33.777	\N	\N	
 \.
 
 
 --
--- TOC entry 2932 (class 0 OID 0)
+-- TOC entry 2934 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: ciudad_c_ciudad_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -677,7 +701,7 @@ SELECT pg_catalog.setval('public.ciudad_c_ciudad_seq', 1, false);
 
 
 --
--- TOC entry 2933 (class 0 OID 0)
+-- TOC entry 2935 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: estado_c_estado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -686,16 +710,16 @@ SELECT pg_catalog.setval('public.estado_c_estado_seq', 1, false);
 
 
 --
--- TOC entry 2934 (class 0 OID 0)
+-- TOC entry 2936 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: exhibicion_c_exhibicion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.exhibicion_c_exhibicion_seq', 5, true);
+SELECT pg_catalog.setval('public.exhibicion_c_exhibicion_seq', 10, true);
 
 
 --
--- TOC entry 2935 (class 0 OID 0)
+-- TOC entry 2937 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: formato_c_formato_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -704,7 +728,7 @@ SELECT pg_catalog.setval('public.formato_c_formato_seq', 4, true);
 
 
 --
--- TOC entry 2936 (class 0 OID 0)
+-- TOC entry 2938 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: pais_c_pais_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -713,25 +737,25 @@ SELECT pg_catalog.setval('public.pais_c_pais_seq', 1, false);
 
 
 --
--- TOC entry 2937 (class 0 OID 0)
+-- TOC entry 2939 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: pelicula_c_pelicula_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.pelicula_c_pelicula_seq', 5, true);
+SELECT pg_catalog.setval('public.pelicula_c_pelicula_seq', 16, true);
 
 
 --
--- TOC entry 2938 (class 0 OID 0)
+-- TOC entry 2940 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: reservacion_c_reservacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.reservacion_c_reservacion_seq', 4, true);
+SELECT pg_catalog.setval('public.reservacion_c_reservacion_seq', 11, true);
 
 
 --
--- TOC entry 2939 (class 0 OID 0)
+-- TOC entry 2941 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: rol_c_rol_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -740,21 +764,21 @@ SELECT pg_catalog.setval('public.rol_c_rol_seq', 1, false);
 
 
 --
--- TOC entry 2940 (class 0 OID 0)
+-- TOC entry 2942 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: sala_c_sala_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sala_c_sala_seq', 2, true);
+SELECT pg_catalog.setval('public.sala_c_sala_seq', 6, true);
 
 
 --
--- TOC entry 2941 (class 0 OID 0)
+-- TOC entry 2943 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: usuario_c_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuario_c_usuario_seq', 1, false);
+SELECT pg_catalog.setval('public.usuario_c_usuario_seq', 19, true);
 
 
 --
@@ -848,7 +872,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 2768 (class 2606 OID 16951)
+-- TOC entry 2770 (class 2606 OID 16951)
 -- Name: exhibicion exhibicion_c_formato_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -857,7 +881,7 @@ ALTER TABLE ONLY public.exhibicion
 
 
 --
--- TOC entry 2765 (class 2606 OID 16868)
+-- TOC entry 2767 (class 2606 OID 16868)
 -- Name: exhibicion exhibicion_c_pelicula_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -866,7 +890,7 @@ ALTER TABLE ONLY public.exhibicion
 
 
 --
--- TOC entry 2764 (class 2606 OID 16863)
+-- TOC entry 2766 (class 2606 OID 16863)
 -- Name: exhibicion exhibicion_c_sala_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -875,7 +899,7 @@ ALTER TABLE ONLY public.exhibicion
 
 
 --
--- TOC entry 2766 (class 2606 OID 16930)
+-- TOC entry 2768 (class 2606 OID 16930)
 -- Name: exhibicion exhibicion_c_usuariocreacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -884,7 +908,7 @@ ALTER TABLE ONLY public.exhibicion
 
 
 --
--- TOC entry 2767 (class 2606 OID 16935)
+-- TOC entry 2769 (class 2606 OID 16935)
 -- Name: exhibicion exhibicion_c_usuariomodificacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -893,7 +917,7 @@ ALTER TABLE ONLY public.exhibicion
 
 
 --
--- TOC entry 2771 (class 2606 OID 16883)
+-- TOC entry 2773 (class 2606 OID 16883)
 -- Name: pelicula pelicula_c_usuariocreacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -902,7 +926,7 @@ ALTER TABLE ONLY public.pelicula
 
 
 --
--- TOC entry 2772 (class 2606 OID 16888)
+-- TOC entry 2774 (class 2606 OID 16888)
 -- Name: pelicula pelicula_c_usuariomodificacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -911,7 +935,7 @@ ALTER TABLE ONLY public.pelicula
 
 
 --
--- TOC entry 2763 (class 2606 OID 16858)
+-- TOC entry 2765 (class 2606 OID 16858)
 -- Name: reservacion reservacion_c_exhibicion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -920,7 +944,7 @@ ALTER TABLE ONLY public.reservacion
 
 
 --
--- TOC entry 2762 (class 2606 OID 16853)
+-- TOC entry 2764 (class 2606 OID 16853)
 -- Name: reservacion reservacion_c_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -929,7 +953,7 @@ ALTER TABLE ONLY public.reservacion
 
 
 --
--- TOC entry 2769 (class 2606 OID 16873)
+-- TOC entry 2771 (class 2606 OID 16873)
 -- Name: sala sala_c_usuariocreacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -938,7 +962,7 @@ ALTER TABLE ONLY public.sala
 
 
 --
--- TOC entry 2770 (class 2606 OID 16878)
+-- TOC entry 2772 (class 2606 OID 16878)
 -- Name: sala sala_c_usuariomodificacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -982,7 +1006,25 @@ ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT usuario_c_rol_fkey FOREIGN KEY (c_rol) REFERENCES public.rol(c_rol);
 
 
--- Completed on 2019-06-25 22:01:00
+--
+-- TOC entry 2762 (class 2606 OID 16964)
+-- Name: usuario usuario_c_usuariocreacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_c_usuariocreacion_fkey FOREIGN KEY (c_usuariocreacion) REFERENCES public.usuario(c_usuario);
+
+
+--
+-- TOC entry 2763 (class 2606 OID 16969)
+-- Name: usuario usuario_c_usuariomodificacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_c_usuariomodificacion_fkey FOREIGN KEY (c_usuariomodificacion) REFERENCES public.usuario(c_usuario);
+
+
+-- Completed on 2019-06-27 18:57:08
 
 --
 -- PostgreSQL database dump complete
