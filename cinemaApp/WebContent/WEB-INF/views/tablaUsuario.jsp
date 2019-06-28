@@ -48,18 +48,14 @@
 					</form:form>
 				</td>
 				<td>
-					<form:form id="form" action="${pageContext.request.contextPath}/activarUsuario" onsubmit="return prompt();">
-						<input type="hidden" name="id" value="${usuario.id}">
-						<input type="hidden" id="motivo" name="motivo">
 						<c:choose>
 							<c:when test="${usuario.activo == true}">
-								<input class="btn btn-outline-primary" type="submit" value="Inactivar">
+								<button class="btn btn-outline-primary" onclick="activar(${usuario.id},${usuario.activo})">Inactivar</button>
 							</c:when>
 							<c:otherwise>
-								<input class="btn btn-outline-primary" type="submit" value="Activar">
+								<button class="btn btn-outline-primary" onclick="activar(${usuario.id},${usuario.activo})">Activar</button>
 							</c:otherwise>
 						</c:choose>
-					</form:form>
 				</td>
 				<td>${usuario.id}</td>
 				<td>${usuario.username}</td>
@@ -98,6 +94,29 @@
                 alert("Error");
             }
         });
+	}
+	
+	activar = function(id,active){
+		var message;
+		if (active){
+			message = prompt("Motivo de inactivacion: ")
+		}else{
+			message = confirm('Confirmar');
+		}
+		if (!message){
+			return;
+		}
+		$.ajax({
+			 type : 'POST',
+	            url : '${pageContext.request.contextPath}/activarUsuario',
+	            data: {id:id,motivo:message},
+	            success : function(response) {
+	            	window.location.href = '${pageContext.request.contextPath}/tablaUsuario';
+	            },
+	            error : function() {
+	                alert("Error");
+	            }
+		});
 	}
 	</script>
 </body>

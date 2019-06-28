@@ -159,11 +159,9 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/activarUsuario")
-	public ModelAndView activarUsuario(@RequestParam int id, String motivo){
-		ModelAndView mav = new ModelAndView();
+	public @ResponseBody boolean activarUsuario(@RequestParam int id, String motivo){
 		usuarioService.activarUsuario(id, motivo);
-		mav.setViewName("redirect:/tablaUsuario");
-		return mav;
+		return true;
 	}
 	
 	@RequestMapping(value = "/verUsuario", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
