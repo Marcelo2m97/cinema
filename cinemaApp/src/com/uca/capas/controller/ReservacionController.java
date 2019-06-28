@@ -62,8 +62,14 @@ public class ReservacionController {
 		}
 		mav.addObject("exhibicion",e);
 		mav.addObject("reservacion", r);
+		mav.addObject("errorMsg","");
 		mav.setViewName("confirmarReservacion");
 		return mav;
+	}
+	
+	@RequestMapping(value = "/validarTransaccion", method = RequestMethod.POST)
+	public @ResponseBody String validarTransaccion(int saldo, int asientos, int idExhibicion) {
+		return reservacionService.validarReservacion(saldo,asientos,idExhibicion);
 	}
 	
 	@RequestMapping("/procesarReservacion")
@@ -73,6 +79,17 @@ public class ReservacionController {
 			reservacionService.addReservacion(r);
 		} catch (Exception e) {
 			e.printStackTrace();
+			Exhibicion ex = exhibicionService.findOne(r.getIdExhibicion());
+			try {
+				r = reservacionService.procesarReservacion(r);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			mav.addObject("exhibicion",ex);
+			mav.addObject("reservacion", r);
+			mav.addObject("errorMsg",e.getMessage());
+			mav.setViewName("confirmarReservacion");
+			return mav;
 		}
 		mav.setViewName("redirect:/peliculas");
 		return mav;

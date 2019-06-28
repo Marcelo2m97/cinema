@@ -37,15 +37,15 @@ public class ReservacionServiceImpl implements ReservacionService{
 	@Override
 	public Reservacion procesarReservacion(Reservacion r) throws Exception {
 		Exhibicion e = exhibicionRepository.findOne(r.getIdExhibicion());
-		Usuario u = (Usuario)session.getAttribute(Constants.USER_SESSION);
+		Usuario u = usuarioRepository.findOne(((Usuario)session.getAttribute(Constants.USER_SESSION)).getId());
+		if (r.getSaldo() == null) {
+			r.setSaldo(BigDecimal.ZERO);
+		}
 		if (r.getSaldo().compareTo(u.getSaldo()) == 1) {
 			throw new Exception("No tiene suficiente saldo");
 		}
 		if (e.getAsientos() < r.getAsientos()) {
 			throw new Exception("No hay suficientes asientos");
-		}
-		if (r.getSaldo() == null) {
-			r.setSaldo(BigDecimal.ZERO);
 		}
 		r.setSubtotal(e.getFormato().getPrecio().multiply(BigDecimal.valueOf(r.getAsientos())));
 		BigDecimal saldoSobrante = BigDecimal.ZERO;
@@ -64,7 +64,7 @@ public class ReservacionServiceImpl implements ReservacionService{
 	@Transactional(rollbackOn=Exception.class)
 	public void addReservacion(Reservacion r) throws Exception {
 		Exhibicion e = exhibicionRepository.findOne(r.getIdExhibicion());
-		Usuario u = (Usuario)session.getAttribute(Constants.USER_SESSION);
+		Usuario u = usuarioRepository.findOne(((Usuario)session.getAttribute(Constants.USER_SESSION)).getId());
 		if (e.getAsientos() < r.getAsientos()) {
 			throw new Exception("No hay suficientes asientos");
 		}
@@ -89,5 +89,24 @@ public class ReservacionServiceImpl implements ReservacionService{
 	@Override
 	public Reservacion findOne(int id) {
 		return reservacionRepository.findOne(id);
+	}
+
+	@Override
+	public String validarReservacion(int saldo, int asientos, int idExhibicion) {
+		Exhibicion e = exhibicionRepository.findOne(idExhibicion);
+		Usuario u = usuarioRepository.findOne(((Usuario)session.getAttribute(Constants.USER_SESSION)).getId());
+		if (saldo < 0) {
+			return "Saldo debe ser mayor o igual a 0";
+		}
+		if (u.getSaldo().compareTo(BigDecimal.valueOf(saldo)) == -1) {
+			return "No tiene suficiente saldo";
+		}
+		if (asientos <= 0 || asientos > 15) {
+			return "Asientos debe estar entre 0 y 15";
+		}
+		if (e.getAsientos() < asientos) {
+			return "No hay suficientes asientos";
+		}
+		return "OK";
 	}
 }

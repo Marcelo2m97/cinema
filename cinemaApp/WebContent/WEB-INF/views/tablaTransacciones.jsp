@@ -17,8 +17,8 @@
 <body>
 	<h1>Transaccciones</h1>
 	<form:form action="${pageContext.request.contextPath}/buscarTransacciones">
-		<label>Desde: </label><input type="date" name="startDate">
-		<label>Hasta: </label><input type="date" name="endDate">
+		<label>Desde: </label><input type="date" name="startDate" required>
+		<label>Hasta: </label><input type="date" name="endDate" required>
 		<input class="btn btn-primary" type="submit" value="Buscar">
 	</form:form>
 	<table class="table">

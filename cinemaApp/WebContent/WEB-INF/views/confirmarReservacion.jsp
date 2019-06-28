@@ -23,6 +23,8 @@
 	<p>Saldo usado: $${reservacion.saldo}</p>
 	<p>Saldo restante: $${reservacion.saldoRestante}</p>
 	<p>Total: $${reservacion.total}</p>
+	<br>
+	<p style="color:#E81505;">${errorMsg}</p>
 	
 	<form:form action="${pageContext.request.contextPath}/procesarReservacion" method="POST" modelAttribute="reservacion">
 		<form:input type="hidden" path="id"/>

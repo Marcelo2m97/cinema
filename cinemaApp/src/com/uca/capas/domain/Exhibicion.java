@@ -39,8 +39,6 @@ public class Exhibicion {
 	@Column(name="exhibicion_horario")
 	private String horario;
 	
-	@NotNull
-	@Min(value=0)
 	@Column(name="exhibicion_asientosdisponibles")
 	private Integer asientos;
 	
@@ -73,15 +71,12 @@ public class Exhibicion {
 	@JoinColumn(name="c_formato")
 	private Formato formato;
 	
-	@NotNull
 	@Transient
 	private Integer idSala;
 	
-	@NotNull
 	@Transient
 	private Integer idPelicula;
 	
-	@NotNull
 	@Transient
 	private Integer idFormato;
 

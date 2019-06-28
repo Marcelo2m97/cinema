@@ -14,4 +14,6 @@ public interface ReservacionService {
 	public void addReservacion(Reservacion r) throws Exception;
 	
 	public List<Reservacion> findByUserAndDate(int userId, Date startDate, Date endDate);
+	
+	public String validarReservacion(int saldo, int asientos, int idExhibicion);
 }
