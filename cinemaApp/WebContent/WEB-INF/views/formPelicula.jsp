@@ -7,6 +7,10 @@
 <meta charset="ISO-8859-1">
 <title>Pel&iacute;cula</title>
 <script src="resources/js/jquery-3.3.0.js"></script>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
 	<h1>Pel&iacute;cula</h1>
@@ -22,14 +26,14 @@
 		<img id="image" src="resources/${pelicula.imagen}" width="150px" height="225px"><br>
 		
 		<form:input type="hidden" name="id" path="id"/>
-		<input type="submit" value="Guardar">
+		<input class="btn btn-primary" 	type="submit" value="Guardar">
 	</form:form>
 	
 	<h2>Subir imagen</h2>
 	<form method="POST" onsubmit="return false;" enctype="multipart/form-data">
 		<label>File: </label>
 		<input type="file" id="file"><br> 
-		<button onclick="uploadImage();">Upload</button>
+		<button class="btn btn-primary" onclick="uploadImage();">Upload</button>
 	</form>
 	
 	<script>

@@ -6,19 +6,24 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pel&iacute;cula</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
 	<h1>${pelicula.nombre}</h1>
 	<p>${pelicula.descripcion}</p>
 	<img src="resources/${pelicula.imagen}" width="150px" height="225px">
 	
-	<h1>Funciones</h1>
+	<h3>Funciones</h3>
 	<form:form action="${pageContext.request.contextPath}/formAddExhibicion">
 		<input type="hidden" name="idPelicula" value="${pelicula.id}">
-		<input type="submit" value="Nueva Funci&oacute;n">
+		<input class="btn btn-primary" type="submit" value="Nueva Funci&oacute;n">
 	</form:form>
 	
-	<table>
+	<table class="table">
+		<thead class="thead">
 		<tr>
 			<th>Acci&oacute;n</th>
 			<th>C&oacute;digo</th>
@@ -28,13 +33,14 @@
 			<th>Fecha Modificaci&oacute;n</th>
 			<th>Usuario Modificaci&oacute;n	</th>
 		</tr>
+		</thead>
 		<c:forEach items="${exhibiciones}" var="exhibicion">
 			<tr>
 				<td>
 					<form:form action="${pageContext.request.contextPath}/formEditExhibicion">
 						<input type="hidden" name="idPelicula" value="${pelicula.id}">
 						<input type="hidden" name="id" value="${exhibicion.id}">
-						<input type="submit" value="Editar">
+						<input class="btn btn-outline-primary" type="submit" value="Editar">
 					</form:form>
 				</td>
 				<td>${exhibicion.id}</td>

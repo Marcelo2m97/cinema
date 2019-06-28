@@ -6,9 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Registrarse</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
-	<h1>Usuario</h1>
+	<h1>Registrarse</h1>
 	<form:form action="${pageContext.request.contextPath}/addUsuarioRegister" method="POST" modelAttribute="usuario">
 		<label>Username</label>
 		<form:input type="text" name="username" path="username"/><br>
@@ -44,7 +48,7 @@
 		</form:select><br>
 		
 		<form:input type="hidden" name="id" path="id"/>
-		<input type="submit" value="Guardar">
+		<input class="btn btn-primary" type="submit" value="Guardar">
 	</form:form>
 </body>
 </html>

@@ -6,6 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Transacciones</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 <script src="resources/js/sweetalert2.min.js"></script>
 <link rel="stylesheet" href="resources/css/sweetalert2.min.css">
 <script src="resources/js/jquery-3.3.0.js"></script>
@@ -13,20 +17,22 @@
 <body>
 	<h1>Transaccciones</h1>
 	<form:form action="${pageContext.request.contextPath}/buscarTransacciones">
-		<input type="date" name="startDate">
-		<input type="date" name="endDate">
-		<input type="submit" value="Buscar">
+		<label>Desde: </label><input type="date" name="startDate">
+		<label>Hasta: </label><input type="date" name="endDate">
+		<input class="btn btn-primary" type="submit" value="Buscar">
 	</form:form>
-	<table>
+	<table class="table">
+		<thead class="thead">
 		<tr>
 			<th>Acci&oacute;n</th>
 			<th>N&uacute;mero de transacci&oacute;n</th>
 			<th>Fecha transacci&oacute;n</th>
 		</tr>
+		</thead>
 		<c:forEach items="${reservaciones}" var="reservacion">
 			<tr>
 				<td>
-					<button onclick="verReservacion(${reservacion.id});">Ver</button>
+					<button class="btn btn-outline-primary" onclick="verReservacion(${reservacion.id});">Ver</button>
 				</td>
 				<td>${reservacion.idDelegate}</td>
 				<td>${reservacion.fechaDelegate}</td>

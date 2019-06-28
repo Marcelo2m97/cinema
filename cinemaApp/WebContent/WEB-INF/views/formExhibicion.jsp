@@ -6,6 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Exhibici&oacute;n</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
 	<h1>Exhibici&oacute;n</h1>
@@ -28,7 +32,7 @@
 		
 		<form:input type="hidden" name="idPelicula" path="idPelicula" value="${pelicula}"/>
 		<form:input type="hidden" name="id" path="id"/>
-		<input type="submit" value="Guardar">
+		<input class="btn btn-primary" type="submit" value="Guardar">
 	</form:form>
 </body>
 </html>

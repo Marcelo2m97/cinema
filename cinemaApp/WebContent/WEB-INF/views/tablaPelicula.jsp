@@ -6,6 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pel&iacute;culas</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 <script src="resources/js/sweetalert2.min.js"></script>
 <link rel="stylesheet" href="resources/css/sweetalert2.min.css">
 <script src="resources/js/jquery-3.3.0.js"></script>
@@ -13,12 +17,13 @@
 <body>
 	<h1>Pel&iacute;culas</h1>
 	<form:form action="${pageContext.request.contextPath}/formAddPelicula">
-		<input type="submit" value="Nueva Pel&iacute;cula">
+		<input class="btn btn-primary" type="submit" value="Nueva Pel&iacute;cula">
 	</form:form>
 	
-	<table>
+	<table class="table">
+		<thead class="thead">
 		<tr>
-			<th>Acci&oacute;n</th>
+			<th colspan="3">Acci&oacute;n</th>
 			<th>C&oacute;digo</th>
 			<th>Descripci&oacute;n</th>
 			<th>Estado</th>
@@ -27,25 +32,30 @@
 			<th>Fecha Modificaci&oacute;n</th>
 			<th>Usuario Modificaci&oacute;n	</th>
 		</tr>
+		</thead>
 		<c:forEach items="${peliculas}" var="pelicula">
 			<tr>
 				<td>
 					<form:form action="${pageContext.request.contextPath}/perfilPelicula">
 						<input type="hidden" name="id" value="${pelicula.id}">
-						<input type="submit" value="Ver">
+						<input class="btn btn-outline-primary" type="submit" value="Ver">
 					</form:form>
+				</td>
+				<td>
 					<form:form action="${pageContext.request.contextPath}/formEditPelicula">
 						<input type="hidden" name="id" value="${pelicula.id}">
-						<input type="submit" value="Editar">
+						<input class="btn btn-outline-primary" type="submit" value="Editar">
 					</form:form>
+				</td>
+				<td>
 					<form:form id="form" action="${pageContext.request.contextPath}/activarPelicula">
 						<input type="hidden" name="id" value="${pelicula.id}">
 						<c:choose>
 							<c:when test="${pelicula.activo == true}">
-								<input type="submit" value="Inactivar">
+								<input class="btn btn-outline-primary" type="submit" value="Inactivar">
 							</c:when>
 							<c:otherwise>
-								<input type="submit" value="Activar">
+								<input class="btn btn-outline-primary" type="submit" value="Activar">
 							</c:otherwise>
 						</c:choose>
 					</form:form>

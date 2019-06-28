@@ -6,6 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Reservaci&oacute;n</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
 	<h1>${pelicula.nombre}</h1>
@@ -29,7 +33,7 @@
 		<input type="checkbox" onclick="disable();"><label>Usar saldo</label>
 		<form:input id="saldo" type="text" disabled="true" name="saldo" path="saldo" value="0"/><br>
 		
-		<input type="submit" value="Reservar">
+		<input class="btn btn-primary" type="submit" value="Reservar">
 	</form:form>
 	
 	<script>

@@ -98,7 +98,7 @@
 <div class="container">
     <br/><br/>
     <form action="${pageContext.request.contextPath}/login/authenticate" method="POST" class="form-signin" style="width:30%;margin:auto">
-        <h3 class="form-signin-heading">LOGIN PAGE</h3>
+        <h3 class="form-signin-heading">LOGIN</h3>
 
         <br/>
         <input type="text" id="username" name="username" class="form-control" /> <br/>
@@ -107,10 +107,12 @@
         <button class="btn btn-primary " name="Submit" value="Login" onclick="login()" type="button"> Log in </button>
     </form>
 </div>
+<center>
 <div class="container">
     <form action="${pageContext.request.contextPath}/register">
-		<input type="submit" value="Crear cuenta">
+		<input class="btn btn-primary" type="submit" value="Crear cuenta">
 	</form>
 </div>
+</center>
 </body>
 </html>

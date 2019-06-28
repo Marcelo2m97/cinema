@@ -6,29 +6,33 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>CHEPITOS CINEMA</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
 	<h1>CHEPITOS CINEMA</h1>
+	<form:form action="${pageContext.request.contextPath}/transacciones">
+		<input class="btn btn-primary" type="submit" value="Ver Transacciones">
+	</form:form>
+	<form:form action="${pageContext.request.contextPath}/logout/logout">
+		<input class="btn btn-primary" type="submit" value="Logout">
+	</form:form>
 	<h2>Pel&iacute;culas</h2>
-	<table>
+	<table class="table">
 		<c:forEach items="${peliculas}" var="pelicula">
 			<tr>
-				<td><img src="resources/${pelicula.imagen}" width="150px" height="225px"></td>
-				<td>${pelicula.nombre}</td>
 				<td>
-				<form action="${pageContext.request.contextPath}/reservacion">
+					<img src="resources/${pelicula.imagen}" width="150px" height="225px">
+					<h3>${pelicula.nombre}</h3>
+					<form action="${pageContext.request.contextPath}/reservacion">
 						<input type="hidden" name="id" value="${pelicula.id}">
-						<input type="submit" value="Ver">
+						<input class="btn btn-primary" type="submit" value="Ver">
 					</form>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<form:form action="${pageContext.request.contextPath}/transacciones">
-		<input type="submit" value="Ver Transacciones">
-	</form:form>
-	<form:form action="${pageContext.request.contextPath}/logout/logout">
-		<input type="submit" value="Logout">
-	</form:form>
 </body>
 </html>

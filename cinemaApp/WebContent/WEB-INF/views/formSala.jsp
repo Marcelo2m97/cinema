@@ -6,6 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Sala</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
 	<h1>Sala</h1>
@@ -20,7 +24,7 @@
 		<form:input type="number" name="capacidad" path="capacidad"/><br>
 		
 		<form:input type="hidden" name="id" path="id"/>
-		<input type="submit" value="Guardar">
+		<input class="btn btn-primary" type="submit" value="Guardar">
 	</form:form>
 </body>
 </html>

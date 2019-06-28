@@ -6,6 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Reservaci&oacute;n</title>
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+ <!-- Material Design Bootstrap -->
+    <link href="resources/css/mdb.css" rel="stylesheet">
+    <link href="resources/js/mdb.js" rel="stylesheet">
 </head>
 <body>
 	<h1>Confirmar Reservaci&oacute;n</h1>
@@ -28,7 +32,7 @@
 		<form:input type="hidden" path="saldoRestante"/>
 		<form:input type="hidden" path="total"/>
 		<form:input type="hidden" path="idExhibicion"/>
-		<input type="submit" value="Finalizar transacci&oacute;n">
+		<input class="btn btn-primary" type="submit" value="Finalizar transacci&oacute;n">
 	</form:form>
 </body>
 </html>
