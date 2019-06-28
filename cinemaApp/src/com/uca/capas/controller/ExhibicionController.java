@@ -1,7 +1,10 @@
 package com.uca.capas.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,24 +66,42 @@ public class ExhibicionController {
 	}
 	
 	@RequestMapping("/addExhibicion")
-	public ModelAndView addExhibicion(@ModelAttribute Exhibicion e){
+	public ModelAndView addExhibicion(@Valid @ModelAttribute Exhibicion e, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		exhibicionService.addExhibicion(e);
-		Pelicula p = peliculaService.findOne(e.getIdPelicula());
-		mav.addObject("pelicula", p);
-		mav.addObject("exhibiciones",p.getExhibiciones());
-		mav.setViewName("perfilPelicula");
+		if (result.hasErrors()) {
+			mav.addObject("exhibicion", e);
+			mav.addObject("salas", salaService.findActive());
+			mav.addObject("pelicula", e.getIdPelicula());
+			mav.addObject("formatos", formatoService.findAll());
+			mav.addObject("formAction", "addExhibicion");
+			mav.setViewName("formExhibicion");
+		}else {
+			exhibicionService.addExhibicion(e);
+			Pelicula p = peliculaService.findOne(e.getIdPelicula());
+			mav.addObject("pelicula", p);
+			mav.addObject("exhibiciones",p.getExhibiciones());
+			mav.setViewName("perfilPelicula");
+		}
 		return mav;
 	}
 	
 	@RequestMapping("/editExhibicion")
-	public ModelAndView editExhibicion(@ModelAttribute Exhibicion e){
+	public ModelAndView editExhibicion(@Valid @ModelAttribute Exhibicion e, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		exhibicionService.editExhibicion(e);
-		Pelicula p = peliculaService.findOne(e.getIdPelicula());
-		mav.addObject("pelicula", p);
-		mav.addObject("exhibiciones",p.getExhibiciones());
-		mav.setViewName("perfilPelicula");
+		if (result.hasErrors()) {
+			mav.addObject("exhibicion", e);
+			mav.addObject("salas", salaService.findActive());
+			mav.addObject("pelicula", e.getIdPelicula());
+			mav.addObject("formatos", formatoService.findAll());
+			mav.addObject("formAction", "editExhibicion");
+			mav.setViewName("formExhibicion");
+		}else {
+			exhibicionService.editExhibicion(e);
+			Pelicula p = peliculaService.findOne(e.getIdPelicula());
+			mav.addObject("pelicula", p);
+			mav.addObject("exhibiciones",p.getExhibiciones());
+			mav.setViewName("perfilPelicula");
+		}
 		return mav;
 	}
 	

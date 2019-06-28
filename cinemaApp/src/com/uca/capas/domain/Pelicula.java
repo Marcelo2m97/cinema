@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.uca.capas.utils.EntityUtils;
 
@@ -27,12 +29,17 @@ public class Pelicula {
 	@Column(name="c_pelicula")
 	private Integer id;
 	
+	@NotEmpty
+	@Size(min=0, max=100)
 	@Column(name="pelicula_nombre")
 	private String nombre;
 	
+	@NotEmpty
+	@Size(min=0, max=100)
 	@Column(name="pelicula_descripcion")
 	private String descripcion;
 	
+	@NotEmpty
 	@Column(name="pelicula_imagen")
 	private String imagen;
 	

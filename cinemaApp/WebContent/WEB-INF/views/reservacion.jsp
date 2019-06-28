@@ -10,6 +10,9 @@
  <!-- Material Design Bootstrap -->
     <link href="resources/css/mdb.css" rel="stylesheet">
     <link href="resources/js/mdb.js" rel="stylesheet">
+    <script src="resources/js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="resources/css/sweetalert2.min.css">
+<script src="resources/js/jquery-3.3.0.js"></script>
 </head>
 <body>
 	<h1>${pelicula.nombre}</h1>
@@ -24,6 +27,7 @@
 
 		<label>Asientos</label>
 		<form:input type="number" name="asientos" path="asientos"/><br>
+		<form:errors path="asientos" cssStyle="color:#E81505;"></form:errors><br>
 		<label>Disponibles</label>
 		<label id="disponibles"></label><br>
 		
@@ -32,6 +36,7 @@
 		
 		<input type="checkbox" onclick="disable();"><label>Usar saldo</label>
 		<form:input id="saldo" type="text" disabled="true" name="saldo" path="saldo" value="0"/><br>
+		<form:errors path="saldo" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<input class="btn btn-primary" type="submit" value="Reservar">
 	</form:form>

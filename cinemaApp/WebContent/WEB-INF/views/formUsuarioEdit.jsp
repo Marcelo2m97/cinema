@@ -16,18 +16,23 @@
 	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="usuario">
 		<label>Nombre</label>
 		<form:input type="text" name="nombre" path="nombre"/><br>
+		<form:errors path="nombre" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Apellido</label>
 		<form:input type="text" name="apellido" path="apellido"/><br>
+		<form:errors path="apellido" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Fecha de nacimiento</label>
 		<form:input type="date" name="fechaNacimiento" path="fechaNacimiento"/><br>
+		<form:errors path="fechaNacimiento" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Direccion</label>
 		<form:input type="text" name="direccion" path="direccion"/><br>
+		<form:errors path="direccion" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Saldo</label>
 		<form:input type="number" name="saldo" path="saldo"/><br>
+		<form:errors path="saldo" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Pais</label>
 		<form:select path="idPais"> 
@@ -50,6 +55,8 @@
 		</form:select><br>
 		
 		<form:input type="hidden" name="id" path="id"/>
+		<form:input type="hidden" name="password" path="password"/>
+		<form:input type="hidden" name="username" path="username"/>
 		<input class="btn btn-primary" type="submit" value="Guardar">
 	</form:form>
 </body>

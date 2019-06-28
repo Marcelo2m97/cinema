@@ -16,9 +16,11 @@
 	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="exhibicion">
 		<label>Fecha</label>
 		<form:input type="date" name="fecha" path="fecha"/><br>
+		<form:errors path="fecha" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Horario</label>
 		<form:input type="time" name="horario" path="horario"/><br>
+		<form:errors path="horario" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Formato</label>
 		<form:select path="idFormato"> 

@@ -1,8 +1,11 @@
 package com.uca.capas.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -96,26 +99,62 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/addUsuario")
-	public ModelAndView addUsuario(@ModelAttribute Usuario u){
+	public ModelAndView addUsuario(@Valid @ModelAttribute Usuario u, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		usuarioService.addUsuario(u);
-		mav.setViewName("redirect:/tablaUsuario");
+		if (result.hasErrors()) {
+			mav.addObject("usuario", u);
+			mav.addObject("paises", paisService.findAll());
+			mav.addObject("estados", estadoService.findAll());
+			mav.addObject("ciudades", ciudadService.findAll());
+			try {
+				mav.addObject("roles", rolService.findAll());
+			} catch (ObjectNotFoundException e) {
+				e.printStackTrace();
+			}
+			mav.addObject("formAction", "addUsuario");
+			mav.setViewName("formUsuario");
+		}else {
+			usuarioService.addUsuario(u);
+			mav.setViewName("redirect:/tablaUsuario");
+		}
 		return mav;
 	}
 	
 	@RequestMapping("/addUsuarioRegister")
-	public ModelAndView addUsuarioRegister(@ModelAttribute Usuario u){
+	public ModelAndView addUsuarioRegister(@Valid @ModelAttribute Usuario u, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		usuarioService.registerUsuario(u);
-		mav.setViewName("redirect:/login");
+		if (result.hasErrors()) {
+			mav.addObject("usuario", u);
+			mav.addObject("paises", paisService.findAll());
+			mav.addObject("estados", estadoService.findAll());
+			mav.addObject("ciudades", ciudadService.findAll());
+			mav.setViewName("register");
+		}else {
+			usuarioService.registerUsuario(u);
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	@RequestMapping("/editUsuario")
-	public ModelAndView editUsuario(@ModelAttribute Usuario u){
+	public ModelAndView editUsuario(@Valid @ModelAttribute Usuario u, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		usuarioService.editUsuario(u);
-		mav.setViewName("redirect:/tablaUsuario");
+		if (result.hasErrors()) {
+			mav.addObject("usuario", u);
+			mav.addObject("paises", paisService.findAll());
+			mav.addObject("estados", estadoService.findAll());
+			mav.addObject("ciudades", ciudadService.findAll());
+			try {
+				mav.addObject("roles", rolService.findAll());
+			} catch (ObjectNotFoundException e) {
+				e.printStackTrace();
+			}
+			mav.addObject("formAction", "editUsuario");
+			mav.setViewName("formUsuarioEdit");
+		}else {
+			usuarioService.editUsuario(u);
+			mav.setViewName("redirect:/tablaUsuario");
+		}
 		return mav;
 	}
 	

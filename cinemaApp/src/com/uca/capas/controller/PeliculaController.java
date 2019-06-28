@@ -1,8 +1,11 @@
 package com.uca.capas.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,18 +70,30 @@ public class PeliculaController {
 	}
 	
 	@RequestMapping("/addPelicula")
-	public ModelAndView addPelicula(@ModelAttribute Pelicula p){
+	public ModelAndView addPelicula(@Valid @ModelAttribute Pelicula p, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		peliculaService.addPelicula(p);
-		mav.setViewName("redirect:/tablaPelicula");
+		if (result.hasErrors()) {
+			mav.addObject("pelicula", p);
+			mav.addObject("formAction", "addPelicula");
+			mav.setViewName("formPelicula");
+		}else {
+			peliculaService.addPelicula(p);
+			mav.setViewName("redirect:/tablaPelicula");
+		}
 		return mav;
 	}
 	
 	@RequestMapping("/editPelicula")
-	public ModelAndView editPelicula(@ModelAttribute Pelicula p){
+	public ModelAndView editPelicula(@Valid @ModelAttribute Pelicula p, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		peliculaService.editPelicula(p);
-		mav.setViewName("redirect:/tablaPelicula");
+		if (result.hasErrors()) {
+			mav.addObject("pelicula", p);
+			mav.addObject("formAction", "editPelicula");
+			mav.setViewName("formPelicula");
+		}else {
+			peliculaService.editPelicula(p);
+			mav.setViewName("redirect:/tablaPelicula");
+		}
 		return mav;
 	}
 	

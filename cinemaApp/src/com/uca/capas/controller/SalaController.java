@@ -1,8 +1,11 @@
 package com.uca.capas.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,18 +52,30 @@ public class SalaController {
 	}
 	
 	@RequestMapping("/addSala")
-	public ModelAndView addSala(@ModelAttribute Sala s){
+	public ModelAndView addSala(@Valid @ModelAttribute Sala s, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		salaService.addSala(s);
-		mav.setViewName("redirect:/tablaSala");
+		if (result.hasErrors()) {
+			mav.addObject("sala", s);
+			mav.addObject("formAction", "addSala");
+			mav.setViewName("formSala");
+		}else {
+			salaService.addSala(s);
+			mav.setViewName("redirect:/tablaSala");
+		}
 		return mav;
 	}
 	
 	@RequestMapping("/editSala")
-	public ModelAndView editSala(@ModelAttribute Sala s){
+	public ModelAndView editSala(@Valid @ModelAttribute Sala s, BindingResult result){
 		ModelAndView mav = new ModelAndView();
-		salaService.editSala(s);
-		mav.setViewName("redirect:/tablaSala");
+		if (result.hasErrors()) {
+			mav.addObject("sala", s);
+			mav.addObject("formAction", "editSala");
+			mav.setViewName("formSala");
+		}else {
+			salaService.editSala(s);
+			mav.setViewName("redirect:/tablaSala");
+		}
 		return mav;
 	}
 	

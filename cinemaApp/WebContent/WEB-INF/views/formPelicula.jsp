@@ -17,13 +17,16 @@
 	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="pelicula">
 		<label>Nombre</label>
 		<form:input type="text" name="nombre" path="nombre"/><br>
+		<form:errors path="nombre" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Descripci&oacute;n</label>
 		<form:input type="text" name="descripcion" path="descripcion"/><br>
+		<form:errors path="descripcion" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Imagen</label>
 		<form:input type="hidden" id="imageName" name="imagen" path="imagen"/><br>
 		<img id="image" src="resources/${pelicula.imagen}" width="150px" height="225px"><br>
+		<form:errors path="imagen" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<form:input type="hidden" name="id" path="id"/>
 		<input class="btn btn-primary" 	type="submit" value="Guardar">

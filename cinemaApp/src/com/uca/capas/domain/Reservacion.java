@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uca.capas.utils.EntityUtils;
@@ -28,9 +31,13 @@ public class Reservacion {
 	@Column(name="c_reservacion")
 	private Integer id;
 	
+	@NotNull
+	@Min(value=0)
+	@Max(value=15)
 	@Column(name="reservacion_asientos")
 	private Integer asientos;
 	
+	@Min(value=0)
 	@Column(name="reservacion_saldo")
 	private BigDecimal saldo;
 	

@@ -1,6 +1,10 @@
 package com.uca.capas.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,25 +23,37 @@ public class Usuario {
     @Column(name="c_usuario")
     private Integer id;
 
+    @NotEmpty
+    @Size(min=0, max=100)
     @Column(name="u_nombre")
     private String nombre;
 
+    @NotEmpty
+    @Size(min=0, max=100)
     @Column(name="u_apellido")
     private String apellido;
 
+    @NotNull
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name="u_fechaNacimiento")
     private Calendar fechaNacimiento;
 
+    @NotEmpty
+    @Size(min=0, max=100)
 	@Column(name="u_direccion")
 	private String direccion;
 	
+    @NotEmpty
+    @Size(min=0, max=50)
 	@Column(name="u_username")
 	private String username;
 	
+    @NotEmpty
 	@Column(name="u_password")
 	private String password;
 	
+    @NotNull
+    @Min(value=0)
 	@Column(name="u_saldo")
 	private BigDecimal saldo;
 	

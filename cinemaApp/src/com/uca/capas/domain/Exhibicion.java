@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,13 +30,17 @@ public class Exhibicion {
 	@Column(name="c_exhibicion")
 	private Integer id;
 	
+	@NotNull
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="exhibicion_fecha")
 	private Calendar fecha;
 	
+	@NotNull
 	@Column(name="exhibicion_horario")
 	private String horario;
 	
+	@NotNull
+	@Min(value=0)
 	@Column(name="exhibicion_asientosdisponibles")
 	private Integer asientos;
 	
@@ -67,12 +73,15 @@ public class Exhibicion {
 	@JoinColumn(name="c_formato")
 	private Formato formato;
 	
+	@NotNull
 	@Transient
 	private Integer idSala;
 	
+	@NotNull
 	@Transient
 	private Integer idPelicula;
 	
+	@NotNull
 	@Transient
 	private Integer idFormato;
 

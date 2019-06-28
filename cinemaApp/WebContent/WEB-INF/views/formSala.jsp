@@ -16,12 +16,15 @@
 	<form:form action="${pageContext.request.contextPath}/${formAction}" method="POST" modelAttribute="sala">		
 		<label>Numero</label>
 		<form:input type="number" name="numero" path="numero"/><br>
+		<form:errors path="numero" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Descripci&oacute;n</label>
 		<form:input type="text" name="descripcion" path="descripcion"/><br>
+		<form:errors path="descripcion" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Capacidad</label>
 		<form:input type="number" name="capacidad" path="capacidad"/><br>
+		<form:errors path="capacidad" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<form:input type="hidden" name="id" path="id"/>
 		<input class="btn btn-primary" type="submit" value="Guardar">

@@ -14,6 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.uca.capas.utils.EntityUtils;
 
@@ -27,12 +31,18 @@ public class Sala {
 	@Column(name="c_sala")
 	private Integer id;
 	
+	@NotNull
+	@Min(value=0)
 	@Column(name="sala_numero")
 	private Integer numero;
 	
+	@NotEmpty
+	@Size(min=0, max=100)
 	@Column(name="sala_descripcion")
 	private String descripcion;
 	
+	@NotNull
+	@Min(value=0)
 	@Column(name="sala_capacidad")
 	private Integer capacidad;
 	

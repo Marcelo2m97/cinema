@@ -16,21 +16,27 @@
 	<form:form action="${pageContext.request.contextPath}/addUsuarioRegister" method="POST" modelAttribute="usuario">
 		<label>Username</label>
 		<form:input type="text" name="username" path="username"/><br>
+		<form:errors path="username" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Password</label>
 		<form:input type="password" name="password" path="password"/><br>
+		<form:errors path="password" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Nombre</label>
 		<form:input type="text" name="nombre" path="nombre"/><br>
+		<form:errors path="nombre" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Apellido</label>
 		<form:input type="text" name="apellido" path="apellido"/><br>
+		<form:errors path="apellido" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Fecha de nacimiento</label>
 		<form:input type="date" name="fechaNacimiento" path="fechaNacimiento"/><br>
+		<form:errors path="fechaNacimiento" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Direccion</label>
 		<form:input type="text" name="direccion" path="direccion"/><br>
+		<form:errors path="direccion" cssStyle="color:#E81505;"></form:errors><br>
 		
 		<label>Pais</label>
 		<form:select path="idPais"> 
