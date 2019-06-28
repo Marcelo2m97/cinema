@@ -16,6 +16,9 @@
 </head>
 <body>
 	<h1>Pel&iacute;culas</h1>
+	<form:form action="${pageContext.request.contextPath}/administracion">
+		<input class="btn btn-primary" type="submit" value="Menu">
+	</form:form>
 	<form:form action="${pageContext.request.contextPath}/formAddPelicula">
 		<input class="btn btn-primary" type="submit" value="Nueva Pel&iacute;cula">
 	</form:form>
@@ -38,7 +41,7 @@
 				<td>
 					<form:form action="${pageContext.request.contextPath}/perfilPelicula">
 						<input type="hidden" name="id" value="${pelicula.id}">
-						<input class="btn btn-outline-primary" type="submit" value="Ver">
+						<input class="btn btn-outline-primary" type="submit" value="Editar">
 					</form:form>
 				</td>
 				<td>
@@ -72,7 +75,27 @@
 	</table>
 	
 	<script>
-
+	ver = function(id){
+		$.ajax({
+            type : 'POST',
+            url : '${pageContext.request.contextPath}/verPelicula',
+            data: {id:id},
+            dataType: 'json',
+            success : function(response) {
+            	console.log(response);
+            	Swal.fire({
+       				type: 'info',
+            		title: 'Pelicula',
+            		html:
+            		    'Nombre: ' + response.nombre + "<br>" +
+            		    'Descripcion: ' + response.descripcion + "<br>",
+            		 });
+            },
+            error : function() {
+                alert("Error");
+            }
+        });
+	}
 	</script>
 </body>
 </html>

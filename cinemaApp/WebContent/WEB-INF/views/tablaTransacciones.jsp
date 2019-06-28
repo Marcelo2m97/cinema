@@ -42,8 +42,6 @@
 	
 	<script>
 		verReservacion = function(id){
-			var span = document.createElement("span");
-			span.innerHTML='abc<br>efg'
 			$.ajax({
 	            type : 'POST',
 	            url : '${pageContext.request.contextPath}/verReservacion',

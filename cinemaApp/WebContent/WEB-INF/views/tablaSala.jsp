@@ -16,6 +16,9 @@
 </head>
 <body>
 	<h1>Salas</h1>
+	<form:form action="${pageContext.request.contextPath}/administracion">
+		<input class="btn btn-primary" type="submit" value="Menu">
+	</form:form>
 	<form:form action="${pageContext.request.contextPath}/formAddSala">
 		<input class="btn btn-primary" type="submit" value="Nueva Sala">
 	</form:form>
@@ -36,10 +39,7 @@
 		<c:forEach items="${salas}" var="sala">
 			<tr>
 				<td>
-					<form:form action="${pageContext.request.contextPath}/verSala">
-						<input type="hidden" name="id" value="${sala.id}">
-						<input class="btn btn-outline-primary" type="submit" value="Ver">
-					</form:form>
+					<button class="btn btn-outline-primary" onclick="ver(${sala.id});">Ver</button>
 				</td>
 				<td>
 					<form:form action="${pageContext.request.contextPath}/formEditSala">
@@ -72,7 +72,29 @@
 	</table>
 	
 	<script>
-
+	ver = function(id){
+		$.ajax({
+            type : 'POST',
+            url : '${pageContext.request.contextPath}/verSala',
+            data: {id:id},
+            dataType: 'json',
+            success : function(response) {
+            	console.log(response);
+            	
+            	Swal.fire({
+       				type: 'info',
+            		title: 'Sala',
+            		html:
+            		    'Numero: ' + response.numero + "<br>" +
+            		    'Descripcion: ' + response.descripcion + "<br>" +
+            		    'Asientos: ' + response.capacidad + "<br>",
+            		 });
+            },
+            error : function() {
+                alert("Error");
+            }
+        });
+	}
 	</script>
 </body>
 </html>

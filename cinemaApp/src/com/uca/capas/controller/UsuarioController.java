@@ -1,18 +1,25 @@
 package com.uca.capas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.uca.capas.domain.Reservacion;
 import com.uca.capas.domain.Usuario;
+import com.uca.capas.domain.response.TransaccionResponse;
+import com.uca.capas.domain.response.UsuarioResponse;
 import com.uca.capas.service.CiudadService;
 import com.uca.capas.service.EstadoService;
 import com.uca.capas.service.PaisService;
 import com.uca.capas.service.RolService;
 import com.uca.capas.service.UsuarioService;
+import com.uca.capas.utils.EntityUtils;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -118,5 +125,21 @@ public class UsuarioController {
 		usuarioService.activarUsuario(id, motivo);
 		mav.setViewName("redirect:/tablaUsuario");
 		return mav;
+	}
+	
+	@RequestMapping(value = "/verUsuario", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody UsuarioResponse verReservacion(@RequestParam int id) {
+		Usuario u = usuarioService.findOne(id);
+		UsuarioResponse ur = new UsuarioResponse();
+		ur.setUsername(u.getUsername());
+		ur.setRol(u.getRol().getNombre());
+		ur.setNombre(u.getNombre());
+		ur.setApellido(u.getApellido());
+		ur.setCiudad(u.getCiudad().getNombre());
+		ur.setEstado(u.getEstado().getNombre());
+		ur.setPais(u.getPais().getNombre());
+		ur.setSaldo(u.getSaldo().toString());
+		ur.setFechaNacimiento(u.getFechaNacimientoDelegate());
+		return ur;
 	}
 }

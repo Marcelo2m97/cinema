@@ -298,4 +298,8 @@ public class Usuario {
 	public String getFechaModificacionDelegate() {
 		return EntityUtils.dateToString(fechaModificacion);
 	}
+	
+	public String getFechaNacimientoDelegate() {
+		return EntityUtils.dateToString(fechaNacimiento);
+	}
 }

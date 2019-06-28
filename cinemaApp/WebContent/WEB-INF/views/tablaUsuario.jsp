@@ -16,6 +16,9 @@
 </head>
 <body>
 	<h1>Usuario</h1>
+	<form:form action="${pageContext.request.contextPath}/administracion">
+		<input class="btn btn-primary" type="submit" value="Menu">
+	</form:form>
 	<form:form action="${pageContext.request.contextPath}/formAddUsuario">
 		<input class="btn btn-primary" type="submit" value="Nuevo Usuario">
 	</form:form>
@@ -36,10 +39,7 @@
 		<c:forEach items="${usuarios}" var="usuario">
 			<tr>
 				<td>
-					<form:form action="${pageContext.request.contextPath}/verUsuario">
-						<input type="hidden" name="id" value="${usuario.id}">
-						<input class="btn btn-outline-primary" type="submit" value="Ver">
-					</form:form>
+					<button class="btn btn-outline-primary" onclick="ver(${usuario.id});">Ver</button>
 				</td>
 				<td>
 					<form:form action="${pageContext.request.contextPath}/formEditUsuario">
@@ -74,7 +74,31 @@
 	</table>
 	
 	<script>
-
+	ver = function(id){
+		$.ajax({
+            type : 'POST',
+            url : '${pageContext.request.contextPath}/verUsuario',
+            data: {id:id},
+            dataType: 'json',
+            success : function(response) {
+            	console.log(response);
+            	
+            	Swal.fire({
+       				type: 'info',
+            		title: 'Usuario',
+            		html:
+            		    'Username: ' + response.username + "<br>" +
+            		    'Nombre: ' + response.nombre + "<br>" +
+            		    'Apellido: ' + response.apellido + "<br>" +
+            		    'Fecha nacimiento: ' + response.fechaNacimiento + "<br>" +
+            		    'Saldo: $' + response.saldo + "<br>",
+            		 });
+            },
+            error : function() {
+                alert("Error");
+            }
+        });
+	}
 	</script>
 </body>
 </html>
