@@ -48,8 +48,9 @@
 					</form:form>
 				</td>
 				<td>
-					<form:form id="form" action="${pageContext.request.contextPath}/activarUsuario">
+					<form:form id="form" action="${pageContext.request.contextPath}/activarUsuario" onsubmit="return prompt();">
 						<input type="hidden" name="id" value="${usuario.id}">
+						<input type="hidden" id="motivo" name="motivo">
 						<c:choose>
 							<c:when test="${usuario.activo == true}">
 								<input class="btn btn-outline-primary" type="submit" value="Inactivar">
@@ -73,22 +74,7 @@
 	</table>
 	
 	<script>
-	$('#form').on('submit', function(e) {
-	    var form = this;
-	    e.preventDefault();
 
-	    Swal.fire({
-	        title: "Confirmar",
-	        type: "warning",
-	        showCancelButton: true,
-	        confirmButtonText: 'Continuar',
-	        cancelButtonText: "Cancelar",
-	    }).then(function(result) {
-	    	if (result.value){
-	    		form.submit();
-	    	}
-	    }); 
-	});
 	</script>
 </body>
 </html>

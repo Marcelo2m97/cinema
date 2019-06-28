@@ -56,7 +56,7 @@ public class LoginController {
                     return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. El usuario ya cuenta con una sesion activa", 498), HttpStatus.UNAUTHORIZED);
                 }
                 if (!usuario.getActivo()) {
-                    return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. La cuenta del usuario no se encuentra activa", 499), HttpStatus.NOT_ACCEPTABLE);
+                    return new ResponseEntity<UsuarioTransfer>(new UsuarioTransfer("Error. La cuenta del usuario no se encuentra activa, por: "+usuario.getMensaje(), 499), HttpStatus.NOT_ACCEPTABLE);
                 }
             } catch (Exception exi){
                 exi.printStackTrace();

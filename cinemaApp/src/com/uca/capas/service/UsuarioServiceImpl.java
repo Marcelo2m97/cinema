@@ -95,9 +95,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	@Transactional
-	public void activarUsuario(int id) {
+	public void activarUsuario(int id, String motivo) {
 		Usuario u = usuarioRepository.findOne(id);
 		u.setActivo(!u.getActivo());
+		u.setMensaje(motivo);
 		u.setFechaModificacion(Calendar.getInstance());
 		u.setUsuarioModificacion((Usuario)session.getAttribute(Constants.USER_SESSION));
 		usuarioRepository.save(u);

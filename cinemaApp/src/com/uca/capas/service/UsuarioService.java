@@ -18,7 +18,7 @@ public interface UsuarioService {
 	
 	public void editUsuario(Usuario u);
 	
-	public void activarUsuario(int id);
+	public void activarUsuario(int id, String motivo);
 	
     public Usuario findByUsername(String username);
     

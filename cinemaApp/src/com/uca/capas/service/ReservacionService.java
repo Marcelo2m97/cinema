@@ -7,7 +7,7 @@ import com.uca.capas.domain.Reservacion;
 
 public interface ReservacionService {
 
-	public Reservacion procesarReservacion(Reservacion r);
+	public Reservacion procesarReservacion(Reservacion r) throws Exception;
 	
 	public Reservacion findOne(int id);
 	

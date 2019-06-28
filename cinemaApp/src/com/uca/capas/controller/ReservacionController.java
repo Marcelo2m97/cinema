@@ -55,7 +55,11 @@ public class ReservacionController {
 	public ModelAndView confirmarReservacion(@ModelAttribute Reservacion r) {
 		ModelAndView mav = new ModelAndView();
 		Exhibicion e = exhibicionService.findOne(r.getIdExhibicion());
-		r = reservacionService.procesarReservacion(r);
+		try {
+			r = reservacionService.procesarReservacion(r);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		mav.addObject("exhibicion",e);
 		mav.addObject("reservacion", r);
 		mav.setViewName("confirmarReservacion");

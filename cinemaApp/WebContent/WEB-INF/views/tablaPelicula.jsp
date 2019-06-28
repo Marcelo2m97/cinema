@@ -48,7 +48,7 @@
 					</form:form>
 				</td>
 				<td>
-					<form:form id="form" action="${pageContext.request.contextPath}/activarPelicula">
+					<form:form id="form" action="${pageContext.request.contextPath}/activarPelicula" onsubmit="return confirm('Confirm')">
 						<input type="hidden" name="id" value="${pelicula.id}">
 						<c:choose>
 							<c:when test="${pelicula.activo == true}">
@@ -72,22 +72,7 @@
 	</table>
 	
 	<script>
-	$('#form').on('submit', function(e) {
-	    var form = this;
-	    e.preventDefault();
 
-	    Swal.fire({
-	        title: "Confirmar",
-	        type: "warning",
-	        showCancelButton: true,
-	        confirmButtonText: 'Continuar',
-	        cancelButtonText: "Cancelar",
-	    }).then(function(result) {
-	    	if (result.value){
-	    		form.submit();
-	    	}
-	    }); 
-	});
 	</script>
 </body>
 </html>

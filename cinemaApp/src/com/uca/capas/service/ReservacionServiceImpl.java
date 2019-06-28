@@ -35,9 +35,15 @@ public class ReservacionServiceImpl implements ReservacionService{
 	private HttpSession session;
 	
 	@Override
-	public Reservacion procesarReservacion(Reservacion r) {
+	public Reservacion procesarReservacion(Reservacion r) throws Exception {
 		Exhibicion e = exhibicionRepository.findOne(r.getIdExhibicion());
 		Usuario u = (Usuario)session.getAttribute(Constants.USER_SESSION);
+		if (r.getSaldo().compareTo(u.getSaldo()) == 1) {
+			throw new Exception("No tiene suficiente saldo");
+		}
+		if (e.getAsientos() < r.getAsientos()) {
+			throw new Exception("No hay suficientes asientos");
+		}
 		if (r.getSaldo() == null) {
 			r.setSaldo(BigDecimal.ZERO);
 		}
@@ -60,13 +66,13 @@ public class ReservacionServiceImpl implements ReservacionService{
 		Exhibicion e = exhibicionRepository.findOne(r.getIdExhibicion());
 		Usuario u = (Usuario)session.getAttribute(Constants.USER_SESSION);
 		if (e.getAsientos() < r.getAsientos()) {
-			throw new Exception();
+			throw new Exception("No hay suficientes asientos");
 		}
 		e.setAsientos(e.getAsientos()-r.getAsientos());
 		exhibicionRepository.save(e);
 		r.setExhibicion(e);
 		if (u.getSaldo().compareTo(r.getSaldo()) == -1) {
-			throw new Exception();
+			throw new Exception("No tiene suficiente saldo");
 		}
 		u.setSaldo(r.getSaldoRestante());
 		usuarioRepository.save(u);

@@ -113,9 +113,9 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/activarUsuario")
-	public ModelAndView activarUsuario(@RequestParam int id){
+	public ModelAndView activarUsuario(@RequestParam int id, String motivo){
 		ModelAndView mav = new ModelAndView();
-		usuarioService.activarUsuario(id);
+		usuarioService.activarUsuario(id, motivo);
 		mav.setViewName("redirect:/tablaUsuario");
 		return mav;
 	}
